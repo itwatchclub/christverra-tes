@@ -1,0 +1,13 @@
+{% comment %} {% if customer %}
+
+    {% section 'summary-warranty-profile' %}
+  
+  {% else %}
+  
+  <script>
+    window.location.href = "{{ routes.storefront_login_url }}?return_url=/pages/warranty-register";
+  </script>
+  
+  {% endif %} {% endcomment %}
+
+  {% section 'summary-warranty-profile' %}

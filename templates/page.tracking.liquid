@@ -1,0 +1,17 @@
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+{{ 'component-rte.css' | asset_url | stylesheet_tag }}
+
+<div class="page-width page-width--narrow tracking-page">
+  <h1 class="main-page-title page-title h0">
+    {{ page.title | escape }}
+  </h1>
+
+  <div class="rte tracking-page__content">
+    {{ page.content }}
+
+    <form id="form-tracking" class="tracking-page__form">
+      <input type="text" class="Form__Input" name="resi" placeholder="Enter your resi">
+      <button class="Form__Submit Button Button--primary submit-tracking" type="submit">Submit</button>
+    </form>
+  </div>
+</div>

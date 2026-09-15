@@ -1,0 +1,37 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
+    "sections": {
+      "main": {
+        "type": "background-video",
+        "settings": {
+          "section_size": "large",
+          "video_url": "https://youtu.be/jyPJamL6ZJE?si=Wx78vcc09eBCoYqw"
+        }
+      },
+      "text_with_image_azFGrw": {
+        "type": "text-with-image",
+        "name": "Rich text with image",
+        "settings": {
+          "subheading": "",
+          "title": "ABOUT US",
+          "image_position": "left",
+          "content": "<h5>With over 30 years of watchmaking expertise since 1995, Christ Verra is dedicated to reating high-quality timepieces that embody passionate design and state-of-the-art craftsmanship. Our fully integrated in-house design team works closely with manufacturing engineers to ensure that each watch reflects uncompromising precision, using only selected premium stainless steel and passing through rigorous testing to meet the demands of everyday wear.</h5><h5>More than just a timekeeper, each Christ Verra watch is a statement of style and personality. With a diverse range of designs tailored to different lifestyles, we aim to make luxury accessible for everyone—transforming dreams into reality through the art of watchmaking. Christ Verra, #YourStatementInPeace.</h5>",
+          "link_text": "",
+          "link_url": ""
+        }
+      }
+    },
+    "order": [
+      "main",
+      "text_with_image_azFGrw"
+    ]
+  }
+  

@@ -1,0 +1,230 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_9zVeyp": {
+      "type": "slideshow",
+      "blocks": {
+        "image_jPjyK3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CV_Web_Payday_Sept_1.png",
+            "apply_overlay": true,
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "",
+            "button_1_text": "",
+            "button_1_link": "shopify://collections/sale-65",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        },
+        "image_fqLXBV": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CV_Banner_September.png",
+            "mobile_image": "shopify://shop_images/CV_Banner_September.png",
+            "apply_overlay": true,
+            "content_position": "bottomLeft",
+            "subheading": "",
+            "title": "",
+            "button_1_text": "",
+            "button_1_link": "shopify://collections/solunae",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        },
+        "image_cPffdt": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CV_Banner_Juli.png",
+            "apply_overlay": false,
+            "content_position": "bottomCenter",
+            "subheading": "",
+            "title": "",
+            "button_1_text": "EXPERIENCE NOW",
+            "button_1_link": "shopify://collections/bellagio-series",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        },
+        "image_9MBwRR": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CV_Banner_Juli_2.png",
+            "apply_overlay": false,
+            "content_position": "bottomCenter",
+            "subheading": "",
+            "title": "",
+            "button_1_text": "EXPERIENCE NOW",
+            "button_1_link": "shopify://collections/iron-series",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_jPjyK3",
+        "image_fqLXBV",
+        "image_cPffdt",
+        "image_9MBwRR"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "show_fullscreen": false,
+        "show_arrow": false,
+        "autoplay": true,
+        "cycle_speed": 7,
+        "text_color": "#543425",
+        "button_color": "#543425",
+        "button_background": "#ece9e0"
+      }
+    },
+    "text_with_image_qceKbr": {
+      "type": "text-with-image",
+      "name": "Rich text with image",
+      "settings": {
+        "subheading": "Welcome to Christ Verra Timeless Style",
+        "title": "Everyday Comfort",
+        "image_position": "left",
+        "content": "<h5>Since 1995, with more than 20 years of watchmaking experience Christ Verra aims to cater to all consumers with timepieces that are accessible to watch wearers. Every watch design is unique, and centered around the different personalities & style of our consumers.</h5>",
+        "link_text": "",
+        "link_url": "shopify://pages/about-us"
+      }
+    },
+    "collection_custom_anim_TPFbrk": {
+      "type": "collection-custom-anim",
+      "blocks": {
+        "collection_QBGCz7": {
+          "type": "collection",
+          "settings": {
+            "collection": "gents-collection",
+            "img": "shopify://shop_images/CV17847_610x500_16185dcd-ed17-41f4-807f-b6bea59ad7ec.jpg"
+          }
+        },
+        "collection_dMWb69": {
+          "type": "collection",
+          "settings": {
+            "collection": "ladies-collection",
+            "img": "shopify://shop_images/CV18193_A_610x500_760a11a2-300e-4174-8cdf-e8fa29360709.jpg"
+          }
+        },
+        "collection_mENaKw": {
+          "type": "collection",
+          "settings": {
+            "collection": "couple-editions",
+            "img": "shopify://shop_images/CV18062_610x500_1b2c45f6-0d2b-48fd-ab4d-d37832e03e90.jpg"
+          }
+        },
+        "collection_gKKVx6": {
+          "type": "collection",
+          "settings": {
+            "collection": "limited-editions",
+            "img": "shopify://shop_images/CV17798_spider_610x500_cac1996c-6e40-4df2-bd2a-618dd7a9600b.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "collection_QBGCz7",
+        "collection_dMWb69",
+        "collection_mENaKw",
+        "collection_gKKVx6"
+      ],
+      "name": "Collection animation",
+      "settings": {
+        "button_color": "#543425",
+        "button_color_hover": "#543425",
+        "button_background": "#ece9e0",
+        "border_color": "#ece9e0"
+      }
+    },
+    "featured_collection_QGAhRD": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "",
+        "subtitle": "",
+        "collection": "nataru",
+        "products_to_show": 12,
+        "show_view_all": false,
+        "swipe_on_desktop": true,
+        "swipe_on_mobile": false,
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "add_image_padding": false,
+        "show_product_info": true,
+        "show_vendor": false
+      }
+    },
+    "logo_list_LnFPCc": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_image_RVU3rn": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/2bcobadownload_-_2025-09-03T135607.725-gigapixel-high_fidelity_v2-3_2.jpg",
+            "link": "shopify://blogs/news/blog-5",
+            "overlay_text": "Review"
+          }
+        },
+        "logo_image_4mdwrN": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/cobadf33de0c-73b4-4641-8c99-2960ab006eea-gigapixel-high_fidelity_v2-3edited.jpg",
+            "link": "shopify://collections/new-in",
+            "overlay_text": "Lifestyle"
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_RVU3rn",
+        "logo_image_4mdwrN"
+      ],
+      "name": "Logo list",
+      "settings": {
+        "title": "",
+        "logo_width": "160px",
+        "columns_desktop": 2,
+        "columns_mobile": "2",
+        "image_height": 744,
+        "show_overlay_text": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "background_video_a86XAJ": {
+      "type": "background-video",
+      "name": "Background video",
+      "settings": {
+        "section_size": "large",
+        "video_url": "https://youtu.be/_RgB4GRNieI?si=WmY2aEWd074Fek0E"
+      }
+    },
+    "custom_html_YJ8jmd": {
+      "type": "custom-html",
+      "name": "Custom HTML",
+      "settings": {
+        "subheading": "",
+        "title": "Follow us on Instagram",
+        "html": "<div id=\"insta-feed\"></div>",
+        "show_border": false
+      }
+    }
+  },
+  "order": [
+    "slideshow_9zVeyp",
+    "text_with_image_qceKbr",
+    "collection_custom_anim_TPFbrk",
+    "featured_collection_QGAhRD",
+    "logo_list_LnFPCc",
+    "background_video_a86XAJ",
+    "custom_html_YJ8jmd"
+  ]
+}

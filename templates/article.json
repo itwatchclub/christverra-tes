@@ -1,0 +1,36 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "settings": {
+        "show_article_image": true,
+        "show_date": true,
+        "show_category": false,
+        "show_author": true,
+        "show_share_buttons": false,
+        "image_1": "shopify://shop_images/jpg.jpg",
+        "image_2": "shopify://shop_images/DSC03961_copy_1.jpg",
+        "image_3": "shopify://shop_images/DSC04456_copy.jpg",
+        "image_4": "shopify://shop_images/DSC04806_copy.jpg",
+        "hero_title_about": "",
+        "hero_title_find": "",
+        "hero_title_careers": "",
+        "hero_title_return": "",
+        "hero_title_shipping": "",
+        "hero_title_terms": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

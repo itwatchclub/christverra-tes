@@ -1,0 +1,69 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": "theme.linktree",
+  "sections": {
+    "main": {
+      "type": "linktree",
+      "blocks": {
+        "link_YqMXjm": {
+          "type": "link",
+          "settings": {
+            "link_title": "Website (Best Price, Free Shipping)",
+            "link_url": "https://inaprayer.com/"
+          }
+        },
+        "link_JnWnPa": {
+          "type": "link",
+          "settings": {
+            "link_title": "Shopee Indonesia (Free Ongkir)",
+            "link_url": "https://shopee.co.id/inaprayer"
+          }
+        },
+        "link_TXG4gW": {
+          "type": "link",
+          "settings": {
+            "link_title": "Customer Care (Whatsapp) | Extra Discount Up To 15%",
+            "link_url": "https://wa.me/628113500042"
+          }
+        },
+        "link_AqmB98": {
+          "type": "link",
+          "settings": {
+            "link_title": "Shop on Shopee Malaysia",
+            "link_url": "https://shopee.com.my/inaprayer.my"
+          }
+        },
+        "link_ExJq9m": {
+          "type": "link",
+          "settings": {
+            "link_title": "Official Instagram Inaprayer",
+            "link_url": "https://www.instagram.com/inaprayer/?igsh=ZnEweDllNnc3MXMx"
+          }
+        }
+      },
+      "block_order": [
+        "link_YqMXjm",
+        "link_JnWnPa",
+        "link_TXG4gW",
+        "link_AqmB98",
+        "link_ExJq9m"
+      ],
+      "settings": {
+        "background_image": "shopify://shop_images/BLOOMING_HAMPERS_WEB_1500_x_2000_px_Your_Story.png",
+        "logo_width": 215,
+        "button_height": 15
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
