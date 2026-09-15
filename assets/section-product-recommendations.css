@@ -1,0 +1,36 @@
+.product-recommendations {
+  display: block;
+  padding: 80px 0;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: none;
+  margin: 0;
+}
+
+.product-recommendations__heading {
+  margin: 0;
+  margin-bottom: 70px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  font-style: normal;
+  color: #454545;
+  transition: color .2s ease-in-out;
+  letter-spacing: 0;
+  text-transform: capitalize;
+}
+
+.product-recommendations .grid__item {
+  padding-bottom: 0;
+}
+
+@media screen and (max-width: 750px) {
+  .product-recommendations {
+    padding: 0;
+    border-top: none;
+  }
+
+  .product-recommendations__heading {
+    margin-bottom: 30px;
+    padding: 0 20px;
+  }
+}

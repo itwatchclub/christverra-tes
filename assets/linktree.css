@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
+.linktree-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  right: 0;
+  bottom: 0;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.linktree-content {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 750px;
+  margin: 0 auto;
+  text-align: center;
+}
+.linktree-container {
+  padding-top: 35px;
+}
+.linktree-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-color: #b7904a !important;
+  text-transform: none;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.linktree-button:not([disabled]):before {
+  background-color: #b7904a;
+}
+
+.linktree-button:not([disabled]):hover{
+  background-color: #ffffff;
+}
+
+.linktree-button::before {
+  position: absolute;
+  content: "";
+  display: block;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(1);
+  transform-origin: left center;
+  z-index: -1;
+  background-color: #b7904a;
+}
+.linktree-button:hover {
+  color: #b7904a !important;
+  border-color: #b7904a !important;
+  background-color: transparent;
+}
+
+
+
+.linktree-button-text {
+  font-size: 22px;
+  letter-spacing: 0;
+  font-weight: 700;
+  font-family: 'Crimson Text', serif;
+}
+#wa-chat-btn-root {
+  display: none !important;
+}
+
+@media screen and (max-width: 640px) {
+  .linktree-content {
+    width: 100%;
+    padding: 0 22px;
+  }
+  .linktree-button-text{
+    font-size: 18px;
+  }
+}

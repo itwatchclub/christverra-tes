@@ -1,0 +1,113 @@
+.custom-collection-section {
+    
+    img {
+        width: 100%;
+    }
+
+    a {
+        color: inherit;
+        background-color: transparent;
+        text-decoration: none;
+    }
+}
+
+.collection-row .collection-item {
+    flex: 1 1 auto;
+    max-width: 50%;
+    margin-left: -12px;
+    padding-left: 12px;
+}
+
+.collection-information {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+.collection-item .collection-information {
+    margin-top: 16px;
+}
+
+.collection-item .collection-information .SectionHeader__SubHeading{
+    font-size: 14px;
+    line-height: 17px;
+    text-transform: uppercase;
+    color: #777;
+    margin: 0 0 10px;
+}
+
+.collection-item .collection-information h2,
+.collection-item .collection-information p {
+    margin-bottom: 0;
+    margin-top: 0;
+    color: #fff;
+}
+
+.collection-item .collection-information p{
+    font-size: 10px;
+}
+.collection-item .collection-information h2.collection-title {
+    font-size: 17px;
+    line-height: 26px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.collection-item .collection-information .collection-button {
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+}
+
+.collection-item .collection-information .collection-promo {
+    font-size: 21px;
+    line-height: 26px;
+    font-weight: 600;
+    color: #f02525;
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+
+.collection-information svg {
+    width: 10px;
+    height: 10px;
+    color: #fff;
+}
+
+.collection-desc.Rte {
+    word-break: break-word;
+}
+
+/* Image hover swap + zoom */
+.collection-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.collection-img__primary,
+.collection-img__hover {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s ease, opacity 0.4s ease;
+}
+
+.collection-img__hover {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}
+
+.collection-wrapper {
+    position: relative;
+}
+.collection-wrapper:hover .collection-img__primary {
+    transform: scale(1.05);
+}
+
+.collection-wrapper:hover .collection-img__hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.collection-wrapper:hover .collection-img__primary:not(:only-child) {
+    opacity: 0;
+}

@@ -1,0 +1,255 @@
+/**
+ * Custom styles replicated from used-theme
+ * Adds .ProductList--grid and .Header__Wrapper classes to dawn theme
+ */
+
+/* Global heading font — match production cinemasunday serif */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.Heading {
+  font-family: 'cinemasunday', serif;
+}
+
+/* ============================================================================
+   ProductList--grid
+   Used to equalize padding left and right for all homepage sections
+   ============================================================================ */
+
+.ProductList--grid {
+  padding: 0 12px;
+}
+
+@media screen and (max-width: 640px) {
+  .ProductList--grid {
+    margin-left: -10px;
+  }
+
+  .ProductList--grid>.Grid__Cell {
+    padding-left: 10px;
+    margin-bottom: 35px;
+  }
+}
+
+@media screen and (min-width: 641px) {
+  .ProductList--grid {
+    padding: 0 24px;
+    margin-left: -24px;
+  }
+
+  .ProductList--grid>.Grid__Cell {
+    padding-left: 24px;
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (min-width: 1140px) {
+  .ProductList--grid {
+    padding: 0 50px;
+  }
+}
+
+/* ============================================================================
+   Header__Wrapper
+   Header padding/layout styling replicated from used-theme
+   ============================================================================ */
+
+.Header__Wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 18px;
+}
+
+@media screen and (min-width: 641px) {
+  .Header__Wrapper {
+    padding: 18px 30px;
+  }
+}
+
+@media screen and (min-width: 1140px) {
+  .js .Header__Wrapper {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .Header:not(.Header--sidebar) .Header__Wrapper {
+    padding: 18px 50px;
+  }
+
+  .Header--center .Header__Wrapper.Header__Wrapper {
+    padding-bottom: 24px;
+  }
+
+  .Header--initialized .Header__Wrapper {
+    opacity: 1;
+  }
+}
+
+/* ============================================================================
+  Collection page legacy-like layout
+  Keep Dawn filtering engine, render custom sidebar/cards
+  ============================================================================ */
+
+.template-collection #main-collection-filters {
+  display: none;
+}
+
+
+.template-collection .legacy-mobile-filter {
+  display: none;
+  margin-bottom: 1.6rem;
+}
+
+.template-collection .legacy-collection-sidebar {
+  padding-right: 2.4rem;
+}
+
+.template-collection .legacy-collection-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  margin-left: -2.4rem;
+}
+
+.Grid {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  margin-left: -2.4rem;
+}
+
+.template-collection .legacy-collection-grid>.Grid__Cell {
+  display: block;
+  padding-left: 2.4rem;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.template-collection .legacy-collection-sidebar {
+  width: auto;
+  max-width: none;
+}
+
+.template-collection .legacy-collection-products {
+  width: auto;
+}
+
+.template-collection .legacy-collection-sidebar .panel-filter {
+  margin: 0.8rem 0 1.6rem;
+}
+
+.template-collection .legacy-collection-sidebar .panel-filter a {
+  color: rgb(var(--color-base-text-rgb));
+  text-decoration: none;
+}
+
+.template-collection .legacy-collection-sidebar .accordion-filter {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+@media screen and (max-width: 749px) {
+  .template-collection .legacy-collection-grid {
+    flex-wrap: wrap;
+    margin-left: 0;
+  }
+
+  .template-collection .legacy-collection-grid>.Grid__Cell {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .template-collection .legacy-mobile-filter {
+    display: block;
+  }
+
+  .template-collection .legacy-collection-sidebar {
+    display: none;
+    padding-right: 0;
+    margin-bottom: 1.6rem;
+  }
+
+  .template-collection .legacy-collection-sidebar.is-open {
+    display: block;
+  }
+}
+
+/* ============================================================================
+   Color Swatches — product cards (collection & featured collection)
+   ============================================================================ */
+
+.card-swatch-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  margin: 8px 0 4px;
+}
+
+.card-swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  cursor: default;
+  flex-shrink: 0;
+}
+
+.card-swatch--white {
+  border-color: rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================================
+   Featured collection section — center heading, uppercase, match production
+   ============================================================================ */
+
+.collection .collection-header {
+  text-align: center;
+}
+
+.collection .collection-header h2.title {
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
+/* Hide Dawn's slider counter (1/1) in featured collection — production doesn't show it */
+.collection .slider-buttons {
+  display: none !important;
+}
+
+/* "VIEW ALL PRODUCTS →" link below featured collection grid */
+.featured-collection__view-all-wrapper {
+  text-align: center;
+  padding: 70px 0 40px;
+}
+
+.featured-collection__view-all-link {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #1a1b18;
+  text-decoration: none !important;
+  padding: 14px 28px;
+  background-color: #c9bfb5;
+  color: #5f3e22;
+  border-color: #c9bfb5;
+  letter-spacing: .2em;
+}
+
+.custom-html-section.page-width {
+  padding: 0 0 !important;
+}

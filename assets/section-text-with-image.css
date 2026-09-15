@@ -1,0 +1,330 @@
+/* ============================================================================
+   FeatureText Section Styles (christ-verra-v2)
+   ============================================================================ */
+
+/* Section Spacing & Layout Wrapper */
+.Section {
+  display: block;
+}
+
+.Section--spacingNormal {
+  margin: 50px 0;
+}
+
+.shopify-section--bordered>.Section--spacingNormal {
+  padding: 50px 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 1008px) {
+  .Section--spacingNormal {
+    margin: 80px 0;
+  }
+
+  .shopify-section--bordered>.Section--spacingNormal {
+    padding: 80px 0;
+  }
+}
+
+/* FeatureText Containers */
+.FeatureText {
+  text-align: center;
+}
+
+.FeatureText__ContentWrapper {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.FeatureText__ImageWrapper {
+  overflow: hidden;
+}
+
+.FeatureText--withImage .FeatureText__ContentWrapper {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+/* Align and limit layout width when no image is displayed */
+.FeatureText:not(.FeatureText--withImage) .FeatureText__Content {
+  margin: 0 auto;
+}
+
+/* SectionHeader styles copied from theme.scss */
+.SectionHeader {
+  text-align: center;
+}
+
+.SectionHeader:not(:only-child) {
+  margin-bottom: 40px;
+}
+
+.SectionHeader--center {
+  text-align: center;
+  display: block !important;
+}
+
+.SectionHeader__Heading.SectionHeader__Heading,
+.SectionHeader__SubHeading.SectionHeader__SubHeading {
+  margin-top: -0.325em;
+}
+
+.SectionHeader__SubHeading+.SectionHeader__Heading,
+.SectionHeader__Description {
+  margin-top: 12px;
+}
+
+@media screen and (min-width: 1008px) {
+  .SectionHeader:not(:only-child) {
+    margin-bottom: 70px;
+  }
+
+  .SectionHeader__Description {
+    margin-top: 24px;
+  }
+}
+
+/* Responsive Layouts with Image */
+@media screen and (max-width: 640px) {
+  .FeatureText--imageLeft {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (min-width: 641px) {
+  .FeatureText__Content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .FeatureText--withImage {
+    display: table;
+    width: 100%;
+    text-align: left;
+    table-layout: fixed;
+  }
+
+  .FeatureText--withImage .FeatureText__ContentWrapper,
+  .FeatureText--withImage .FeatureText__ImageWrapper {
+    display: table-cell;
+    width: 50%;
+    vertical-align: middle;
+  }
+
+  .FeatureText--withImage .FeatureText__ContentWrapper {
+    padding: 50px;
+  }
+
+  .FeatureText--imageRight .FeatureText__ContentWrapper {
+    padding-right: 40px;
+  }
+
+  .FeatureText--imageRight .FeatureText__Content,
+  .FeatureText--imageRight .AspectRatio {
+    margin-right: 0;
+  }
+
+  .FeatureText--imageRight .AspectRatio {
+    text-align: right;
+  }
+
+  .FeatureText--imageLeft .FeatureText__ContentWrapper {
+    padding-left: 40px;
+  }
+
+  .FeatureText--imageLeft .FeatureText__Content,
+  .FeatureText--imageLeft .AspectRatio {
+    margin-left: 0;
+  }
+
+  .FeatureText--imageLeft .AspectRatio {
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 1140px) {
+  .FeatureText--imageRight .FeatureText__ContentWrapper {
+    padding-right: 100px;
+  }
+
+  .FeatureText--imageLeft .FeatureText__ContentWrapper {
+    padding-left: 100px;
+  }
+}
+
+/* Typography styles matching style.css and v1 settings */
+.Heading {
+  font-family: var(--font-heading-family), sans-serif;
+  font-style: var(--font-heading-style), normal;
+  color: var(--color-base-text, #1a1b18);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Heading Sizes */
+.FeatureText .SectionHeader h3.SectionHeader__SubHeading,
+.SectionHeader__SubHeading {
+  font-size: 22px;
+  color: #454545;
+  letter-spacing: -.002px;
+  text-transform: uppercase;
+  margin-bottom: 0 !important;
+}
+
+.FeatureText .SectionHeader h2.SectionHeader__Heading,
+.SectionHeader__Heading {
+  font-size: 34px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #454545;
+  letter-spacing: -.002px;
+}
+
+
+/* Description Text styling */
+.FeatureText .SectionHeader__Description {
+  margin-top: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.01px;
+}
+
+.FeatureText .SectionHeader__Description h5,
+.FeatureText .SectionHeader__Description .Rte h5,
+.FeatureText .SectionHeader__Description .rte h5 {
+  font-size: 18px !important;
+  line-height: 1.7;
+  color: #454545;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: var(--font-heading-family);
+}
+
+.Rte,
+.rte {
+  word-break: break-word;
+}
+
+.Rte::after,
+.rte::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* Aspect Ratio image container styling */
+.AspectRatio {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.AspectRatio::before {
+  content: '';
+  display: block;
+}
+
+.AspectRatio>img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.AspectRatio--withFallback>img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.no-js .AspectRatio>img {
+  display: none !important;
+}
+
+@supports (--css: variables) {
+  .AspectRatio--withFallback {
+    padding-bottom: 0 !important;
+  }
+
+  .AspectRatio::before {
+    padding-bottom: calc(100% / (var(--aspect-ratio)));
+  }
+
+  .AspectRatio>img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+/* Link Underline styling */
+.Link {
+  transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  text-decoration: none;
+  color: inherit;
+}
+
+.Link--underline {
+  position: relative;
+  display: inline-block;
+}
+
+.Link--underline::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  left: 0;
+  bottom: -1px;
+  background: currentColor;
+  transform: scale(1, 1);
+  transform-origin: left center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.Link--underline:hover::before {
+  transform: scale(0, 1);
+}
+
+/* Image transitions */
+.Image--slideRight,
+.Image--slideLeft {
+  transform: translateX(25px);
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.Image--slideLeft {
+  transform: translateX(-25px);
+}
+
+.Image--lazyLoaded.Image--slideRight,
+.Image--lazyLoaded.Image--slideLeft {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+@media (max-width: 768px) {
+
+  .FeatureText .SectionHeader h3.SectionHeader__SubHeading,
+  .SectionHeader__SubHeading {
+    font-size: 14px;
+  }
+
+  .FeatureText .SectionHeader__Description h5,
+  .FeatureText .SectionHeader__Description .Rte h5,
+  .FeatureText .SectionHeader__Description .rte h5 {
+    font-size: 15px !important;
+  }
+
+  .FeatureText .SectionHeader h2.SectionHeader__Heading,
+  .SectionHeader__Heading {
+    font-size: 19.5px;
+  }
+
+}

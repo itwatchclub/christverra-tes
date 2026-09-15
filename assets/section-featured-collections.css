@@ -1,0 +1,620 @@
+/**
+ * Featured Collections Section Styles
+ * Replicated from used-theme to dawn
+ * ============================================================================ */
+
+/* ============================================================================
+   Section spacing
+   ============================================================================ */
+
+featured-collections-component {
+  display: block;
+  margin: 20px 0;
+}
+
+@media screen and (min-width: 1008px) {
+  featured-collections-component {
+    margin: 40px 0;
+  }
+}
+
+/* ============================================================================
+   Container
+   ============================================================================ */
+
+featured-collections-component .Container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ============================================================================
+   Grid system (replicated from used-theme)
+   ============================================================================ */
+
+featured-collections-component .Grid {
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 -24px;
+  font-size: 0;
+}
+
+featured-collections-component .Grid__Cell {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+  padding: 0 0 0 24px;
+  margin: 0;
+  vertical-align: top;
+  font-size: 1rem;
+}
+
+/* ============================================================================
+   Responsive grid widths
+   Use attribute selectors to handle class names with "/" (e.g. "1/2--phone")
+   phone: max 640px
+   ============================================================================ */
+
+@media screen and (max-width: 640px) {
+  featured-collections-component [class~="1/1--phone"] { width: 100%; }
+  featured-collections-component [class~="1/2--phone"] { width: 50%; }
+  featured-collections-component [class~="1/3--phone"] { width: 33.33333%; }
+  featured-collections-component [class~="1/4--phone"] { width: 25%; }
+  featured-collections-component [class~="1/5--phone"] { width: 20%; }
+}
+
+/* tablet: 641px – 1007px */
+@media screen and (min-width: 641px) and (max-width: 1007px) {
+  featured-collections-component [class~="1/1--tablet"] { width: 100%; }
+  featured-collections-component [class~="1/2--tablet"] { width: 50%; }
+  featured-collections-component [class~="1/3--tablet"] { width: 33.33333%; }
+  featured-collections-component [class~="1/4--tablet"] { width: 25%; }
+  featured-collections-component [class~="1/5--tablet"] { width: 20%; }
+}
+
+/* tablet-and-up: min 641px */
+@media screen and (min-width: 641px) {
+  featured-collections-component [class~="1/1--tablet-and-up"] { width: 100%; }
+  featured-collections-component [class~="1/2--tablet-and-up"] { width: 50%; }
+  featured-collections-component [class~="1/3--tablet-and-up"] { width: 33.33333%; }
+  featured-collections-component [class~="1/4--tablet-and-up"] { width: 25%; }
+  featured-collections-component [class~="1/5--tablet-and-up"] { width: 20%; }
+}
+
+/* lap-and-up: min 1008px */
+@media screen and (min-width: 1008px) {
+  featured-collections-component [class~="1/1--lap-and-up"] { width: 100%; }
+  featured-collections-component [class~="1/2--lap-and-up"] { width: 50%; }
+  featured-collections-component [class~="1/3--lap-and-up"] { width: 33.33333%; }
+  featured-collections-component [class~="1/4--lap-and-up"] { width: 25%; }
+  featured-collections-component [class~="1/5--lap-and-up"] { width: 20%; }
+}
+
+/* ============================================================================
+   Section Header
+   ============================================================================ */
+
+featured-collections-component .SectionHeader:not(:only-child) {
+  margin-bottom: 30px;
+}
+
+featured-collections-component .SectionHeader--center {
+  text-align: center;
+}
+
+featured-collections-component .SectionHeader__Heading,
+featured-collections-component .SectionHeader__SubHeading {
+  margin-top: -0.325em;
+}
+
+featured-collections-component .SectionHeader__SubHeading + .SectionHeader__Heading,
+featured-collections-component .SectionHeader__SubHeading + .SectionHeader__TabList {
+  margin-top: 16px;
+}
+
+/* ============================================================================
+   Heading typography (mirrors used-theme Heading styles, using Dawn CSS vars)
+   ============================================================================ */
+
+featured-collections-component .Heading {
+  font-family: var(--font-heading-family, inherit);
+  font-weight: 700;
+  font-style: var(--font-heading-style, normal);
+  color: var(--color-foreground, #1c1c1c);
+  transition: color 0.2s ease-in-out;
+}
+
+featured-collections-component .u-h1 {
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+featured-collections-component .u-h6 {
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+@media screen and (min-width: 641px) {
+  featured-collections-component .u-h1 {
+    font-size: 2rem;
+  }
+
+  featured-collections-component .u-h6 {
+    font-size: 0.875rem;
+  }
+}
+
+@media screen and (min-width: 1008px) {
+  featured-collections-component .u-h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* ============================================================================
+   Tab List & Tab Panel
+   ============================================================================ */
+
+featured-collections-component .TabList {
+  white-space: nowrap;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+featured-collections-component .TabList__Item {
+  position: relative;
+  display: inline-block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+featured-collections-component .TabList__Item::after {
+  position: relative;
+  display: block;
+  content: '';
+  bottom: 1px;
+  left: 0;
+  height: 1px;
+  width: 0;
+  background: var(--color-foreground, #1c1c1c);
+  transition: width 0.25s ease-in-out;
+}
+
+featured-collections-component .TabList__Item + .TabList__Item {
+  margin-left: 28px;
+}
+
+featured-collections-component .TabList__Item.is-active::after {
+  width: 100%;
+}
+
+featured-collections-component .TabPanel {
+  display: none;
+}
+
+featured-collections-component .TabPanel[aria-hidden="false"] {
+  display: block;
+}
+
+@media screen and (min-width: 641px) {
+  featured-collections-component .TabList__Item + .TabList__Item {
+    margin-left: 45px;
+  }
+}
+
+/* ============================================================================
+   Product List
+   ============================================================================ */
+
+featured-collections-component .ProductListWrapper {
+  overflow: hidden;
+}
+
+featured-collections-component .ProductList--grid {
+  padding: 0 12px;
+}
+
+@media screen and (max-width: 640px) {
+  featured-collections-component .ProductList--grid {
+    margin-left: -10px;
+  }
+
+  featured-collections-component .ProductList--removeMargin {
+    margin-bottom: -35px !important;
+  }
+
+  featured-collections-component .ProductList--grid > .Grid__Cell {
+    padding-left: 10px;
+    margin-bottom: 35px;
+  }
+}
+
+@media screen and (min-width: 641px) {
+  featured-collections-component .ProductList--grid {
+    padding: 0 24px;
+    margin-left: -24px;
+  }
+
+  featured-collections-component .ProductList--removeMargin {
+    margin-bottom: -50px !important;
+  }
+
+  featured-collections-component .ProductList--grid > .Grid__Cell {
+    padding-left: 24px;
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (min-width: 1008px) {
+  featured-collections-component .ProductList--grid {
+    padding: 0 50px;
+  }
+}
+
+/* ============================================================================
+   Product Item
+   ============================================================================ */
+
+featured-collections-component .ProductItem {
+  text-align: center;
+  white-space: normal;
+}
+
+featured-collections-component .ProductItem__Wrapper {
+  position: relative;
+}
+
+featured-collections-component .ProductItem__ImageWrapper {
+  display: block;
+  text-decoration: none;
+}
+
+featured-collections-component .ProductItem__Image--alternate {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0 !important;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 0.35s ease-in-out;
+}
+
+featured-collections-component .ProductItem__Image {
+  opacity: 1;
+  transition: opacity 0.35s ease-in-out;
+  will-change: opacity;
+}
+
+featured-collections-component .ProductItem__LabelList {
+  position: absolute;
+  left: inherit;
+  right: 10px;
+  top: 6px;
+  text-align: left;
+}
+
+featured-collections-component .ProductItem__Label {
+  display: block;
+  font-size: 0.5625rem;
+  margin: 4px 0;
+  padding: 2px 6px;
+  background: var(--color-background, #ffffff);
+  max-width: max-content;
+}
+
+featured-collections-component .ProductItem__Label--onSale {
+  background: #000;
+  color: #fff;
+  border-radius: 50%;
+  max-width: inherit !important;
+  padding: 1em 0.6em;
+  text-align: center;
+}
+
+featured-collections-component .ada-tambahan {
+  padding: 0px 5px;
+}
+
+featured-collections-component .ProductItem__LabelList.label-soldout {
+  position: relative;
+  right: inherit;
+  left: inherit;
+  display: block;
+  width: fit-content;
+  margin-top: 10px;
+  padding: 0 5px;
+  border: 1px solid black;
+}
+
+featured-collections-component .ProductItem__LabelList.label-soldout .ProductItem__Label {
+  font-size: 0.5rem;
+  padding: 2px 5px;
+  margin: 0;
+  color: #000;
+  text-transform: uppercase;
+}
+
+featured-collections-component .label-soldout .ProductItem__Label--soldOut {
+  display: block;
+}
+
+featured-collections-component .ProductItem__Info {
+  margin-top: 5px;
+  font-size: 0.75rem;
+  text-align: left;
+}
+
+featured-collections-component .ProductItem__Info--left {
+  text-align: left;
+}
+
+featured-collections-component .ProductItem__Info--right {
+  text-align: right;
+}
+
+featured-collections-component .ProductItem__Info--center {
+  text-align: center;
+}
+
+featured-collections-component .ProductItem__Vendor,
+featured-collections-component .ProductItem__Title {
+  display: block;
+  margin-bottom: 4px;
+}
+
+featured-collections-component .ProductItem__Title a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 14px;
+  letter-spacing: .075em;
+}
+
+featured-collections-component .ProductItem__ColorSwatchList {
+  margin-top: 15px;
+}
+
+featured-collections-component .ProductItem__ColorSwatchItem {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+featured-collections-component .ProductItem__ColorSwatchList + .ProductItem__PriceList {
+  margin-top: 12px;
+}
+
+featured-collections-component .ProductItem__UnitPriceMeasurement {
+  margin-top: 4px;
+}
+
+@media (hover: hover) {
+  featured-collections-component .ProductItem__ImageWrapper--withAlternateImage:hover .ProductItem__Image:not(.ProductItem__Image--alternate) {
+    opacity: 0 !important;
+  }
+
+  featured-collections-component .ProductItem__ImageWrapper--withAlternateImage:hover .ProductItem__Image--alternate {
+    opacity: 1 !important;
+  }
+}
+
+@media (hover: none) {
+  featured-collections-component .ProductItem__Image--alternate {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 641px) {
+  featured-collections-component .ProductItem__Label {
+    font-size: 0.6875rem;
+  }
+
+  featured-collections-component .ProductItem__Info {
+    font-size: 14px;
+    letter-spacing: .075em;
+  }
+}
+
+/* ============================================================================
+   Aspect Ratio (needed by product-item.liquid)
+   ============================================================================ */
+
+featured-collections-component .AspectRatio {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+featured-collections-component .AspectRatio > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+featured-collections-component .AspectRatio--withFallback > img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+featured-collections-component .AspectRatio--withFallback::before {
+  display: none;
+}
+
+featured-collections-component .AspectRatio::before {
+  content: '';
+  display: block;
+}
+
+featured-collections-component .AspectRatio--square::before {
+  padding-top: 100%;
+}
+
+featured-collections-component .AspectRatio--short::before {
+  padding-top: 75%;
+}
+
+featured-collections-component .AspectRatio--tall::before {
+  padding-top: 150%;
+}
+
+featured-collections-component .AspectRatio--square > img,
+featured-collections-component .AspectRatio--short > img,
+featured-collections-component .AspectRatio--tall > img {
+  position: absolute;
+}
+
+/* ============================================================================
+   Image lazy load (LazySizes compatible)
+   ============================================================================ */
+
+featured-collections-component .Image--lazyLoad,
+featured-collections-component .lazyload {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+featured-collections-component .Image--lazyLoad.lazyloaded,
+featured-collections-component .lazyload.lazyloaded {
+  opacity: 1;
+}
+
+featured-collections-component .Image--lazyLoad.lazyloading,
+featured-collections-component .lazyload.lazyloading {
+  opacity: 0.3;
+}
+
+featured-collections-component .Image--fadeIn {
+  transition: opacity 0.5s ease;
+}
+
+featured-collections-component .Image__Loader {
+  display: none;
+}
+
+/* ============================================================================
+   Price styles
+   ============================================================================ */
+
+featured-collections-component .ProductItem__PriceList {
+  display: block;
+}
+
+featured-collections-component .ProductItem__Price {
+  display: inline-block;
+  color: #000;
+}
+
+featured-collections-component .Price--highlight {
+  color: #f94c43;
+}
+
+featured-collections-component .Price--compareAt {
+  text-decoration: line-through;
+  opacity: 0.6;
+  margin-left: 4px;
+  color: #484747;
+}
+
+featured-collections-component .Text--subdued {
+  opacity: 0.6;
+}
+
+/* ============================================================================
+   Color Swatch
+   ============================================================================ */
+
+featured-collections-component .ColorSwatch__Radio {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+}
+
+featured-collections-component .ColorSwatch {
+  display: inline-block;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  background-size: cover;
+  background-position: center;
+  transition: box-shadow 0.15s ease;
+}
+
+featured-collections-component .ColorSwatch--small {
+  width: 16px;
+  height: 16px;
+}
+
+featured-collections-component .ColorSwatch--white {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================================================
+   Placeholder SVG
+   ============================================================================ */
+
+featured-collections-component .PlaceholderSvg {
+  display: block;
+  width: 100%;
+  fill: currentColor;
+}
+
+featured-collections-component .PlaceholderSvg--dark {
+  opacity: 0.08;
+}
+
+/* ============================================================================
+   Button
+   ============================================================================ */
+
+featured-collections-component .Button {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 12px 28px;
+  font-family: var(--font-heading-family, inherit);
+  font-weight: var(--font-heading-weight, 700);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+}
+
+featured-collections-component .Button--primary {
+  background-color: #000;
+  border-color: #000;
+  color: #fff;
+}
+
+featured-collections-component .Button--primary:hover {
+  background-color: transparent;
+  color: var(--color-button-background, #1c1c1c);
+}
+
+/* ============================================================================
+   Section Footer
+   ============================================================================ */
+
+featured-collections-component .SectionFooter {
+  margin-top: 50px;
+  text-align: center;
+}
+
+/* ============================================================================
+   UnitPriceMeasurement
+   ============================================================================ */
+
+featured-collections-component .UnitPriceMeasurement {
+  font-size: 0.6875rem;
+  opacity: 0.6;
+}

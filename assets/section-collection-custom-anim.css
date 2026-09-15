@@ -1,0 +1,152 @@
+/* ============================================================================
+   Collection Custom Animation Section Styles (christ-verra-v2)
+   ============================================================================ */
+
+.collection-anim {
+  display: flex;
+  height: 500px;
+  margin-top: 1rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+.collection-anim__container {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: flex 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  flex: 1;
+  display: block;
+  height: 100%;
+}
+
+/* Default state has 3rd child as flex: 2 */
+.collection-anim__container:nth-child(3) {
+  flex: 2;
+}
+
+.collection-anim__tulisan {
+  position: absolute;
+  left: 60%;
+  bottom: 1rem;
+  width: 100%;
+  max-width: 275px;
+  transform: translate(-50%);
+  font-weight: bold;
+  text-align: center;
+  transition: left 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+/* Default state for 3rd child's text */
+.collection-anim__container:nth-child(3) .collection-anim__tulisan {
+  left: 50%;
+}
+
+/* Pure CSS Hover Transitions */
+@media screen and (min-width: 1025px) {
+  .collection-anim:hover .collection-anim__container {
+    flex: 1;
+  }
+
+  .collection-anim:hover .collection-anim__container .collection-anim__tulisan {
+    left: 60%;
+  }
+
+  .collection-anim .collection-anim__container:hover {
+    flex: 2;
+  }
+
+  .collection-anim .collection-anim__container:hover .collection-anim__tulisan {
+    left: 50%;
+  }
+}
+
+/* Mobile & Tablet Responsiveness */
+@media only screen and (max-width: 1024px) {
+  .collection-anim {
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  .collection-anim__container {
+    flex: 1 1 50%;
+    height: 250px;
+  }
+
+  .collection-anim__container:nth-child(3) {
+    flex: 1 1 50%;
+  }
+
+  .collection-anim__tulisan {
+    left: 50%;
+  }
+}
+
+.collection-anim__tulisan h3.collection-anim__button::before {
+  text-transform: uppercase;
+  font-size: 13px !important;
+}
+
+@media only screen and (max-width: 749px) {
+  .collection-anim__tulisan {
+    max-width: 90%;
+  }
+
+  .collection-anim__tulisan h3.collection-anim__button {
+    padding: 10px 15px;
+    font-size: 12px !important;
+    letter-spacing: 1px;
+    width: auto;
+    min-width: 130px;
+    display: inline-block;
+    box-sizing: border-box;
+  }
+}
+
+/* Custom-scoped Button & Heading styles */
+.collection-anim__heading {
+  font-family: var(--font-heading-family), sans-serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 13px !important;
+}
+
+.collection-anim__button {
+  position: relative;
+  display: inline-block;
+  padding: 7.5px 18px;
+  line-height: normal;
+  border-radius: 0;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.2em;
+  font-style: normal;
+  background-color: #ECE9E0;
+  transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86), border-color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  z-index: 1;
+}
+
+.collection-anim__button::before {
+  position: absolute;
+  content: '';
+  display: block;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(1, 1);
+  transform-origin: left center;
+  transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  z-index: -1;
+}
+
+.collection-anim__button:hover::before {
+  transform-origin: right center;
+  transform: scale(0, 1);
+}
+
+.collection-anim__button--primary {
+  transition: color 0.45s ease-in-out, border-color 0.45s ease-in-out;
+}

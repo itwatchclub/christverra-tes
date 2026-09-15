@@ -1,0 +1,717 @@
+/**
+ * Collection Page — Product Item Styles
+ * Replicated from used-theme to dawn
+ * ============================================================================ */
+
+/* ============================================================================
+   Grid system
+   ============================================================================ */
+
+.template-collection .Grid {
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 -24px;
+  font-size: 0;
+}
+
+.template-collection .Grid__Cell {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+  padding: 0 0 0 24px;
+  margin: 0;
+  vertical-align: top;
+  font-size: 1rem;
+}
+
+/* ============================================================================
+   Responsive grid widths
+   ============================================================================ */
+
+@media screen and (max-width: 640px) {
+  .template-collection [class~="1/1--phone"] { width: 100%; }
+  .template-collection [class~="1/2--phone"] { width: 50%; }
+  .template-collection [class~="1/3--phone"] { width: 33.33333%; }
+  .template-collection [class~="1/4--phone"] { width: 25%; }
+  .template-collection [class~="1/5--phone"] { width: 20%; }
+}
+
+@media screen and (min-width: 641px) and (max-width: 1007px) {
+  .template-collection [class~="1/1--tablet-and-up"] { width: 100%; }
+  .template-collection [class~="1/2--tablet-and-up"] { width: 50%; }
+  .template-collection [class~="1/3--tablet-and-up"] { width: 33.33333%; }
+  .template-collection [class~="1/4--tablet-and-up"] { width: 24.5%; }
+  .template-collection [class~="1/5--tablet-and-up"] { width: 20%; }
+}
+
+@media screen and (min-width: 1008px) {
+  .template-collection [class~="1/1--lap-and-up"] { width: 100%; }
+  .template-collection [class~="1/2--lap-and-up"] { width: 50%; }
+  .template-collection [class~="1/3--lap-and-up"] { width: 33.33333%; }
+  .template-collection [class~="1/4--lap-and-up"] { width: 25%; }
+  .template-collection [class~="1/5--lap-and-up"] { width: 20%; }
+}
+
+@media screen and (min-width: 641px) {
+  .template-collection [class~="1/12--tablet-and-up"] { width: 8.33333%; }
+  .template-collection [class~="2/12--tablet-and-up"] { width: 16.66667%; }
+  .template-collection [class~="3/12--tablet-and-up"] { width: 24.5%; }
+  .template-collection [class~="4/12--tablet-and-up"] { width: 33.33333%; }
+  .template-collection [class~="5/12--tablet-and-up"] { width: 41.66667%; }
+  .template-collection [class~="6/12--tablet-and-up"] { width: 50%; }
+  .template-collection [class~="7/12--tablet-and-up"] { width: 58.33333%; }
+  .template-collection [class~="8/12--tablet-and-up"] { width: 66.66667%; }
+  .template-collection [class~="9/12--tablet-and-up"] { width: 75%; }
+  .template-collection [class~="10/12--tablet-and-up"] { width: 83.33333%; }
+  .template-collection [class~="2/12--tablet-and-up"] { width: 16.66667%; }
+}
+
+/* ============================================================================
+   Heading typography
+   ============================================================================ */
+
+.template-collection .Heading {
+  font-family: var(--font-heading-family, inherit);
+  font-weight: var(--font-heading-weight, 700);
+  font-style: var(--font-heading-style, normal);
+}
+
+.template-collection .u-h1 { font-size: 1.75rem; line-height: 1.2; }
+.template-collection .u-h4 { font-size: 1.25rem; line-height: 1.3; }
+.template-collection .u-h5 { font-size: 1rem; line-height: 1.4; }
+.template-collection .u-h6 { font-size: 0.75rem; line-height: 1.4; }
+
+@media screen and (min-width: 641px) {
+  .template-collection .u-h1 { font-size: 2rem; }
+  .template-collection .u-h6 { font-size: 0.875rem; }
+}
+
+@media screen and (min-width: 1008px) {
+  .template-collection .u-h1 { font-size: 2.5rem; }
+}
+
+/* ============================================================================
+   Collection main wrapper
+   ============================================================================ */
+
+.template-collection .CollectionMain {
+  margin-top: 20px;
+}
+
+.template-collection .CollectionInner {
+  margin-top: 24px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+}
+
+@media screen and (min-width: 641px) {
+  .template-collection .CollectionInner {
+    margin-top: 50px;
+  }
+}
+
+/* ============================================================================
+   Page Header (collection banner)
+   ============================================================================ */
+
+.template-collection .PageHeader {
+  padding: 30px 0;
+  text-align: center;
+}
+
+.template-collection .SectionHeader { margin-bottom: 20px; }
+.template-collection .SectionHeader--center { text-align: center; }
+.template-collection .SectionHeader__Heading { margin-top: -0.325em; }
+.template-collection .SectionHeader__Description { margin-top: 16px; }
+
+/* ============================================================================
+   Toolbar
+   ============================================================================ */
+
+.template-collection .box-filter-shopify {
+  opacity: 0;
+}
+
+.template-collection .CollectionToolbar {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+}
+
+.template-collection .CollectionToolbar--reverse {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.template-collection .CollectionToolbar__Group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.template-collection .CollectionToolbar__Item {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ============================================================================
+   Hamburger filter (mobile only)
+   ============================================================================ */
+
+.template-collection .hamburger-filter {
+  display: none;
+}
+
+@media screen and (max-width: 640px) {
+  .template-collection .hamburger-filter {
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .template-collection .hamburger-filter a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  #showfilter {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 65px;
+    padding: 1.5em;
+    background-color: rgba(255, 255, 255, 0.95);
+    z-index: 2;
+    overflow: auto;
+  }
+}
+
+/* ============================================================================
+   Filter sidebar
+   ============================================================================ */
+
+.template-collection .accordion-filter {
+  font-weight: 600;
+  margin-bottom: .5em;
+  display: block;
+  background: unset;
+  border: unset;
+  margin-bottom: 20px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #8b8b8b;
+}
+
+.filter-form {
+  margin-top: 20px;
+}
+
+.template-collection .panel-filter {
+  display: block;
+  padding-left: .8em;
+  cursor: pointer;
+  margin-bottom: 1em;
+}
+
+.template-collection .filter-menu span {
+  padding-left: 0.8em;
+  cursor: pointer;
+}
+
+.template-collection .filter-menu a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.template-collection .span-filter {
+  font-size: 12px;
+  color: #000 !important;
+  text-decoration: none !important;
+  letter-spacing: 0;
+  margin: 0;
+  white-space: nowrap;
+  display: block;
+  position: relative;
+}
+
+.template-collection span.span-filter a {
+  padding-left: 20px;
+  left: 0;
+  z-index: 3;
+  position: absolute;
+  color: #000 !important;
+  text-decoration: none !important;
+  font-size: 12px;
+}
+
+.template-collection span.span-filter span {
+  display: inline-block;
+  left: 0;
+  height: 12px;
+  width: 12px;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #000;
+  transition: all 0.25s ease;
+}
+
+.template-collection span.span-filter span.active {
+  background-color: black;
+}
+
+.template-collection .sort-custom:active {
+  font-weight: bold;
+}
+
+.flex-product-wrapper {
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+.flex-product-sort{
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+}
+
+.flex-product-count .flex-product-title, .flex-product-sort .flex-product-title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #231f20;
+}
+.flex-product-sort svg.icon-caret {
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  fill: currentColor;
+  vertical-align: middle;
+  stroke-width: 1px;
+  background: none;
+  pointer-events: none;
+
+  position: absolute;
+  top: 17px;
+  right: 15px;
+}
+
+
+
+/* ============================================================================
+   Product List
+   ============================================================================ */
+
+.template-collection .ProductListWrapper {
+  overflow: hidden;
+}
+
+.template-collection .ProductList--grid {
+  padding: 0px;
+}
+
+.template-collection .ProductList--grid > .Grid__Cell {
+  padding-left: 0;
+}
+
+@media screen and (max-width: 640px) {
+  .template-collection .ProductList--grid {
+    margin-left: -10px;
+  }
+  .template-collection .ProductList--removeMargin {
+    margin-bottom: -35px !important;
+  }
+  .template-collection .ProductList--grid > .Grid__Cell {
+    padding-left: 10px;
+    margin-bottom: 35px;
+  }
+}
+
+@media screen and (min-width: 641px) {
+  .template-collection .ProductList--grid {
+    margin-left: -24px;
+  }
+  .template-collection .ProductList--removeMargin {
+    margin-bottom: -50px !important;
+  }
+  .template-collection .ProductList--grid > .Grid__Cell {
+    padding-left: 24px;
+    margin-bottom: 50px;
+  }
+}
+
+/* ============================================================================
+   Product Item
+   ============================================================================ */
+
+.template-collection .ProductItem {
+  text-align: center;
+  white-space: normal;
+}
+
+.template-collection .ProductItem__Wrapper {
+  position: relative;
+}
+
+.template-collection .ProductItem__ImageWrapper {
+  display: block;
+  text-decoration: none;
+}
+
+.template-collection .ProductItem__Image {
+  opacity: 1;
+  transition: opacity 0.35s ease-in-out;
+  will-change: opacity;
+}
+
+.template-collection .ProductItem__Image--alternate {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0 !important;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 0.35s ease-in-out;
+}
+
+@media (hover: hover) {
+  .template-collection .ProductItem__ImageWrapper--withAlternateImage:hover .ProductItem__Image:not(.ProductItem__Image--alternate) {
+    opacity: 0 !important;
+  }
+  .template-collection .ProductItem__ImageWrapper--withAlternateImage:hover .ProductItem__Image--alternate {
+    opacity: 1 !important;
+  }
+}
+
+@media (hover: none) {
+  .template-collection .ProductItem__Image--alternate {
+    display: none;
+  }
+}
+
+/* Labels / Badges */
+
+.template-collection .ProductItem__LabelList {
+  position: absolute;
+  left: 10px;
+  top: 6px;
+  text-align: left;
+}
+
+.template-collection .ProductItem__Label {
+  display: block;
+  font-size: 12px;
+  padding: 2px 6px;
+  background: var(--color-background, #ffffff);
+  max-width: max-content;
+}
+
+.template-collection .ProductItem__Label--onSale {
+  background: #fff;
+  max-width: inherit !important;
+  padding: 0.6em;
+  text-align: center;
+}
+
+.template-collection .ada-tambahan {
+  padding: 0px 5px;
+}
+
+.template-collection .ProductItem__LabelList.label-soldout {
+  position: absolute;
+    left: 10px;
+    top: 6px;
+    text-align: left;
+}
+
+.template-collection .ProductItem__LabelList.label-soldout .ProductItem__Label {
+  color: #9d9d9d;
+  padding: 2px 6px;
+  margin: 4px 0;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 1.5;
+  text-transform: capitalize;
+}
+
+@media screen and (min-width: 990px) {
+  #CollectionProductGrid .grid {
+    padding-right: 50px;
+  }
+}
+
+/* Product Info */
+
+.template-collection .ProductItem__Info--left { text-align: left; }
+.template-collection .ProductItem__Info--right { text-align: right; }
+.template-collection .ProductItem__Info--center { text-align: center; }
+
+.template-collection .ProductItem__Vendor,
+.template-collection .ProductItem__Title {
+  text-decoration: none;
+  color: inherit;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #454545;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 1.5;
+  transition: color .2s ease-in-out;
+  display: block;
+  margin: 20px auto 4px;
+}
+
+.template-collection .ProductItem__Title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.template-collection .ProductItem__ColorSwatchList { margin-top: 15px; }
+.template-collection .ProductItem__ColorSwatchItem {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.template-collection .ProductItem__ColorSwatchList + .ProductItem__PriceList {
+  margin-top: 12px;
+}
+
+.template-collection .ProductItem__UnitPriceMeasurement {
+  margin-top: 4px;
+}
+
+/* Price */
+
+.template-collection .ProductItem__PriceList {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.template-collection .ProductItem__Price {
+  display: inline-block;
+}
+
+.template-collection .Price--highlight {
+  color: #f94c43 !important;
+}
+
+.template-collection .Price--compareAt {
+  text-decoration: line-through;
+  opacity: 0.6;
+  margin-left: 4px;
+}
+
+.template-collection .Text--subdued { 
+  color: #9d9d9d;
+  padding: 2px 6px;
+  margin: 4px 0;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 1.5;
+  text-transform: capitalize;
+}
+
+@media screen and (min-width: 641px) {
+  .template-collection .ProductItem__Info { font-size: 0.8125rem; }
+}
+
+/* ============================================================================
+   Aspect Ratio
+   ============================================================================ */
+
+.template-collection .AspectRatio {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.template-collection .AspectRatio > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.template-collection .AspectRatio--withFallback > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Keep alternate image overlay behavior even if withFallback is used */
+.template-collection .AspectRatio--withFallback > .ProductItem__Image--alternate {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.template-collection .AspectRatio::before { content: ''; display: block; }
+.template-collection .AspectRatio--withFallback {
+  padding-bottom: 0 !important;
+}
+.template-collection .AspectRatio--withFallback::before {
+  padding-top: calc(100% / var(--aspect-ratio));
+}
+.template-collection .AspectRatio--square::before { padding-top: 100%; }
+.template-collection .AspectRatio--short::before { padding-top: 75%; }
+.template-collection .AspectRatio--tall::before { padding-top: 150%; }
+
+.template-collection .AspectRatio--square > img,
+.template-collection .AspectRatio--short > img,
+.template-collection .AspectRatio--tall > img {
+  position: absolute;
+}
+
+/* ============================================================================
+   Lazy loading
+   ============================================================================ */
+
+.template-collection .Image--lazyLoad,
+.template-collection .lazyload {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.template-collection .Image--lazyLoad.lazyloaded,
+.template-collection .lazyload.lazyloaded {
+  opacity: 1;
+}
+
+.template-collection .Image--lazyLoad.lazyloading,
+.template-collection .lazyload.lazyloading {
+  opacity: 0.3;
+}
+
+.template-collection .Image--fadeIn { transition: opacity 0.5s ease; }
+.template-collection .Image__Loader { display: none; }
+
+/* ============================================================================
+   Pagination
+   ============================================================================ */
+
+.template-collection .Pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+  gap: 8px;
+  font-size: 0.875rem;
+}
+
+.template-collection .Pagination__Item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.template-collection .Pagination__Item.is-current,
+.template-collection .Pagination__Item:hover {
+  border-color: var(--color-foreground, #1c1c1c);
+}
+
+/* ============================================================================
+   Empty / Error states
+   ============================================================================ */
+
+.template-collection .EmptyState {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.template-collection .EmptyState__Title {
+  margin-bottom: 20px;
+}
+
+.template-collection .EmptyState__Action,
+.template-collection .Button {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 12px 28px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.template-collection .Button--primary {
+  background-color: var(--color-button-background, #1c1c1c);
+  border-color: var(--color-button-border, #1c1c1c);
+  color: var(--color-button-text, #ffffff);
+}
+
+.template-collection .Button--primary:hover {
+  background-color: transparent;
+  color: var(--color-button-background, #1c1c1c);
+}
+
+/* ============================================================================
+   Color Swatch
+   ============================================================================ */
+
+.template-collection .ColorSwatch__Radio {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+}
+
+.template-collection .ColorSwatch {
+  display: inline-block;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  background-size: cover;
+  background-position: center;
+  transition: box-shadow 0.15s ease;
+  width: 20px;
+  height: 20px;
+}
+
+.template-collection .ColorSwatch--small {
+  width: 16px;
+  height: 16px;
+}
+
+.template-collection .ColorSwatch--white {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+}

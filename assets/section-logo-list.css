@@ -1,0 +1,111 @@
+/* ============================================================================
+   Section: Logo List
+   ============================================================================ */
+
+.section-logo-list {
+  padding-top: var(--padding-top, 36px);
+  padding-bottom: var(--padding-bottom, 36px);
+}
+
+/* Header */
+.logo-list__header {
+  text-align: center;
+  margin-bottom: 2.4rem;
+}
+
+.logo-list__title {
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Grid */
+.logo-list__grid {
+  display: grid;
+  grid-template-columns: repeat(var(--columns-mobile, 2), 1fr);
+  gap: 0;
+}
+
+@media screen and (min-width: 990px) {
+  .logo-list__grid {
+    grid-template-columns: repeat(var(--columns-desktop, 4), 1fr);
+  }
+}
+
+/* Item */
+.logo-list__item {
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-list__link {
+  display: block;
+  text-decoration: none;
+}
+
+/* Image wrapper */
+.logo-list__image-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: var(--image-height, 744px);
+}
+
+.logo-list__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.logo-list__placeholder {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Zoom effect on hover */
+.zoom-effect .logo-list__image-wrapper {
+  overflow: hidden;
+}
+
+.zoom-effect:hover .logo-list__image {
+  transform: scale(1.05);
+}
+
+/* Overlay text */
+.logo-list__overlay-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #fff;
+  letter-spacing: 0;
+  text-transform: capitalize;
+  opacity: 1;
+  transition: background 0.35s ease;
+  font-family: inherit;
+  font-size: 45px;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0, 0, 0, .7);
+  text-align: center;
+}
+
+.logo-list__item:hover .logo-list__overlay-text {
+  background: transparent;
+}
+
+@media screen and (max-width: 749px) {
+  .logo-list__grid {
+    display: flex;
+    flex-direction: column;
+  }
+  .logo-list__image-wrapper {
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+  }
+}

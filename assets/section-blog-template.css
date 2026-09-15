@@ -1,0 +1,223 @@
+/* Blog page — blog-template section */
+
+.template-blog .Blog .Container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.template-blog .Blog .PageHeader {
+  margin: 50px 0;
+}
+
+.template-blog .Blog .SectionHeader--center {
+  text-align: center;
+}
+
+.template-blog .Blog .PageHeader .SectionHeader__Heading {
+  margin: 0;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #454545;
+  letter-spacing: normal;
+}
+
+.template-blog .Blog .ArticleList--withFeatured {
+  margin-bottom: 20px;
+}
+
+.template-blog .Blog .Grid {
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 -24px;
+  font-size: 0;
+}
+
+.template-blog .Blog .Grid__Cell {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+  padding: 0 0 0 50px;
+  margin: 0 0 100px;
+  vertical-align: top;
+  font-size: 1rem;
+}
+
+.template-blog .Blog .ArticleList--withFeatured > .BlogFeatured {
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.template-blog .Blog .BlogFeatured__Link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.template-blog .Blog .BlogFeatured__Media {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  min-height: 280px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.template-blog .Blog .BlogFeatured__Overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.45) 100%);
+  pointer-events: none;
+}
+
+.template-blog .Blog .BlogFeatured__Content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: none;
+  padding: 28px 24px;
+  text-align: left;
+}
+
+.template-blog .Blog .BlogFeatured__Title {
+  margin: 0 0 20px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  color: #fff;
+  text-transform: none;
+}
+
+.template-blog .Blog .BlogFeatured__Button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #fff;
+  color: #1a1b18;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+@media screen and (min-width: 750px) {
+  .template-blog .Blog .BlogFeatured__Media {
+    min-height: 420px;
+  }
+
+  .template-blog .Blog .BlogFeatured__Content {
+    padding: 40px 48px;
+  }
+}
+
+@media screen and (min-width: 641px) and (max-width: 1007px) {
+  .template-blog .Blog [class~="1/2--tablet"] {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1008px) {
+  .template-blog .Blog [class~="1/3--lap-and-up"] {
+    width: 33.33333%;
+  }
+}
+
+.template-blog .Blog .ArticleItem__ImageWrapper {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.template-blog .Blog .AspectRatio {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.template-blog .Blog .AspectRatio--withFallback::before {
+  content: "";
+  display: block;
+  padding-bottom: 58%;
+}
+
+.template-blog .Blog .AspectRatio > img,
+.template-blog .Blog .AspectRatio--withFallback > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.template-blog .Blog .ArticleItem__Image {
+  opacity: 1;
+}
+
+.template-blog .Blog .ArticleItem__Title {
+  margin: 0 0 12px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1.65;
+  color: #454545;
+}
+
+.template-blog .ArticleItem__Content {
+  margin: 0 18px;
+}
+
+.template-blog .Blog .ArticleItem__Title a {
+  color: inherit;
+  text-decoration: none;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #454545;
+  font-size: 18px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.template-blog .Blog .ArticleItem__Excerpt {
+  margin: 0 0 20px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #454545;
+  background: #fff;
+  line-height: 1.65;
+  font-size: 15px;
+  letter-spacing: 0;
+}
+
+.template-blog .Blog .ArticleItem__Link {
+  font-size: 13px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #454545;
+  background: #fff;
+  line-height: 1.65;
+  letter-spacing: 0;
+  text-decoration: underline !important;
+  padding-bottom: 3px;
+  text-underline-offset: 10px;
+}
+
+.template-blog .Blog .pagination-wrapper {
+  margin-top: 20px;
+}
+
+.template-blog .Blog .grecaptcha-badge {
+  visibility: hidden;
+}

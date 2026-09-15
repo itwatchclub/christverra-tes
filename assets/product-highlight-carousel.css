@@ -1,0 +1,164 @@
+.product-highlight-carousel {
+    img {
+        width: 100%;
+    }
+}
+
+.product-carousel-info .product-type{
+    padding-bottom: 15px;
+
+    span {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+        color: #777;
+    }
+}
+
+.product-carousel-info .product-title{
+    padding-bottom: 12px;
+
+    span {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 29px;
+        color: #231F20;
+    }
+}
+
+.product-carousel-info .product-price{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    .product-price-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 120px;
+    }
+
+    .product-final,
+    .product-normal,
+    .product-compare {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 29px;
+    }
+}
+
+.product-link .product-link-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 13px 24px;
+    gap: 10px;
+    background: #231f20;
+    border-radius: 100px;
+    color: #fff;
+    width: fit-content;
+    text-decoration: none;
+
+    svg path{
+        color: #fff;
+        fill: #fff;
+        stroke: #fff;
+    }
+}
+
+.grid__item.header-product-carousel{
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+.product-carousel-collection span{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 44px;
+    color: #231f20;
+}
+
+.product-carousel-item .grid--gapless .grid__item:last-child{
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+/* Fade carousel — sama seperti section-slideshow.css */
+.product-highlight-carousel.Carousel {
+    position: relative;
+}
+
+.product-highlight-carousel.Carousel:not(.Carousel--initialized) .Carousel__Cell:not(.is-selected) {
+    display: none;
+}
+
+.product-highlight-carousel .Carousel__Cell {
+    width: 100%;
+}
+
+.js .product-highlight-carousel.Carousel--fadeIn .Carousel__Cell {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.js .product-highlight-carousel.Carousel--fadeIn .Carousel__Cell.is-selected {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+}
+
+.product-highlight-carousel img {
+    width: 100%;
+}
+
+/* Arrow nav di custom-owl-nav */
+.custom-owl-nav {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.custom-owl-nav button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: 44px;
+    height: 44px;
+    background: #231F20;
+    border: none;
+    border-radius: 22px;
+    cursor: pointer;
+}
+
+.custom-owl-nav button svg {
+    filter: invert(1);
+}
+
+@media (max-width: 768px) {
+    .grid__item.header-product-carousel{
+        padding: 15px 0;
+    }
+
+    .product-carousel-item .grid--gapless .grid__item:last-child{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .product-carousel-info .product-price .product-price-left{
+        padding-bottom: 30px;
+    }
+}
