@@ -1,0 +1,115 @@
+{{ 'section-used-theme-product.css' | asset_url | stylesheet_tag }}
+{%- comment -%}Recently Viewed Products section{%- endcomment -%}
+
+<div class="recently-viewed-section" data-section-id="{{ section.id }}" data-product-id="{{ product.id | default: '' }}">
+  {%- if section.settings.title != blank -%}
+    <h2 class="recently-viewed__title">{{ section.settings.title | escape }}</h2>
+  {%- endif -%}
+
+  <div class="recently-viewed__track" id="RecentlyViewedTrack-{{ section.id }}">
+    <!-- Populated by JS -->
+  </div>
+</div>
+
+<script>
+(function() {
+  var STORAGE_KEY = 'duma_recently_viewed';
+  var MAX_ITEMS = 8;
+  var currentProductId = '{{ product.id | default: '' }}';
+
+  function getRecentlyViewed() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    } catch(e) { return []; }
+  }
+
+  function saveRecentlyViewed(list) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+    } catch(e) {}
+  }
+
+  // Track current product
+  if (currentProductId) {
+    var handle = {{ product.handle | default: '' | json }};
+    var title = {{ product.title | default: '' | json }};
+    var price = {{ product.price | money | default: '' | json }};
+    var image = {{ product.featured_image | img_url: '400x' | default: '' | json }};
+    var url = {{ product.url | default: '' | json }};
+    {%- assign color_values = '' -%}
+    {%- for option in product.options_with_values -%}
+      {%- assign option_name_down = option.name | downcase -%}
+      {%- if option_name_down == 'color' or option_name_down == 'colour' or option_name_down == 'warna' -%}
+        {%- assign color_values = option.values -%}
+      {%- endif -%}
+    {%- endfor -%}
+    var colors = {{ color_values | json }};
+
+    var list = getRecentlyViewed().filter(function(p) { return p.id !== currentProductId; });
+    list.unshift({ id: currentProductId, handle: handle, title: title, price: price, image: image, url: url, colors: colors });
+    if (list.length > MAX_ITEMS) list = list.slice(0, MAX_ITEMS);
+    saveRecentlyViewed(list);
+  }
+
+  // Render recently viewed (exclude current product)
+  function render() {
+    var track = document.getElementById('RecentlyViewedTrack-{{ section.id }}');
+    if (!track) return;
+
+    var list = getRecentlyViewed().filter(function(p) { return p.id !== currentProductId; });
+    if (!list.length) {
+      track.closest('.recently-viewed-section').style.display = 'none';
+      return;
+    }
+
+    var html = list.map(function(p) {
+      var swatchHtml = '';
+      if (p.colors && p.colors.length) {
+        var dots = p.colors.map(function(c) {
+          var bg = c.toLowerCase().replace(/ /g, '-');
+          return '<span class="card-swatch" style="background-color:' + bg + ';" title="' + c + '"></span>';
+        }).join('');
+        swatchHtml = '<div class="card-swatch-list">' + dots + '</div>';
+      }
+      return '<a href="' + p.url + '" class="recently-viewed__item">' +
+        '<div class="recently-viewed__img-wrap">' +
+          (p.image ? '<img src="' + p.image + '" alt="' + p.title + '" loading="lazy">' : '') +
+        '</div>' +
+        '<div class="recently-viewed__info">' +
+          '<p class="recently-viewed__item-title">' + p.title + '</p>' +
+          swatchHtml +
+          '<p class="recently-viewed__item-price">' + p.price + '</p>' +
+        '</div>' +
+      '</a>';
+    }).join('');
+
+    track.innerHTML = html;
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', render);
+  } else {
+    render();
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Recently Viewed",
+  "class": "shopify-section--recently-viewed",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Recently Viewed"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recently Viewed"
+    }
+  ]
+}
+{% endschema %}

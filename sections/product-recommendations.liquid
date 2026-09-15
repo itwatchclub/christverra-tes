@@ -1,0 +1,268 @@
+<link rel="stylesheet" href="{{ 'component-badge.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-card.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'section-product-recommendations.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-badge.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-card.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-price.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'section-product-recommendations.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
+
+<style>
+  .product-recommendations__heading {
+    text-align: center;
+  }
+
+  .product-rec-wrap {
+    position: relative;
+    padding: 0 50px;
+  }
+
+  /* Carousel track */
+  .product-rec-wrap .slider.slider--desktop {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .product-rec-wrap .slider.slider--desktop::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 4 cards on desktop (lap-and-up, like v1) */
+  .product-rec-wrap .slider.slider--desktop .slider__slide {
+    flex: 0 0 25%;
+    width: 25%;
+    min-width: 25%;
+    padding: 0 15px;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+  }
+
+  /* Side arrows — desktop only (v1 shows Flickity arrows only on lap-and-up) */
+  .product-rec-wrap slider-component .slider-buttons {
+    position: absolute;
+    top: 35%;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .product-rec-wrap .slider-button {
+    pointer-events: all;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .product-rec-wrap .slider-button--prev {
+    margin-left: -18px;
+  }
+
+  .product-rec-wrap .slider-button--next {
+    margin-right: -18px;
+  }
+
+  .product-rec-wrap .slider-counter {
+    display: none;
+  }
+
+  /*
+   * Mobile / tablet — match v1 ProductList--carousel free-scroll:
+   * peek card (~62% phone / ~48% tablet), centered first/last margins, no arrows
+   */
+  @media screen and (max-width: 1007px) {
+    .product-recommendations.page-width {
+      padding-left: 0;
+      padding-right: 0;
+      max-width: none;
+    }
+
+    .product-rec-wrap {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .product-rec-wrap .slider.slider--desktop {
+      scroll-snap-type: none;
+      /* hide scrollbar on iOS (v1 trick) */
+      padding-bottom: 30px;
+      margin-bottom: -30px;
+    }
+
+    .product-rec-wrap .slider.slider--desktop .slider__slide {
+      flex: 0 0 62%;
+      width: 62%;
+      min-width: 62%;
+      padding: 0 12px;
+      margin: 0;
+    }
+
+    .product-rec-wrap .slider.slider--desktop .slider__slide:first-child {
+      margin-left: 19%;
+    }
+
+    .product-rec-wrap .slider.slider--desktop .slider__slide:last-child {
+      margin-right: 19%;
+    }
+
+    .product-rec-wrap slider-component .slider-buttons {
+      display: none !important;
+    }
+  }
+
+  @media screen and (min-width: 750px) and (max-width: 1007px) {
+    .product-rec-wrap .slider.slider--desktop .slider__slide {
+      flex: 0 0 48%;
+      width: 48%;
+      min-width: 48%;
+      padding: 0 15px;
+    }
+
+    .product-rec-wrap .slider.slider--desktop .slider__slide:first-child {
+      margin-left: 26%;
+    }
+
+    .product-rec-wrap .slider.slider--desktop .slider__slide:last-child {
+      margin-right: 26%;
+    }
+  }
+</style>
+
+<product-recommendations class="product-recommendations page-width" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=8">
+  {% if recommendations.performed and recommendations.products_count > 0 %}
+    <h2 class="product-recommendations__heading">{{ section.settings.heading | escape }}</h2>
+    <div class="product-rec-wrap">
+      <slider-component class="slider-mobile-gutter">
+        <ul id="Slider-{{ section.id }}" class="grid slider slider--desktop" role="list">
+          {% for recommendation in recommendations.products %}
+            <li class="grid__item slider__slide">
+              {% render 'product-card',
+                product_card_product: recommendation,
+                media_size: section.settings.image_ratio,
+                show_secondary_image: section.settings.show_secondary_image,
+                add_image_padding: section.settings.add_image_padding,
+                show_vendor: section.settings.show_vendor
+              %}
+            </li>
+          {% endfor %}
+        </ul>
+        <div class="slider-buttons no-js-hidden">
+          <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="{{ 'accessibility.previous_slide' | t }}">{% render 'icon-caret' %}</button>
+          <button type="button" class="slider-button slider-button--next" name="next" aria-label="{{ 'accessibility.next_slide' | t }}">{% render 'icon-caret' %}</button>
+        </div>
+      </slider-component>
+    </div>
+  {% endif %}
+</product-recommendations>
+
+{% javascript %}
+  class ProductRecommendations extends HTMLElement {
+    constructor() {
+      super();
+
+      const handleIntersection = (entries, observer) => {
+        if (!entries[0].isIntersecting) return;
+        observer.unobserve(this);
+
+        fetch(this.dataset.url)
+          .then(response => response.text())
+          .then(text => {
+            const html = document.createElement('div');
+            html.innerHTML = text;
+            const recommendations = html.querySelector('product-recommendations');
+            if (recommendations && recommendations.innerHTML.trim().length) {
+              this.innerHTML = recommendations.innerHTML;
+            }
+          })
+          .catch(e => {
+            console.error(e);
+          });
+      }
+
+      new IntersectionObserver(handleIntersection.bind(this), {rootMargin: '0px 0px 200px 0px'}).observe(this);
+    }
+  }
+
+  customElements.define('product-recommendations', ProductRecommendations);
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:sections.product-recommendations.name",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.product-recommendations.settings.paragraph__1.content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Related Products",
+      "label": "t:sections.product-recommendations.settings.heading.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.product-recommendations.settings.header__2.content"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.product-recommendations.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.product-recommendations.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.product-recommendations.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.product-recommendations.settings.image_ratio.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.product-recommendations.settings.show_secondary_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "add_image_padding",
+      "default": false,
+      "label": "t:sections.product-recommendations.settings.add_image_padding.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "t:sections.product-recommendations.settings.show_vendor.label"
+    }
+  ]
+}
+{% endschema %}

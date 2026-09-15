@@ -1,0 +1,49 @@
+<section
+    class="warranty-bg-wrap{% if section.settings.bg_image_mobile %} warranty-bg-has-mobile{% endif %}"
+    {% if section.settings.bg_image_mobile %}
+      style="--warranty-bg-mobile: url('{{ section.settings.bg_image_mobile | image_url: width: 800 }}');"
+    {% endif %}
+  >
+    <div
+      class="warranty-bg"
+      {% if section.settings.bg_image %}
+        style="background-image: url({{ section.settings.bg_image | image_url: width: 1920 }});"
+      {% endif %}
+    >
+      <div class="warranty-text-box">
+        <h1 class="warranty-hero-title">{{ section.settings.title }}</h1>
+        <p class="warranty-hero-subtitle">{{ section.settings.subtitle }}</p>
+      </div>
+    </div>
+  </section>
+  
+  {% schema %}
+  {
+    "name": "Warranty Background",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Background image (desktop)"
+      },
+      {
+        "type": "image_picker",
+        "id": "bg_image_mobile",
+        "label": "Background image (mobile)"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Activate Warranty"
+      },
+      {
+        "type": "textarea",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "Register your product to enjoy official warranty protection."
+      }
+    ]
+  }
+  {% endschema %}
+  

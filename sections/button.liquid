@@ -1,0 +1,75 @@
+{% if section.settings.button_label != blank %}
+    <style>
+        .custom-button-wrapper {
+            text-align: {{ section.settings.alignment }};
+            a {
+                border: unset;
+                box-shadow: unset;
+                color: #000;   
+                background: transparent;
+            }
+
+            svg {
+                width: 12px;
+                height: 15px;
+                margin-left: 3px;
+            }
+        }
+    </style>
+    <div class="custom-button-wrapper">
+        <a href="{{ section.settings.button_link }}" class="button button--primary custom-button">
+            {{ section.settings.button_label }}
+            <svg class="btn-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 8h8M8 4l4 4-4 4"/>
+            </svg>
+        </a>
+    </div>
+{% endif %}
+{% schema %}
+{
+    "name": "Button",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      },
+      {
+        "type": "select",
+        "id": "alignment",
+        "label": "Alignment",
+        "options": [
+            {
+                "value": "left",
+                "label": "Left"
+            },
+            {
+                "value": "center",
+                "label": "Center"
+            },
+            {
+                "value": "right",
+                "label": "Right"
+            }
+        ],
+        "default": "left",
+      }
+    ],
+    "presets": [
+      {
+        "name": "Button",
+        "settings": {
+          "button_label": "Button",
+          "button_link": "#",
+          "alignment": "left"
+        }
+      }
+    ]
+  }
+{% endschema %}

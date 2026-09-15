@@ -1,0 +1,145 @@
+{{ 'section-background-video.css' | asset_url | stylesheet_tag }}
+
+{%- capture section_settings -%}
+{
+  "videoType": {{ section.settings.video_url.type | json }},
+  "videoId": {{ section.settings.video_url.id | json }},
+  "requestHost": {{ request.host | json }}
+}
+{%- endcapture -%}
+
+<section
+  class="Section background-video-section"
+  id="section-{{ section.id }}"
+  data-section-id="{{ section.id }}"
+  data-section-type="background-video"
+  data-section-settings='{{ section_settings }}'
+>
+  <div class="Container">
+    <div class="ImageHero {% if section.settings.section_size != 'normal' %}ImageHero--{{ section.settings.section_size }}{% endif %}">
+      <div class="ImageHero__VideoHolder"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var container = document.getElementById('section-{{ section.id }}');
+    if (!container) return;
+
+    var options = JSON.parse(container.getAttribute('data-section-settings'));
+    if (!options || !options.videoId) return;
+
+    function loadScript() {
+      return new Promise(function (resolve, reject) {
+        var script = document.createElement('script');
+        document.body.appendChild(script);
+        script.onload = resolve;
+        script.onerror = reject;
+        script.async = true;
+        script.src =
+          options.videoType === 'youtube' ? '//www.youtube.com/iframe_api' : '//player.vimeo.com/api/player.js';
+      });
+    }
+
+    loadScript().then(function () {
+      var elementToInsert = container.querySelector('.ImageHero__VideoHolder');
+      if (!elementToInsert) return;
+
+      var playerLoadingInterval = setInterval(function () {
+        if (options.videoType === 'youtube') {
+          if (window.YT && window.YT.Player) {
+            clearInterval(playerLoadingInterval);
+            var player = new YT.Player(elementToInsert, {
+              videoId: options.videoId,
+              playerVars: {
+                showinfo: 0,
+                controls: 0,
+                fs: 0,
+                rel: 0,
+                height: '100%',
+                width: '100%',
+                iv_load_policy: 3,
+                html5: 1,
+                loop: 1,
+                playlist: options.videoId,
+                playsinline: 1,
+                modestbranding: 1,
+                disablekb: 1,
+                origin: options.requestHost,
+              },
+              events: {
+                onReady: function (event) {
+                  event.target.mute();
+                  event.target.playVideo();
+                },
+                onStateChange: function (event) {
+                  if (event.data === YT.PlayerState.ENDED) {
+                    event.target.playVideo();
+                  }
+                },
+              },
+            });
+          }
+        } else {
+          if (window.Vimeo && window.Vimeo.Player) {
+            clearInterval(playerLoadingInterval);
+            var player = new Vimeo.Player(elementToInsert.parentNode, {
+              id: options.videoId,
+              autoplay: true,
+              muted: true,
+              background: true,
+              loop: true,
+            });
+          }
+        }
+      }, 50);
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Background video",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Background videos are automatically muted to allow autoplay. If you require audio, use the \"Featured Video\" section."
+    },
+    {
+      "type": "select",
+      "id": "section_size",
+      "label": "Section size",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "video_url",
+      "accept": ["youtube", "vimeo"],
+      "id": "video_url",
+      "label": "Video URL",
+      "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Video",
+      "name": "Background video",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

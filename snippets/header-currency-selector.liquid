@@ -1,0 +1,37 @@
+{%- liquid
+  assign toggle_class = toggle_class | default: 'header__utility-link'
+-%}
+
+{%- if localization_form != blank -%}
+  <div class="header__currency">
+    {{ localization_form }}
+    {%- render 'icon' with 'select-arrow' -%}
+  </div>
+{%- else -%}
+  <div
+    class="header__currency currency-custom"
+    data-currency-custom
+    data-usd-rate="{{ section.settings.usd_exchange_rate | default: 16000 }}"
+    data-default-currency="{{ cart.currency.iso_code | default: 'IDR' }}"
+  >
+    <button
+      type="button"
+      class="header__currency-toggle {{ toggle_class }} link link--text focus-inset"
+      aria-expanded="false"
+      aria-controls="header-currency-menu"
+      aria-haspopup="listbox"
+    >
+      <span class="header__currency-label" data-currency-label>{{ cart.currency.iso_code | default: 'IDR' }}</span>
+      {%- render 'icon' with 'select-arrow' -%}
+    </button>
+
+    <ul id="header-currency-menu" class="header__currency-menu" role="listbox" aria-hidden="true">
+      <li role="presentation">
+        <button type="button" class="header__currency-option" data-currency-value="IDR" role="option">Indonesia Rupiah (IDR)</button>
+      </li>
+      <li role="presentation">
+        <button type="button" class="header__currency-option" data-currency-value="USD" role="option">US Dollar (USD)</button>
+      </li>
+    </ul>
+  </div>
+{%- endif -%}

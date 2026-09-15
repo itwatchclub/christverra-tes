@@ -1,0 +1,133 @@
+{{ 'custom-collection.css' | asset_url | stylesheet_tag }}
+
+<section class="custom-collection-section">
+    <div class="{% unless block.settings.width == 'full' %}page-width{% endunless %}">
+      <div class="grid grid--gap-10 grid--{{ section.settings.grid_mobile }} grid--{{ section.blocks.size }}-col-tablet ">
+        {% for block in section.blocks %}
+          {% assign collection = collections[block.settings.collection] %}
+          
+          <div class="collection-item grid__item">
+            <a href="{{ collection.url | default: '#' }}">
+                <div class="collection-wrapper">
+                {% if block.settings.image != blank %}
+                  <div class="collection-img">
+                    <img
+                      src="{{ block.settings.image | img_url: 'master' }}"
+                      alt="{{ block.settings.heading | default: collection.title | escape }}"
+                      class="collection-img__primary"
+                      loading="lazy"
+                    >
+                    {% if block.settings.image_hover != blank %}
+                      <img
+                        src="{{ block.settings.image_hover | img_url: 'master' }}"
+                        alt="{{ block.settings.heading | default: collection.title | escape }}"
+                        class="collection-img__hover"
+                        loading="lazy"
+                      >
+                    {% endif %}
+                  </div>
+                {% endif %}
+                <div class="collection-information">
+                  <h2 class="collection-title">{{ collection.title }}</h2>
+                  {% if block.settings.button_label != blank %}
+                      <p class="collection-button">{{ block.settings.button_label }} &rarr;
+                        
+                      </p>
+                  {% endif %}
+                </div>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% schema %}
+  {
+    "name": "Custom collection",
+    "class": "spaced-section spaced-section--full-width",
+    "settings": [
+      {
+        "type": "select",
+        "id": "grid_mobile",
+        "label": "Grid mobile",
+        "options": [
+          {
+            "value": "1-col",
+            "label": "1 column"
+          },
+          {
+            "value": "2-col",
+            "label": "2 columns"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "options": [
+              {
+                "value": "full",
+                "label": "Full width"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              }
+            ],
+            "default": "full"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_hover",
+            "label": "Image Hover (opsional)"
+          },
+          {
+            "type": "text",
+            "id": "subheading",
+            "label": "Sub heading"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "info": "Default using collection title"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom collection",
+        "settings": {}
+      }
+    ]
+  }
+  {% endschema %}

@@ -1,0 +1,430 @@
+<link rel="stylesheet" href="{{ 'shop-the-look.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- liquid assign section_id = 'shop-the-look-' | append: section.id -%}
+<style>
+    #{{ section_id }} {
+      --stl-gap: 72px;
+      --stl-dot-size: 42px;
+      --stl-dot-inner: 16px;
+      padding: 48px 0;
+    }
+</style>
+  
+<section id="{{ section_id }}" class="stl-section">
+    {%- if section.settings.subheading != blank or section.settings.title != blank -%}
+      <div class="stl-heading">
+        {%- if section.settings.subheading != blank -%}
+          <p class="stl-subheading">{{ section.settings.subheading }}</p>
+        {%- endif -%}
+  
+        {%- if section.settings.title != blank -%}
+          <h2 class="stl-title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  
+    <div class="stl-wrapper" data-shop-the-look>
+        {% if section.blocks.size > 1 %}
+        <button class="stl-arrow stl-arrow--prev" type="button" aria-label="Previous look" data-stl-prev>
+            ‹
+        </button>
+        {% endif %}
+      <div class="stl-inner">
+        <div class="stl-look-area">
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign loading_mode = 'lazy'
+              assign fetch_priority = 'auto'
+  
+              if forloop.first
+                assign loading_mode = 'eager'
+                assign fetch_priority = 'high'
+              endif
+            -%}
+  
+            <div
+              class="stl-look {% if forloop.first %}is-active{% endif %}"
+              data-look-index="{{ forloop.index0 }}"
+              {{ block.shopify_attributes }}
+            >
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | img_url: '800x' }}" class="stl-look-image">
+              {%- else -%}
+                <div class="stl-placeholder">
+                  {{ 'image' | placeholder_svg_tag }}
+                </div>
+              {%- endif -%}
+  
+              {%- for i in (1..3) -%}
+                {%- liquid
+                  assign product_key = 'product_' | append: i
+                  assign horizontal_key = 'product_' | append: i | append: '_horizontal_position'
+                  assign vertical_key = 'product_' | append: i | append: '_vertical_position'
+                  assign product_item = block.settings[product_key]
+                -%}
+  
+                {%- if product_item != blank -%}
+                  <button
+                    type="button"
+                    class="stl-hotspot stl-hotspot--{{ block.settings.dot_style }} {% if i == 1 %}is-active{% endif %}"
+                    style="left: {{ block.settings[horizontal_key] }}%; top: {{ block.settings[vertical_key] }}%;"
+                    aria-label="View {{ product_item.title | escape }}"
+                    data-hotspot
+                    data-look-index="{{ forloop.parentloop.index0 }}"
+                    data-product-index="{{ i | minus: 1 }}"
+                  >
+                    <span></span>
+                  </button>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          {%- endfor -%}
+        </div>
+  
+        <div class="stl-product-area {% unless section.settings.show_mobile_product_info %}stl-product-area--hide-mobile{% endunless %}">
+          {%- for block in section.blocks -%}
+            <div
+              class="stl-product-group {% if forloop.first %}is-active{% endif %}"
+              data-product-group="{{ forloop.index0 }}"
+            >
+              {%- assign product_count = 0 -%}
+  
+              <div class="stl-product-track">
+                {%- for i in (1..3) -%}
+                  {%- liquid
+                    assign product_key = 'product_' | append: i
+                    assign product_item = block.settings[product_key]
+                  -%}
+  
+                  {%- if product_item != blank -%}
+                    {%- assign product_count = product_count | plus: 1 -%}
+  
+                    <div class="stl-product-card {% if product_count == 1 %}is-active{% endif %}" data-product-card data-product-index="{{ product_count | minus: 1 }}">
+                        {% render 'product-card',
+                            product_card_product: product_item,
+                            media_size: 'adapt',
+                            show_secondary_image: false,
+                            add_image_padding: false,
+                            show_vendor: false
+                        %}
+                    </div>
+
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+  
+              <div class="stl-product-dots" aria-label="Product navigation">
+                {%- assign dot_index = 0 -%}
+  
+                {%- for i in (1..3) -%}
+                  {%- liquid
+                    assign product_key = 'product_' | append: i
+                    assign product_item = block.settings[product_key]
+                  -%}
+  
+                  {%- if product_item != blank -%}
+                    <button
+                      type="button"
+                      class="stl-product-dot {% if dot_index == 0 %}is-active{% endif %}"
+                      aria-label="Product {{ dot_index | plus: 1 }}"
+                      data-product-dot
+                      data-look-index="{{ forloop.parentloop.index0 }}"
+                      data-product-index="{{ dot_index }}"
+                    ></button>
+  
+                    {%- assign dot_index = dot_index | plus: 1 -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+      
+      {% if section.blocks.size > 1 %}
+        <button class="stl-arrow stl-arrow--next" type="button" aria-label="Next look" data-stl-next>
+          ›
+        </button>
+      {% endif %}
+    </div>
+</section>
+  
+  <script>
+    (() => {
+      const section = document.getElementById('{{ section_id }}');
+      if (!section) return;
+  
+      const root = section.querySelector('[data-shop-the-look]');
+      if (!root) return;
+  
+      const looks = [...root.querySelectorAll('.stl-look[data-look-index]')];
+      const groups = [...root.querySelectorAll('[data-product-group]')];
+  
+  
+      if (!looks.length) return;
+  
+      let activeLook = 0;
+      let activeProduct = 0;
+  
+      const activate = (lookIndex, productIndex = 0) => {
+        activeLook = (lookIndex + looks.length) % looks.length;
+        activeProduct = productIndex;
+
+  
+        looks.forEach((look) => {
+          const isActiveLook = Number(look.dataset.lookIndex) === activeLook;
+  
+          look.classList.toggle('is-active', isActiveLook);
+  
+          look.querySelectorAll('[data-hotspot]').forEach((hotspot) => {
+            const isActiveHotspot =
+              isActiveLook &&
+              Number(hotspot.dataset.productIndex) === activeProduct;
+  
+            hotspot.classList.toggle('is-active', isActiveHotspot);
+          });
+        });
+  
+        groups.forEach((group) => {
+          const isActiveGroup = Number(group.dataset.productGroup) === activeLook;
+  
+          group.classList.toggle('is-active', isActiveGroup);
+  
+          group.querySelectorAll('[data-product-card]').forEach((card) => {
+            const isActiveCard =
+              isActiveGroup &&
+              Number(card.dataset.productIndex) === activeProduct;
+  
+            
+  
+            card.classList.toggle('is-active', isActiveCard);
+  
+            
+          });
+  
+          group.querySelectorAll('[data-product-dot]').forEach((dot) => {
+            const isActiveDot =
+              isActiveGroup &&
+              Number(dot.dataset.productIndex) === activeProduct;
+  
+            dot.classList.toggle('is-active', isActiveDot);
+          });
+        });
+      };
+  
+      root.addEventListener('click', (event) => {
+        const hotspot = event.target.closest('[data-hotspot]');
+        const productDot = event.target.closest('[data-product-dot]');
+        const prev = event.target.closest('[data-stl-prev]');
+        const next = event.target.closest('[data-stl-next]');
+  
+        if (hotspot) {
+          event.preventDefault();
+          event.stopPropagation();
+  
+          console.log('[STL] hotspot clicked:', {
+            lookIndex: hotspot.dataset.lookIndex,
+            productIndex: hotspot.dataset.productIndex
+          });
+  
+          activate(Number(hotspot.dataset.lookIndex), Number(hotspot.dataset.productIndex));
+          return;
+        }
+  
+        if (productDot) {
+          event.preventDefault();
+          event.stopPropagation();
+  
+          console.log('[STL] product dot clicked:', {
+            lookIndex: productDot.dataset.lookIndex,
+            productIndex: productDot.dataset.productIndex
+          });
+  
+          activate(Number(productDot.dataset.lookIndex), Number(productDot.dataset.productIndex));
+          return;
+        }
+  
+        if (prev) {
+          event.preventDefault();
+          event.stopPropagation();
+          activate(activeLook - 1, 0);
+          return;
+        }
+  
+        if (next) {
+          event.preventDefault();
+          event.stopPropagation();
+          activate(activeLook + 1, 0);
+        }
+      });
+  
+      activate(0, 0);
+    })();
+  </script>
+  
+  {% schema %}
+  {
+    "name": "Shop the look",
+    "class": "shopify-section--bordered",
+    "max_blocks": 4,
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "For best results, especially on mobile, we recommend using images with the same dimensions."
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Sub-heading",
+        "default": "Shop"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Our looks"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_mobile_product_info",
+        "label": "Show product info on mobile",
+        "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "look",
+        "name": "Look",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "select",
+            "id": "dot_style",
+            "label": "Hotspot style",
+            "options": [
+              {
+                "value": "light",
+                "label": "Light"
+              },
+              {
+                "value": "dark",
+                "label": "Dark"
+              }
+            ],
+            "default": "light"
+          },
+          {
+            "type": "header",
+            "content": "Product 1"
+          },
+          {
+            "type": "product",
+            "id": "product_1",
+            "label": "Product"
+          },
+          {
+            "type": "range",
+            "id": "product_1_horizontal_position",
+            "label": "Horizontal position",
+            "min": 5,
+            "max": 95,
+            "step": 1,
+            "unit": "%",
+            "default": 15
+          },
+          {
+            "type": "range",
+            "id": "product_1_vertical_position",
+            "label": "Vertical position",
+            "min": 5,
+            "max": 95,
+            "step": 1,
+            "unit": "%",
+            "default": 15
+          },
+          {
+            "type": "header",
+            "content": "Product 2"
+          },
+          {
+            "type": "product",
+            "id": "product_2",
+            "label": "Product"
+          },
+          {
+            "type": "range",
+            "id": "product_2_horizontal_position",
+            "label": "Horizontal position",
+            "min": 5,
+            "max": 95,
+            "step": 1,
+            "unit": "%",
+            "default": 50
+          },
+          {
+            "type": "range",
+            "id": "product_2_vertical_position",
+            "label": "Vertical position",
+            "min": 5,
+            "max": 95,
+            "step": 1,
+            "unit": "%",
+            "default": 50
+          },
+          {
+            "type": "header",
+            "content": "Product 3"
+          },
+          {
+            "type": "product",
+            "id": "product_3",
+            "label": "Product"
+          },
+          {
+            "type": "range",
+            "id": "product_3_horizontal_position",
+            "label": "Horizontal position",
+            "min": 5,
+            "max": 95,
+            "step": 1,
+            "unit": "%",
+            "default": 85
+          },
+          {
+            "type": "range",
+            "id": "product_3_vertical_position",
+            "label": "Vertical position",
+            "min": 10,
+            "max": 90,
+            "step": 1,
+            "unit": "%",
+            "default": 85
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "category": "Product",
+        "name": "Shop the look",
+        "settings": {},
+        "blocks": [
+          {
+            "type": "look",
+            "settings": {
+              "product_1_horizontal_position": 30,
+              "product_1_vertical_position": 40,
+              "product_2_horizontal_position": 45,
+              "product_2_vertical_position": 65,
+              "product_3_horizontal_position": 70,
+              "product_3_vertical_position": 50
+            }
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}

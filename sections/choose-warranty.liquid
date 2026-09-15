@@ -1,0 +1,66 @@
+<div class="choose-warranty-wrapper">
+  <div class="choose-warranty-container">
+    <div class="choose-warranty-box">
+      {%- if section.settings.show_manual_book -%}
+        <a href="{{ section.settings.manual_book_url }}" class="choose-warranty-btn">
+          <span class="choose-warranty-btn-text">{{ section.settings.manual_book_text | default: 'Manual Book' }}</span>
+        </a>
+      {%- endif -%}
+      {%- if section.settings.show_registered -%}
+        <a href="{{ section.settings.registered_url }}" class="choose-warranty-btn">
+          <span class="choose-warranty-btn-text">{{ section.settings.registered_text | default: 'Register' }}</span>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Choose Warranty",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Manual Book"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_manual_book",
+      "label": "Show Manual Book",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "manual_book_text",
+      "label": "Manual Book Text",
+      "default": "Manual Book"
+    },
+    {
+      "type": "url",
+      "id": "manual_book_url",
+      "label": "Manual Book URL"
+    },
+    {
+      "type": "header",
+      "content": "Registered"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_registered",
+      "label": "Show Registered",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "registered_text",
+      "label": "Registered Text",
+      "default": "Registered"
+    },
+    {
+      "type": "url",
+      "id": "registered_url",
+      "label": "Registered URL"
+    }
+  ]
+}
+{% endschema %}

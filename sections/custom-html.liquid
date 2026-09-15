@@ -1,0 +1,57 @@
+{{ 'section-custom-html.css' | asset_url | stylesheet_tag }}
+
+<section class="custom-html-section {% if section.settings.show_border %}custom-html-section--bordered{% endif %} page-width" id="section-{{ section.id }}">
+  {%- if section.settings.subheading != blank or section.settings.title != blank -%}
+    <header class="custom-html-section__header">
+      {%- if section.settings.subheading != blank -%}
+        <h3 class="custom-html-section__subheading">{{ section.settings.subheading | escape }}</h3>
+      {%- endif -%}
+
+      {%- if section.settings.title != blank -%}
+        <h2 class="custom-html-section__heading h1">{{ section.settings.title | escape }}</h2>
+      {%- endif -%}
+    </header>
+  {%- endif -%}
+
+  <div class="custom-html-section__content rte" style="text-align: center">
+    {{ section.settings.html }}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom HTML",
+  "class": "section-custom-html",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub-heading",
+      "default": "Sub-heading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Your HTML"
+    },
+    {
+      "type": "html",
+      "id": "html",
+      "label": "HTML content",
+      "default": "<p>Write your own custom HTML content.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_border",
+      "label": "Show top border",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom HTML"
+    }
+  ]
+}
+{% endschema %}

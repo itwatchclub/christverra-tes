@@ -1,0 +1,1820 @@
+<section class="warranty-form-wrapper">
+
+    <div class="warranty-form-container">
+
+        <div class="warranty-form-box">
+    
+          <!-- progress -->
+          <div class="w-progress">
+            <div class="p-step-wrapper">
+              <div class="p-step active">
+                {% if section.settings.icon_step1 %}
+                  <div class="p-step-icon">
+                    <img src="{{ section.settings.icon_step1 | image_url: width: 48 }}" alt="Step 1 icon" width="32" height="32">
+                  </div>
+                {% else %}
+                  <span class="p-step-label">STEP 1</span>
+                {% endif %}
+              </div>
+              <div class="p-step-connector"></div>
+            </div>
+
+            <div class="p-step-wrapper">
+              <div class="p-step">
+                {% if section.settings.icon_step2 %}
+                  <div class="p-step-icon">
+                    <img src="{{ section.settings.icon_step2 | image_url: width: 48 }}" alt="Step 2 icon" width="32" height="32">
+                  </div>
+                {% else %}
+                  <span class="p-step-label">STEP 2</span>
+                {% endif %}
+              </div>
+              <div class="p-step-connector"></div>
+            </div>
+
+            {% comment %} <div class="p-step-wrapper">
+              <div class="p-step">
+                {% if section.settings.icon_step3 %}
+                  <div class="p-step-icon">
+                    <img src="{{ section.settings.icon_step3 | image_url: width: 48 }}" alt="Step 3 icon" width="32" height="32">
+                  </div>
+                {% else %}
+                  <span class="p-step-label">STEP 3</span>
+                {% endif %}
+              </div>
+              <div class="p-step-connector"></div>
+            </div> {% endcomment %}
+
+          </div>          
+    
+          <form id="wf" enctype="multipart/form-data">
+    
+            <!-- STEP 1 – PERSONAL INFO -->
+            <div class="step" data-step="1">
+    
+              <label for="first_name">First Name</label>
+              <input id="first_name" name="first_name" placeholder="First Name" required>
+              <span class="error-message" id="first_name_error"></span>
+              
+              <label for="last_name">Last Name</label>
+              <input id="last_name" name="last_name" placeholder="Last Name" required>
+              <span class="error-message" id="last_name_error"></span>
+              
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Email" required>
+              <span class="error-message" id="email_error"></span>
+              
+              <label for="phone">Contact</label>
+              <div class="phone-input-wrapper"> 
+                <div class="phone-code-wrapper">
+                  <span class="phone-code-prefix">+</span>
+                  <input type="text" id="wf_cc_digits" name="wf_cc_digits" class="phone-code" placeholder="62" autocomplete="off" readonly inputmode="numeric">
+                  <input type="hidden" id="phone_code_value" name="wf_cc_v" value="+62">
+                  <button type="button" class="phone-code-toggle" aria-label="Toggle country code dropdown">
+                    <svg class="phone-code-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 1L6 6L11 1" stroke="#454545" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                  <div class="phone-code-dropdown">
+                    <div class="phone-code-option" data-value="+62" data-label="+62 (Indonesia)">+62 (Indonesia)</div>
+                    <div class="phone-code-option" data-value="+1" data-label="+1 (United States/Canada)">+1 (United States/Canada)</div>
+                    <div class="phone-code-option" data-value="+44" data-label="+44 (United Kingdom)">+44 (United Kingdom)</div>
+                    <div class="phone-code-option" data-value="+60" data-label="+60 (Malaysia)">+60 (Malaysia)</div>
+                    <div class="phone-code-option" data-value="+65" data-label="+65 (Singapore)">+65 (Singapore)</div>
+                    <div class="phone-code-option" data-value="+66" data-label="+66 (Thailand)">+66 (Thailand)</div>
+                    <div class="phone-code-option" data-value="+84" data-label="+84 (Vietnam)">+84 (Vietnam)</div>
+                    <div class="phone-code-option" data-value="+86" data-label="+86 (China)">+86 (China)</div>
+                    <div class="phone-code-option" data-value="+81" data-label="+81 (Japan)">+81 (Japan)</div>
+                    <div class="phone-code-option" data-value="+82" data-label="+82 (South Korea)">+82 (South Korea)</div>
+                    <div class="phone-code-option" data-value="+61" data-label="+61 (Australia)">+61 (Australia)</div>
+                    <div class="phone-code-option" data-value="+64" data-label="+64 (New Zealand)">+64 (New Zealand)</div>
+                    <div class="phone-code-option" data-value="+91" data-label="+91 (India)">+91 (India)</div>
+                    <div class="phone-code-option" data-value="+971" data-label="+971 (United Arab Emirates)">+971 (United Arab Emirates)</div>
+                    <div class="phone-code-option" data-value="+966" data-label="+966 (Saudi Arabia)">+966 (Saudi Arabia)</div>
+                    <div class="phone-code-option" data-value="+49" data-label="+49 (Germany)">+49 (Germany)</div>
+                    <div class="phone-code-option" data-value="+33" data-label="+33 (France)">+33 (France)</div>
+                    <div class="phone-code-option" data-value="+39" data-label="+39 (Italy)">+39 (Italy)</div>
+                    <div class="phone-code-option" data-value="+34" data-label="+34 (Spain)">+34 (Spain)</div>
+                    <div class="phone-code-option" data-value="+31" data-label="+31 (Netherlands)">+31 (Netherlands)</div>
+                    <div class="phone-code-option" data-value="+32" data-label="+32 (Belgium)">+32 (Belgium)</div>
+                    <div class="phone-code-option" data-value="+41" data-label="+41 (Switzerland)">+41 (Switzerland)</div>
+                    <div class="phone-code-option" data-value="+46" data-label="+46 (Sweden)">+46 (Sweden)</div>
+                    <div class="phone-code-option" data-value="+47" data-label="+47 (Norway)">+47 (Norway)</div>
+                    <div class="phone-code-option" data-value="+45" data-label="+45 (Denmark)">+45 (Denmark)</div>
+                    <div class="phone-code-option" data-value="+351" data-label="+351 (Portugal)">+351 (Portugal)</div>
+                    <div class="phone-code-option" data-value="+353" data-label="+353 (Ireland)">+353 (Ireland)</div>
+                    <div class="phone-code-option" data-value="+358" data-label="+358 (Finland)">+358 (Finland)</div>
+                    <div class="phone-code-option" data-value="+48" data-label="+48 (Poland)">+48 (Poland)</div>
+                    <div class="phone-code-option" data-value="+420" data-label="+420 (Czech Republic)">+420 (Czech Republic)</div>
+                    <div class="phone-code-option" data-value="+36" data-label="+36 (Hungary)">+36 (Hungary)</div>
+                    <div class="phone-code-option" data-value="+7" data-label="+7 (Russia)">+7 (Russia)</div>
+                    <div class="phone-code-option" data-value="+52" data-label="+52 (Mexico)">+52 (Mexico)</div>
+                    <div class="phone-code-option" data-value="+55" data-label="+55 (Brazil)">+55 (Brazil)</div>
+                    <div class="phone-code-option" data-value="+54" data-label="+54 (Argentina)">+54 (Argentina)</div>
+                    <div class="phone-code-option" data-value="+27" data-label="+27 (South Africa)">+27 (South Africa)</div>
+                  </div>
+                </div>
+                <div class="phone-number-divider"></div>
+                <input id="phone" name="phone_number" type="tel" placeholder="8123456789" class="phone-number" pattern="[0-9]*" inputmode="numeric" autocomplete="off" required>
+              </div>
+              <span class="error-message" id="phone_error"></span>
+    
+              <button type="button" class="next">Next</button>
+            </div>
+    
+            <!-- STEP 2 – ADDRESS -->
+            {% comment %} <div class="step" data-step="2" style="display:none;">
+    
+              <div class="country-state-wrapper">
+                <div class="country-state-item">
+                  <label for="country">Country</label>
+                  <div class="country-search-wrapper">
+                    <input type="text" id="country" name="country" placeholder="Search country..." required>
+                    <input type="hidden" id="country_value" name="country_value">
+                    <button type="button" class="country-toggle" id="country_toggle">
+                      <svg class="country-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L6 6L11 1" stroke="#454545" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </button>
+                    <div class="country-dropdown" id="country_dropdown"></div>
+                  </div>
+                  <span class="error-message" id="country_error"></span>
+                </div>
+                
+                <div class="country-state-item">
+                  <label for="state">State / Province</label>
+                  <div class="country-search-wrapper state-search-wrapper">
+                    <input type="text" id="state" name="state" placeholder="Search state / province..." required disabled>
+                    <input type="hidden" id="state_value" name="state_value">
+                    <button type="button" class="country-toggle state-toggle" id="state_toggle">
+                      <svg class="country-arrow state-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L6 6L11 1" stroke="#454545" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </button>
+                    <div class="country-dropdown state-dropdown" id="state_dropdown"></div>
+                  </div>
+                  <span class="error-message" id="state_error"></span>
+                </div>
+              </div>
+              
+              <label for="city">City</label>
+              <div class="country-search-wrapper city-search-wrapper">
+                <input type="text" id="city" name="city" placeholder="Search city..." required disabled>
+                <input type="hidden" id="city_value" name="city_value">
+                <button type="button" class="country-toggle city-toggle" id="city_toggle">
+                  <svg class="country-arrow city-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L6 6L11 1" stroke="#454545" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div class="country-dropdown city-dropdown" id="city_dropdown"></div>
+              </div>
+              <span class="error-message" id="city_error"></span>
+              
+              <label for="street">Street</label>
+              <input id="street" name="street" placeholder="Street" required>
+              <span class="error-message" id="street_error"></span>
+              
+              <label for="house_number">House Number</label>
+              <input id="house_number" name="house_number" placeholder="House Number" required>
+              <span class="error-message" id="house_number_error"></span>
+              
+              <label for="postal">Postal Code</label>
+              <input id="postal" name="postal" placeholder="Postal Code" inputmode="numeric" pattern="[0-9]*" required>
+              <span class="error-message" id="postal_error"></span>
+    
+              <div class="step-buttons">
+                <button type="button" class="prev">Previous</button>
+                <button type="button" class="next">Next</button>
+              </div>
+            </div> {% endcomment %}
+    
+            <!-- STEP 3 – PURCHASE -->
+            <div class="step" data-step="2" style="display:none;">
+    
+              <div class="purchase-date-method-wrapper">
+                <div class="purchase-date-method-item">
+                  <label for="purchase_date">Purchase Date</label>
+                  <input type="date" id="purchase_date" name="purchase_date" max="" required>
+                  <span class="error-message" id="purchase_date_error"></span>
+                </div>
+                <div class="purchase-date-method-item">
+                  <label for="purchase_method">Purchase Method</label>
+                  <select id="purchase_method" name="purchase_method" required>
+                    <option value="">Purchase Method</option>
+                    <option value="Online">Online</option>
+                    <option value="store">Store</option>
+                  </select>
+                  <span class="error-message" id="purchase_method_error"></span>
+                </div>
+              </div>
+    
+              <label for="country_purchase">Country of Purchase</label>
+              <div class="country-search-wrapper country-purchase-wrapper">
+                <input type="text" id="country_purchase" name="country_purchase" placeholder="Search country..." required>
+                <input type="hidden" id="country_purchase_value" name="country_purchase_value">
+                <button type="button" class="country-toggle country-purchase-toggle" id="country_purchase_toggle">
+                  <svg class="country-arrow country-purchase-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L6 6L11 1" stroke="#454545" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div class="country-dropdown country-purchase-dropdown" id="country_purchase_dropdown"></div>
+              </div>
+              <span class="error-message" id="country_purchase_error"></span>
+
+              <label for="no_id_distributor">No ID Distributor</label>
+              <select id="no_id_distributor" name="no_id_distributor">
+                <option value="" selected hidden>No ID Distributor</option>
+              </select>
+              <span class="error-message" id="no_id_distributor_error"></span>
+              
+              <label for="store_select">Store</label>
+              <input type="text" id="store_select" name="store_select" placeholder="Input store name" readonly>
+              <span class="error-message" id="store_select_error"></span>
+
+              <label for="no_card_waranty">No Card Waranty</label>
+              <input type="text" id="no_card_waranty" name="no_card_waranty" placeholder="No Card Waranty" required>
+              <span class="error-message" id="no_card_waranty_error"></span>
+    
+              <!-- drag & drop upload -->
+              {% comment %} <label for="invoice">Upload Invoice</label>
+              <div id="dropzone" class="dropzone">
+                <p class="dropzone-text">Drag & drop invoice here or click to upload</p>
+                <p class="dropzone-filename" style="display:none;"></p>
+                <input type="file" id="invoice" name="invoice" accept="image/*,application/pdf" hidden>
+              </div> {% endcomment %}
+              
+              <!-- Serial Number -->
+              <div class="model-serial-wrapper">
+                <div class="model-serial-item">
+                  <label for="serial_number">Serial Number</label>
+                  <input type="text" id="serial_number" name="serial_number" placeholder="Serial Number" autocomplete="off" required>
+                  <span class="error-message" id="serial_number_error"></span>
+                </div>
+              </div>
+
+              <!-- Expired Date -->
+              <div class="model-serial-wrapper">
+                <div class="model-serial-item">
+                  <label for="expired_date">Expired Date</label>
+                  <input type="date" id="expired_date" name="expired_date" max="" readonly>
+                  <span class="field-info" id="expired_date_info">Satu tahun dari tanggal pembelian</span>
+                  <span class="error-message" id="expired_date_error"></span>
+                </div>
+              </div>
+    
+              <div class="step-buttons">
+                <button type="button" class="prev">Previous</button>
+                <button type="submit" class="submit">Submit</button>
+              </div>
+            </div>
+    
+          </form>
+        </div>
+      </div>
+  
+  <!-- Popup Modal -->
+  <div id="warranty-popup-overlay" class="warranty-popup-overlay" style="display: none;">
+    <div class="warranty-popup-container">
+      <div class="warranty-popup-content">
+        <div class="warranty-popup-icon" id="warranty-popup-icon"></div>
+        <h3 class="warranty-popup-title" id="warranty-popup-title"></h3>
+        <p class="warranty-popup-message" id="warranty-popup-message"></p>
+        <div class="warranty-popup-product" id="warranty-popup-product" style="display: none;"></div>
+        <div class="warranty-popup-buttons" id="warranty-popup-buttons"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Popup Messages (Hidden) -->
+  <div id="warranty-popup-messages" style="display: none;">
+    <div data-type="confirm-title">Konfirmasi</div>
+    <div data-type="confirm-message">Apakah Anda yakin data yang diisi sudah benar?</div>
+    <div data-type="confirm-btn-cancel">Batal</div>
+    <div data-type="confirm-btn-confirm">Ya, Saya Yakin</div>
+    
+    <div data-type="success-title">Product registration is complete.</div>
+    <div data-type="success-message">Thank you for signing up.</div>
+    <div data-type="success-btn-ok">OK</div>
+    <div data-type="success-btn-collection">Check My Collection</div>
+    <div data-type="success-btn-continue">Continue Registering other Products</div>
+    
+    <div data-type="error-title">Gagal</div>
+    <div data-type="error-message">Terjadi kesalahan saat menyimpan data.</div>
+    <div data-type="error-btn-ok">OK</div>
+    
+    <div data-type="error-form-not-found-title">Error</div>
+    <div data-type="error-form-not-found-message">Form tidak ditemukan. Silakan refresh halaman.</div>
+    
+    <div data-type="warning-file-too-large-title">Peringatan</div>
+    <div data-type="warning-file-too-large-message">File invoice terlalu besar dan tidak dapat disimpan. Data lainnya berhasil disimpan.</div>
+    
+    <div data-type="warning-file-error-title">Peringatan</div>
+    <div data-type="warning-file-error-message">File invoice tidak dapat diproses. Data lainnya berhasil disimpan tanpa file invoice.</div>
+    
+    <div data-type="error-save-failed-title">Gagal</div>
+    <div data-type="error-save-failed-message">Terjadi kesalahan saat menyimpan data. Silakan coba lagi.</div>
+    
+    <div data-type="error-file-too-large-title">File Terlalu Besar</div>
+    <div data-type="error-file-too-large-message">File size must be less than 2MB. Foto gagal diupload. Please choose a smaller file and try again.</div>
+    <div data-type="error-file-too-large-btn-ok">OK</div>
+  </div>
+  
+  {% schema %}
+  {
+    "name": "Warranty Form",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Progress Icons"
+      },
+      {
+        "type": "image_picker",
+        "id": "icon_step1",
+        "label": "Icon — Step 1 (Personal Info)"
+      },
+      {
+        "type": "image_picker",
+        "id": "icon_step2",
+        "label": "Icon — Step 2 (Address)"
+      } 
+    ]
+  }
+  {% endschema %}
+  </section>
+  
+  
+  <script>
+  // Integrasi API CountriesNow
+  const COUNTRIESNOW_BASE_URL = 'https://countriesnow.space/api/v0.1/countries';
+  
+  // API Configuration untuk warranty endpoint
+  const WARRANTY_API_BASE_URL = 'https://shopify-custom-apps-general.devbdd.com/api/dashboard/insert-meta-object';
+  const DISTRIBUTOR_API_BASE_URL = 'https://shopify-custom-apps-general.devbdd.com/api/dashboard/distributors';
+  
+  let countries = [];
+  let provinces = [];
+  let cities = [];
+  let distributors = [];
+  
+  // Function helper untuk get country code dari country name (global scope)
+  function getCountryCode(countryName) {
+    if (!countryName || !countries || countries.length === 0) return '';
+    const country = countries.find(c => c.name === countryName);
+    return country ? (country.iso2 || '') : '';
+  }
+  
+  // Load countries
+  async function loadCountries() {
+    const countryInput = document.getElementById('country');
+    const countryPurchaseInput = document.getElementById('country_purchase');
+    if (!countryInput && !countryPurchaseInput) return;
+    
+    try {
+      const response = await fetch(`${COUNTRIESNOW_BASE_URL}`);
+      
+      if (response.ok) {
+        const data = await response.json();
+        if (data.error === false && data.data) {
+          countries = data.data.map(item => ({
+            name: item.country || item.name,
+            iso2: item.iso2 || '',
+            iso3: item.iso3 || ''
+          }));
+          
+          // Urutkan negara berdasarkan nama
+          countries.sort((a, b) => a.name.localeCompare(b.name));
+        }
+      }
+    } catch (error) {
+      console.error('Error loading countries:', error);
+    }
+  }
+
+  // GET distributors dari DISTRIBUTOR_API_BASE_URL, isi no_id_distributor
+  async function getDistributor() {
+    const distributorSelect = document.getElementById('no_id_distributor');
+    if (!distributorSelect) return;
+
+    try {
+      const response = await fetch(DISTRIBUTOR_API_BASE_URL, { method: 'GET' });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      distributors = Array.isArray(data) ? data : (data.data || []);
+
+      distributorSelect.innerHTML = '<option value="" selected hidden>No ID Distributor</option>';
+
+      distributors.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.distributor_id || '';
+        option.textContent = item.distributor_id || '';
+        option.dataset.storeName = item.store_name || '';
+        distributorSelect.appendChild(option);
+      });
+    } catch (error) {
+      console.error('Error loading distributors:', error);
+    }
+  }
+
+  // Isi store_select dari store_name berdasarkan distributor yang dipilih
+  function fillStoreFromDistributor() {
+    const distributorSelect = document.getElementById('no_id_distributor');
+    const storeSelectInput = document.getElementById('store_select');
+    if (!distributorSelect || !storeSelectInput) return;
+
+    const purchaseMethod = document.getElementById('purchase_method')?.value;
+    if (purchaseMethod === 'Online') return;
+
+    const selectedOption = distributorSelect.options[distributorSelect.selectedIndex];
+    const storeName = selectedOption?.dataset?.storeName
+      || distributors.find(d => d.distributor_id === distributorSelect.value)?.store_name
+      || '';
+
+    storeSelectInput.value = storeName;
+  }
+  
+  document.addEventListener('DOMContentLoaded', function(){
+    let step = 1;
+    
+    // Function untuk reset form ke kondisi awal
+    function resetForm() {
+      const form = document.getElementById('wf');
+      if (!form) return;
+      
+      // Reset semua input fields
+      const inputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="date"]');
+      inputs.forEach(input => {
+        input.value = '';
+        input.classList.remove('error');
+        // Reset disabled state untuk country/state/city
+        if (input.id === 'state' || input.id === 'city') {
+          input.disabled = true;
+        }
+      });
+      
+      // Reset select dropdowns
+      const selects = form.querySelectorAll('select');
+      selects.forEach(select => {
+        select.value = '';
+        select.classList.remove('error');
+      });
+      
+      // Reset store field ke disabled state (karena purchase method juga direset)
+      const storeSelectInput = document.getElementById('store_select');
+      if (storeSelectInput) {
+        storeSelectInput.value = '';
+        storeSelectInput.disabled = true;
+        storeSelectInput.removeAttribute('required');
+      }
+      
+      // Reset file input
+      {% comment %} const fileInput = document.getElementById('invoice');
+      if (fileInput) {
+        fileInput.value = '';
+        const dropzone = document.getElementById('dropzone');
+        const dropzoneText = dropzone?.querySelector('.dropzone-text');
+        const dropzoneFilename = dropzone?.querySelector('.dropzone-filename');
+        if (dropzone) {
+          dropzone.classList.remove('has-file', 'dragover');
+        }
+        if (dropzoneText) dropzoneText.style.display = 'block';
+        if (dropzoneFilename) dropzoneFilename.style.display = 'none';
+      } {% endcomment %}
+      
+      // Reset hidden fields
+      const hiddenInputs = form.querySelectorAll('input[type="hidden"]');
+      hiddenInputs.forEach(input => {
+        if (input.id === 'phone_code_value') {
+          input.value = '+62'; // Default phone code
+        } else {
+          input.value = '';
+        }
+      });
+      
+      // Reset phone code: field dikosongkan agar yang tampil hanya placeholder "62"
+      // (nilai default 62 dipakai saat submit jika kosong — lihat listener submit ~baris 2339)
+      const phoneCodeInput = document.getElementById('wf_cc_digits');
+      if (phoneCodeInput) {
+        phoneCodeInput.value = '';
+        phoneCodeInput.setAttribute('readonly', 'readonly');
+      }
+      
+      // Clear semua error messages
+      const errorMessages = form.querySelectorAll('.error-message');
+      errorMessages.forEach(error => {
+        error.textContent = '';
+        error.style.display = 'none';
+      });
+      
+      // Reset phone wrapper border
+      const phoneWrapper = document.querySelector('.phone-input-wrapper');
+      if (phoneWrapper) {
+        phoneWrapper.classList.remove('error', 'has-value');
+      }
+      
+      // Reset country purchase dropdown
+      const countryPurchaseWrapper = document.querySelector('.country-purchase-wrapper');
+      const countryPurchaseDropdown = document.getElementById('country_purchase_dropdown');
+      const countryPurchaseArrow = document.querySelector('.country-purchase-arrow');
+      if (countryPurchaseWrapper) {
+        countryPurchaseWrapper.classList.remove('active');
+      }
+      if (countryPurchaseDropdown) {
+        countryPurchaseDropdown.style.display = 'none';
+      }
+      if (countryPurchaseArrow) {
+        countryPurchaseArrow.style.transform = 'rotate(0deg)';
+      }
+      
+      // Reset step ke 1
+      step = 1;
+      show(step);
+      
+      // Clear localStorage jika ada data lama
+      localStorage.removeItem('warrantyFormData');
+      
+      // Reset arrays untuk country/state/city
+      provinces = [];
+      cities = [];
+      
+      // Update button opacity
+      setTimeout(updateButtonOpacity, 100);
+    }
+    
+    // Reset form saat halaman dimuat untuk memastikan form kosong
+    resetForm();
+    
+    // Fungsi untuk menampilkan pesan error
+    function showError(inputId, message) {
+      const errorElement = document.getElementById(inputId + '_error');
+      if (errorElement) {
+        errorElement.textContent = message;
+        errorElement.style.display = 'block';
+      }
+      const input = document.getElementById(inputId);
+      if (input) {
+        // Khusus untuk input telepon, error di wrapper
+        if (inputId === 'wf_cc_digits' || inputId === 'phone') {
+          const phoneWrapper = document.querySelector('.phone-input-wrapper');
+          if (phoneWrapper) {
+            phoneWrapper.classList.add('error');
+          }
+        } else {
+          input.classList.add('error');
+        }
+      }
+    }
+    
+    // Fungsi untuk menyembunyikan pesan error
+    function hideError(inputId) {
+      const errorElement = document.getElementById(inputId + '_error');
+      if (errorElement) {
+        errorElement.textContent = '';
+        errorElement.style.display = 'none';
+      }
+      const input = document.getElementById(inputId);
+      if (input) {
+        // Khusus untuk input telepon, error di wrapper
+        if (inputId === 'wf_cc_digits' || inputId === 'phone') {
+          const phoneWrapper = document.querySelector('.phone-input-wrapper');
+          if (phoneWrapper) {
+            phoneWrapper.classList.remove('error');
+          }
+        } else {
+          input.classList.remove('error');
+        }
+      }
+    }
+    
+    // Function untuk get message dari HTML
+    function getPopupMessage(messageKey) {
+      const messagesContainer = document.getElementById('warranty-popup-messages');
+      if (!messagesContainer) return null;
+      
+      const titleEl = messagesContainer.querySelector('[data-type="' + messageKey + '-title"]');
+      const messageEl = messagesContainer.querySelector('[data-type="' + messageKey + '-message"]');
+      
+      return {
+        title: titleEl ? titleEl.textContent : '',
+        message: messageEl ? messageEl.textContent : ''
+      };
+    }
+    
+    // Function untuk get button text dari HTML
+    function getPopupButtonText(messageKey, buttonType) {
+      const messagesContainer = document.getElementById('warranty-popup-messages');
+      if (!messagesContainer) return '';
+      
+      const btnEl = messagesContainer.querySelector('[data-type="' + messageKey + '-btn-' + buttonType + '"]');
+      return btnEl ? btnEl.textContent : '';
+    }
+    
+    // Function untuk show popup
+    function showPopup(type, messageKey, customMessage, buttons) {
+      const overlay = document.getElementById('warranty-popup-overlay');
+      const icon = document.getElementById('warranty-popup-icon');
+      const titleEl = document.getElementById('warranty-popup-title');
+      const messageEl = document.getElementById('warranty-popup-message');
+      const productEl = document.getElementById('warranty-popup-product');
+      const buttonsEl = document.getElementById('warranty-popup-buttons');
+      
+      if (!overlay) {
+        console.error('Popup overlay not found');
+        return;
+      }
+      
+      if (productEl) productEl.style.display = 'none';
+      
+      // Ambil pesan dari HTML jika messageKey diberikan
+      let title = '';
+      let message = customMessage || '';
+      
+      if (messageKey) {
+        const popupData = getPopupMessage(messageKey);
+        if (popupData) {
+          title = popupData.title;
+          if (!customMessage) {
+            message = popupData.message;
+          }
+        }
+      }
+      
+      // Set icon berdasarkan type (sembunyikan icon untuk type 'simple' atau 'success')
+      icon.className = 'warranty-popup-icon';
+      if (type === 'simple' || type === 'success') {
+        icon.style.display = 'none';
+      } else if (type === 'confirm') {
+        icon.style.display = 'block';
+        icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M12 19V18.99M12 16C12 11.5 16 12.5 16 9C16 6.79086 14.2091 5 12 5C10.1361 5 8.57002 6.27477 8.12598 8" stroke="#454545" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>';
+        icon.classList.add('warranty-popup-icon-confirm');
+      } else if (type === 'error') {
+        icon.style.display = 'block';
+        icon.innerHTML = '<svg fill="#454545" viewBox="-1.7 0 20.4 20.4" xmlns="http://www.w3.org/2000/svg" class="cf-icon-svg" stroke="#454545"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M16.417 10.283A7.917 7.917 0 1 1 8.5 2.366a7.916 7.916 0 0 1 7.917 7.917zm-6.804.01 3.032-3.033a.792.792 0 0 0-1.12-1.12L8.494 9.173 5.46 6.14a.792.792 0 0 0-1.12 1.12l3.034 3.033-3.033 3.033a.792.792 0 0 0 1.12 1.119l3.032-3.033 3.033 3.033a.792.792 0 0 0 1.12-1.12z"></path></g></svg>';
+        icon.classList.add('warranty-popup-icon-error');
+      }
+      
+      titleEl.textContent = title;
+      messageEl.textContent = message;
+      
+      // Set buttons
+      buttonsEl.innerHTML = '';
+      if (buttons && buttons.length > 0) {
+        buttons.forEach(btn => {
+          const button = document.createElement('button');
+          button.textContent = btn.text;
+          button.className = btn.class || 'warranty-popup-btn warranty-popup-btn-primary';
+          button.onclick = btn.onclick;
+          buttonsEl.appendChild(button);
+        });
+      }
+      
+      overlay.style.display = 'flex';
+    }
+    
+    // Function untuk hide popup
+    function hidePopup() {
+      const overlay = document.getElementById('warranty-popup-overlay');
+      if (overlay) {
+        overlay.style.display = 'none';
+      }
+    }
+    
+    // Close popup saat klik overlay
+    const popupOverlay = document.getElementById('warranty-popup-overlay');
+    if (popupOverlay) {
+      popupOverlay.addEventListener('click', function(e) {
+        if (e.target === popupOverlay) {
+          hidePopup();
+        }
+      });
+    }
+    
+    // Fungsi untuk submit form dan redirect ke summary page
+    async function submitWarrantyForm(confirmed = false) {
+      // Jika belum dikonfirmasi, tampilkan popup konfirmasi dulu
+      if (!confirmed) {
+        showPopup('confirm', 'confirm', null, [
+          {
+            text: getPopupButtonText('confirm', 'cancel'),
+            class: 'warranty-popup-btn warranty-popup-btn-secondary',
+            onclick: function() {
+              hidePopup();
+            }
+          },
+          {
+            text: getPopupButtonText('confirm', 'confirm'),
+            class: 'warranty-popup-btn warranty-popup-btn-primary',
+            onclick: function() {
+              hidePopup();
+              submitWarrantyForm(true); // Panggil lagi dengan confirmed = true
+            }
+          }
+        ]);
+        return;
+      }
+      
+      const form = document.getElementById('wf');
+      if (!form) {
+        console.error('❌ Form not found');
+        showPopup('error', 'error-form-not-found', null, [
+          {
+            text: getPopupButtonText('error', 'ok'),
+            onclick: function() {
+              hidePopup();
+            }
+          }
+        ]);
+        return;
+      }
+      
+      // Ambil file langsung tanpa convert ke base64
+      {% comment %} const finalFileInput = document.getElementById('invoice');
+      const finalFile = finalFileInput?.files?.[0]; {% endcomment %}
+      
+      // Validasi ukuran file sebelum submit (maksimal 2MB)
+      {% comment %} if (finalFile) {
+        const maxSize = 2 * 1024 * 1024; // 2MB
+        if (finalFile.size > maxSize) {
+          showPopup('simple', 'error-file-too-large', null, [
+            {
+              text: getPopupButtonText('error-file-too-large', 'ok'),
+              onclick: function() {
+                hidePopup();
+                // Reset file input
+                if (finalFileInput) {
+                  finalFileInput.value = '';
+                  const dropzone = document.getElementById('dropzone');
+                  const dropzoneText = dropzone?.querySelector('.dropzone-text');
+                  const dropzoneFilename = dropzone?.querySelector('.dropzone-filename');
+                  if (dropzone) dropzone.classList.remove('has-file');
+                  if (dropzoneText) dropzoneText.style.display = 'block';
+                  if (dropzoneFilename) dropzoneFilename.style.display = 'none';
+                }
+              }
+            }
+          ]);
+          return; // Stop submission
+        }
+      } {% endcomment %}
+      
+      // Get shop domain dari Shopify (jika ada)
+      const shopDomain = window.Shopify?.shop || 'christ-verra.myshopify.com';
+      
+      // Gabungkan phone_code + phone_number (hapus + dari phone_code)
+      const phoneCode = document.getElementById('phone_code_value')?.value || '';
+      const phoneNumber = document.getElementById('phone')?.value || '';
+      // Hapus + dari phone code, hanya ambil angka
+      const phoneCodeWithoutPlus = (phoneCode || '').toString().replace(/^\+/, '');
+      const fullPhone = phoneCodeWithoutPlus && phoneNumber ? phoneCodeWithoutPlus + phoneNumber : (phoneCodeWithoutPlus || phoneNumber);
+      
+      //console.log 
+      // console.log('Sending data to API (POST)');
+      // console.log('Phone:', fullPhone);
+      // console.log('File Input Element:', finalFileInput);
+      // console.log('File:', finalFile ? finalFile.name : 'No file');
+      // console.log('File Size:', finalFile ? finalFile.size + ' bytes' : 'No file');
+      // console.log('File Type:', finalFile ? finalFile.type : 'No file');
+      
+      // Prepare FormData untuk API (dengan file langsung)
+      const formDataToSend = new FormData();
+      formDataToSend.append('shop', shopDomain);
+      formDataToSend.append('firstname', document.getElementById('first_name')?.value || '');
+      formDataToSend.append('lastname', document.getElementById('last_name')?.value || '');
+      formDataToSend.append('email', document.getElementById('email')?.value || '');
+      formDataToSend.append('phone', fullPhone);
+      formDataToSend.append('purchasedate', document.getElementById('purchase_date')?.value || '');
+      formDataToSend.append('expireddate', document.getElementById('expired_date')?.value || '');
+      formDataToSend.append('purchasemethod', document.getElementById('purchase_method')?.value || '');
+      formDataToSend.append('countrypurchased', document.getElementById('country_purchase_value')?.value || document.getElementById('country_purchase')?.value || '');
+      formDataToSend.append('no_id_distributor', document.getElementById('no_id_distributor')?.value || '');
+      formDataToSend.append('no_card_waranty', document.getElementById('no_card_waranty')?.value || '');
+      formDataToSend.append('store', document.getElementById('store_select')?.value || '');
+      formDataToSend.append('serial_number', document.getElementById('serial_number')?.value || '');
+      
+      // Tambahkan file jika ada
+      {% comment %} if (finalFile) {
+        formDataToSend.append('imageproof', finalFile);
+        console.log('✅ File imageproof ditambahkan ke FormData:', finalFile.name, '(' + finalFile.size + ' bytes)');
+      } else {
+        console.log('⚠️ Tidak ada file yang akan dikirim (finalFile is null/undefined)');
+        console.log('⚠️ File Input:', finalFileInput);
+        console.log('⚠️ Files array:', finalFileInput?.files);
+      } {% endcomment %}
+      
+      // Debug: Cek semua entries di FormData
+      // console.log('FormData entries:');
+      for (let pair of formDataToSend.entries()) {
+        if (pair[1] instanceof File) {
+          console.log('  -', pair[0], ':', pair[1].name, '(' + pair[1].size + ' bytes, type:', pair[1].type + ')');
+        } else {
+          console.log('  -', pair[0], ':', pair[1]);
+        }
+      }
+      
+      // Build URL dengan query parameter shop
+      const warrantyApiUrl = `${WARRANTY_API_BASE_URL}?shop=${encodeURIComponent(shopDomain)}`;
+      
+      console.log('API URL:', warrantyApiUrl);
+      
+      // Kirim data ke API via AJAX POST dengan FormData
+      fetch(warrantyApiUrl, {
+        method: 'POST',
+        body: formDataToSend
+      })
+      .then(async response => {
+        console.log('API Response status:', response.status);
+        
+        // Coba parse response text dulu untuk melihat error message
+        const responseText = await response.text();
+        console.log('API Response text:', responseText);
+        
+        if (!response.ok) {
+          let errorMessage = 'Network response was not ok';
+          try {
+            const errorData = JSON.parse(responseText);
+            errorMessage = errorData.message || errorData.error || errorMessage;
+          } catch (e) {
+            errorMessage = responseText || `HTTP ${response.status}: ${response.statusText}`;
+          }
+          throw new Error(errorMessage);
+        }
+        
+        // Parse JSON jika response OK
+        try {
+          return JSON.parse(responseText);
+        } catch (e) {
+          // Jika bukan JSON, return response text
+          return { success: true, message: responseText };
+        }
+      })
+      .then(data => {
+        console.log('API Success:', data);
+        
+        // Helper function untuk trim dan hapus string kosong + tanda kutip
+        const cleanString = (str) => {
+          if (!str || typeof str !== 'string') return '';
+          // Hapus tanda kutip di awal dan akhir (single quote atau double quote)
+          let cleaned = str.trim().replace(/^["']|["']$/g, '');
+          return cleaned.trim();
+        };
+        
+        // Map data dari response API ke format yang digunakan di summary
+        let summaryData = {};
+        if (data && data.data) {
+          const d = data.data;
+          summaryData = {
+            first_name: cleanString(d.firstname),
+            last_name: cleanString(d.lastname),
+            email: cleanString(d.email),
+            phone: cleanString(d.phone),
+            phone_code: '',
+            phone_number: cleanString(d.phone),
+            purchase_date: cleanString(d.purchasedate),
+            purchase_method: cleanString(d.purchasemethod),
+            country_purchase: cleanString(d.countrypurchased),
+            no_id_distributor: cleanString(d.no_id_distributor),
+            no_card_waranty: cleanString(d.no_card_waranty),
+            store: cleanString(d.store),
+            serial_number: cleanString(d.serial_number ?? '')
+          };
+        }
+        
+        // Pass data via URL query parameter (base64 encoded untuk aman)
+        const dataJson = JSON.stringify(summaryData);
+        const dataEncoded = btoa(encodeURIComponent(dataJson));
+        
+        // Tampilkan popup success (tanpa icon, dengan product name = model number, dua tombol)
+        showPopup('success', 'success', null, [
+          {
+            text: getPopupButtonText('success', 'collection'),
+            class: 'warranty-popup-btn warranty-popup-btn-primary',
+            onclick: function() {
+              hidePopup();
+              window.location.href = "/pages/warranty-profile";
+            }
+          },
+          {
+            text: getPopupButtonText('success', 'continue'),
+            class: 'warranty-popup-btn warranty-popup-btn-secondary',
+            onclick: function() {
+              window.location.reload();
+            }
+          }
+        ]);
+        var productEl = document.getElementById('warranty-popup-product');
+        if (productEl) {
+          productEl.innerHTML = 'Serial number<br><strong>' + (summaryData.serial_number || '-') + '</strong>';
+          productEl.style.display = 'block';
+        }
+      })
+      .catch(error => {
+        console.error('Error sending data to API:', error);
+        console.error('Error details:', {
+          message: error.message,
+          stack: error.stack
+        });
+        
+        // Tampilkan popup error
+        const errorMsg = error.message || 'Gagal dikirim ke server';
+        showPopup('error', 'error', `Terjadi kesalahan saat mengirim data ke server: ${errorMsg}. Silakan coba lagi atau hubungi support.`, [
+          {
+            text: getPopupButtonText('error', 'ok'),
+            onclick: function() {
+              hidePopup();
+            }
+          }
+        ]);
+      });
+    }
+    
+    // Memuat negara & distributor saat halaman dimuat
+    loadCountries();
+    getDistributor();
+    
+    // Tutup dropdown country of purchase saat klik di luar.
+    // (logic dropdown address lama sudah dihapus)
+    document.addEventListener('click', function(e) {
+      const countryPurchaseWrapper = document.querySelector('.country-purchase-wrapper');
+      if (countryPurchaseWrapper && !countryPurchaseWrapper.contains(e.target)) {
+        const countryPurchaseDropdown = document.getElementById('country_purchase_dropdown');
+        const countryPurchaseArrow = document.querySelector('.country-purchase-arrow');
+        if (countryPurchaseDropdown) {
+          countryPurchaseDropdown.style.display = 'none';
+        }
+        countryPurchaseWrapper.classList.remove('active');
+        if (countryPurchaseArrow) countryPurchaseArrow.style.transform = 'rotate(0deg)';
+      }
+    });
+    
+    // Handler untuk Country of Purchase dropdown
+    const countryPurchaseInput = document.getElementById('country_purchase');
+    if (countryPurchaseInput) {
+      // Filter dan tampilkan negara di dropdown
+      function filterCountriesPurchase(searchTerm) {
+        const countryPurchaseDropdown = document.getElementById('country_purchase_dropdown');
+        const countryPurchaseWrapper = document.querySelector('.country-purchase-wrapper');
+        const countryPurchaseArrow = document.querySelector('.country-purchase-arrow');
+        
+        if (!countryPurchaseDropdown || !countryPurchaseInput) return;
+        
+        // Bersihkan dropdown
+        countryPurchaseDropdown.innerHTML = '';
+        
+        if (!searchTerm || searchTerm.trim() === '') {
+          countryPurchaseDropdown.style.display = 'none';
+          if (countryPurchaseWrapper) countryPurchaseWrapper.classList.remove('active');
+          if (countryPurchaseArrow) countryPurchaseArrow.style.transform = 'rotate(0deg)';
+          return;
+        }
+        
+        const searchLower = searchTerm.toLowerCase().trim();
+        const filtered = countries.filter(country => 
+          country.name.toLowerCase().includes(searchLower)
+        );
+        
+        if (filtered.length === 0) {
+          countryPurchaseDropdown.style.display = 'none';
+          if (countryPurchaseWrapper) countryPurchaseWrapper.classList.remove('active');
+          if (countryPurchaseArrow) countryPurchaseArrow.style.transform = 'rotate(0deg)';
+          return;
+        }
+        
+        // Tampilkan dropdown
+        countryPurchaseDropdown.style.display = 'block';
+        if (countryPurchaseWrapper) countryPurchaseWrapper.classList.add('active');
+        if (countryPurchaseArrow) countryPurchaseArrow.style.transform = 'rotate(180deg)';
+        
+        // Tampilkan semua hasil yang difilter
+        filtered.forEach(country => {
+          const option = document.createElement('div');
+          option.className = 'country-option';
+          option.textContent = country.name;
+          option.setAttribute('data-name', country.name);
+          
+          option.addEventListener('click', function() {
+            countryPurchaseInput.value = country.name;
+            const countryPurchaseValue = document.getElementById('country_purchase_value');
+            if (countryPurchaseValue) {
+              countryPurchaseValue.value = country.name;
+            }
+            countryPurchaseDropdown.style.display = 'none';
+            if (countryPurchaseWrapper) countryPurchaseWrapper.classList.remove('active');
+            if (countryPurchaseArrow) countryPurchaseArrow.style.transform = 'rotate(0deg)';
+            // Clear error saat country dipilih
+            hideError('country_purchase');
+          });
+          
+          countryPurchaseDropdown.appendChild(option);
+        });
+      }
+      
+      // Toggle dropdown saat tombol diklik
+      function toggleCountryPurchaseDropdown() {
+        const countryPurchaseDropdown = document.getElementById('country_purchase_dropdown');
+        const countryPurchaseWrapper = document.querySelector('.country-purchase-wrapper');
+        const countryPurchaseArrow = document.querySelector('.country-purchase-arrow');
+        
+        if (!countryPurchaseDropdown || !countryPurchaseInput) return;
+        
+        if (countryPurchaseDropdown.style.display === 'block' || countryPurchaseDropdown.style.display === '') {
+          // Tutup dropdown
+          countryPurchaseDropdown.style.display = 'none';
+          if (countryPurchaseWrapper) countryPurchaseWrapper.classList.remove('active');
+          if (countryPurchaseArrow) countryPurchaseArrow.style.transform = 'rotate(0deg)';
+        } else {
+          // Buka dropdown - filter dengan nilai input saat ini
+          if (countryPurchaseInput.value.trim() === '') {
+            // Jika kosong, tampilkan semua negara
+            countryPurchaseDropdown.innerHTML = '';
+            countries.forEach(country => {
+              const option = document.createElement('div');
+              option.className = 'country-option';
+              option.textContent = country.name;
+              option.setAttribute('data-name', country.name);
+              
+              option.addEventListener('click', function() {
+                countryPurchaseInput.value = country.name;
+                const countryPurchaseValue = document.getElementById('country_purchase_value');
+                if (countryPurchaseValue) {
+                  countryPurchaseValue.value = country.name;
+                }
+                countryPurchaseDropdown.style.display = 'none';
+                if (countryPurchaseWrapper) countryPurchaseWrapper.classList.remove('active');
+                if (countryPurchaseArrow) countryPurchaseArrow.style.transform = 'rotate(0deg)';
+                hideError('country_purchase');
+              });
+              
+              countryPurchaseDropdown.appendChild(option);
+            });
+          } else {
+            // Filter dengan nilai saat ini
+            filterCountriesPurchase(countryPurchaseInput.value);
+            return; // filterCountriesPurchase already handles the display
+          }
+          
+          countryPurchaseDropdown.style.display = 'block';
+          if (countryPurchaseWrapper) countryPurchaseWrapper.classList.add('active');
+          if (countryPurchaseArrow) countryPurchaseArrow.style.transform = 'rotate(180deg)';
+        }
+      }
+      
+      // Tampilkan dropdown on focus/click
+      countryPurchaseInput.addEventListener('focus', function() {
+        const countryPurchaseDropdown = document.getElementById('country_purchase_dropdown');
+        const countryPurchaseWrapper = document.querySelector('.country-purchase-wrapper');
+        const countryPurchaseArrow = document.querySelector('.country-purchase-arrow');
+        
+        if (countryPurchaseDropdown && countryPurchaseDropdown.style.display !== 'block') {
+          // Jika input kosong, tampilkan semua negara
+          if (this.value.trim() === '') {
+            countryPurchaseDropdown.innerHTML = '';
+            countries.forEach(country => {
+              const option = document.createElement('div');
+              option.className = 'country-option';
+              option.textContent = country.name;
+              option.setAttribute('data-name', country.name);
+              
+              option.addEventListener('click', function() {
+                countryPurchaseInput.value = country.name;
+                const countryPurchaseValue = document.getElementById('country_purchase_value');
+                if (countryPurchaseValue) {
+                  countryPurchaseValue.value = country.name;
+                }
+                countryPurchaseDropdown.style.display = 'none';
+                if (countryPurchaseWrapper) countryPurchaseWrapper.classList.remove('active');
+                if (countryPurchaseArrow) countryPurchaseArrow.style.transform = 'rotate(0deg)';
+                hideError('country_purchase');
+              });
+              
+              countryPurchaseDropdown.appendChild(option);
+            });
+          } else {
+            // Filter dengan nilai saat ini
+            filterCountriesPurchase(this.value);
+            return; // filterCountriesPurchase already handles the display
+          }
+          
+          countryPurchaseDropdown.style.display = 'block';
+          if (countryPurchaseWrapper) countryPurchaseWrapper.classList.add('active');
+          if (countryPurchaseArrow) countryPurchaseArrow.style.transform = 'rotate(180deg)';
+        }
+      });
+      
+      // Cari/filter saat input
+      countryPurchaseInput.addEventListener('input', function() {
+        filterCountriesPurchase(this.value);
+      });
+      
+      // Handler klik tombol toggle
+      const countryPurchaseToggle = document.getElementById('country_purchase_toggle');
+      if (countryPurchaseToggle) {
+        countryPurchaseToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleCountryPurchaseDropdown();
+        });
+      }
+    }
+  
+    function show(s){
+      const currentStep = document.querySelector('#wf .step[style*="display: block"], #wf .step:not([style*="display: none"])');
+      const nextStep = document.querySelector('#wf .step[data-step="'+s+'"]');
+      
+      if (currentStep && currentStep !== nextStep) {
+        // Fade out step saat ini
+        currentStep.classList.add('fade-out');
+        currentStep.classList.remove('fade-in');
+        
+        // Setelah fade out selesai, hide dan show step baru
+        setTimeout(function() {
+          document.querySelectorAll('#wf .step').forEach(el=>{
+            el.style.display='none';
+            el.classList.remove('fade-in', 'fade-out');
+          });
+          
+          if (nextStep) {
+            nextStep.style.display='block';
+            // Trigger reflow untuk memastikan display:block diterapkan
+            nextStep.offsetHeight;
+            // Fade in step baru
+            nextStep.classList.add('fade-in');
+          }
+        }, 300);
+      } else {
+        // Jika tidak ada step yang aktif atau step yang sama, langsung show
+        document.querySelectorAll('#wf .step').forEach(el=>{
+          el.style.display='none';
+          el.classList.remove('fade-in', 'fade-out');
+        });
+        
+        if (nextStep) {
+          nextStep.style.display='block';
+          nextStep.offsetHeight;
+          nextStep.classList.add('fade-in');
+        }
+      }
+  
+      // Maksimal step 3
+      const maxStep = Math.min(s, 2);
+      
+      document.querySelectorAll('.w-progress .p-step-wrapper').forEach((el,i)=>{
+        const stepEl = el.querySelector('.p-step');
+        if (stepEl) {
+          stepEl.classList.toggle('active', i+1<=maxStep);
+          // Tandai wrapper sebagai active jika langkah sudah dilewati
+          el.classList.toggle('active', i+1<maxStep);
+        }
+      });
+      
+      // Step address sudah dimatikan, jadi auto-fill country berbasis IP tidak dipakai.
+    }
+    
+    // Function untuk check apakah semua required fields sudah terisi
+    function checkStepFields(stepNumber) {
+      const currentStep = document.querySelector('#wf .step[data-step="' + stepNumber + '"]');
+      if (!currentStep) return false;
+      
+      const requiredInputs = currentStep.querySelectorAll('input[required], select[required]');
+      let allFilled = true;
+      
+      requiredInputs.forEach(input => {
+        // Skip jika input disabled
+        if (input.disabled) return;
+        
+        // Khusus untuk store field (hanya required jika purchase_method = "store")
+        if (input.id === 'store_select') {
+          const purchaseMethod = document.getElementById('purchase_method')?.value;
+          if (purchaseMethod !== 'store') {
+            return; // Skip validation jika bukan store
+          }
+        }
+        
+        // wf_cc_digits: kosong = pakai default 62, tetap dianggap terisi
+        if (input.id === 'wf_cc_digits') {
+          return;
+        }
+        
+        // Cek apakah value kosong
+        const value = input.value ? input.value.trim() : '';
+        if (!value) {
+          allFilled = false;
+        }
+      });
+      
+      return allFilled;
+    }
+    
+    // Function untuk update button opacity
+    function updateButtonOpacity() {
+      const nextButtons = document.querySelectorAll('.next');
+      const submitButtons = document.querySelectorAll('.submit');
+      
+      // Update Next buttons
+      nextButtons.forEach(btn => {
+        const currentStep = btn.closest('.step');
+        if (currentStep) {
+          const stepNumber = parseInt(currentStep.getAttribute('data-step'));
+          const isValid = checkStepFields(stepNumber);
+          btn.style.opacity = isValid ? '1' : '0.5';
+          btn.style.pointerEvents = isValid ? 'auto' : 'none';
+        }
+      });
+      
+      // Update Submit buttons
+      submitButtons.forEach(btn => {
+        const currentStep = btn.closest('.step');
+        if (currentStep) {
+          const stepNumber = parseInt(currentStep.getAttribute('data-step'));
+          const isValid = checkStepFields(stepNumber);
+          btn.style.opacity = isValid ? '1' : '0.5';
+          btn.style.pointerEvents = isValid ? 'auto' : 'none';
+        }
+      });
+    }
+    
+    // Update button opacity saat halaman dimuat
+    updateButtonOpacity();
+    
+    // Bersihkan error dan update button opacity saat user mengetik
+    document.querySelectorAll('input[required], select[required]').forEach(input => {
+      input.addEventListener('input', function() {
+        hideError(this.id);
+        updateButtonOpacity();
+      });
+      input.addEventListener('change', function() {
+        hideError(this.id);
+        updateButtonOpacity();
+      });
+    });
+    
+    document.querySelectorAll('.next').forEach(btn=>{
+      btn.onclick=()=>{
+        // Validasi form sebelum langkah berikutnya
+        const currentStep = document.querySelector('#wf .step[data-step="'+step+'"]');
+        if (currentStep) {
+          const inputs = currentStep.querySelectorAll('input[required], select[required]');
+          let isValid = true;
+          
+          // Bersihkan semua error dulu
+          inputs.forEach(input => {
+            hideError(input.id);
+          });
+          
+          inputs.forEach(input => {
+            // Skip wf_cc_digits: kosong = pakai default 62 saat submit
+            if (input.id === 'wf_cc_digits') return;
+            
+            // Cek apakah input valid
+            if (!input.checkValidity()) {
+              isValid = false;
+              let errorMessage = 'This field is required';
+              
+              if (input.type === 'email' && input.value && !input.validity.valid) {
+                errorMessage = 'Please enter a valid email address';
+              } else if (input.type === 'tel' && input.value && !input.validity.valid) {
+                errorMessage = 'Please enter a valid phone number';
+              }
+              
+              showError(input.id, errorMessage);
+            }
+          });
+          
+          // Validasi khusus untuk store dropdown (hanya jika purchase_method = "store")
+          const purchaseMethod = document.getElementById('purchase_method')?.value;
+          const storeSelectInput = document.getElementById('store_select');
+          if (storeSelectInput && currentStep.contains(storeSelectInput) && purchaseMethod === 'store') {
+            if (!storeSelectInput.value || storeSelectInput.value.trim() === '') {
+              isValid = false;
+              showError('store_select', 'This field is required');
+            }
+          }
+          
+          // Jika valid, lanjut ke langkah berikutnya (maksimal step 2)
+          if (isValid) {
+            if (step < 2) {
+              step++; 
+              show(step);
+              setTimeout(updateButtonOpacity, 350); // Update opacity setelah step berubah
+            } else {
+              // Di step 2, submit form
+              submitWarrantyForm();
+            }
+          }
+        } else {
+          if (step < 2) {
+            step++; 
+            show(step);
+            setTimeout(updateButtonOpacity, 350); // Update opacity setelah step berubah
+          } else {
+            // Di step 2, submit form
+            submitWarrantyForm();
+          }
+        }
+      }
+    });
+  
+    document.querySelectorAll('.prev').forEach(btn=>{
+      btn.onclick=()=>{ 
+        if (step > 1) {
+          step--; 
+          show(step);
+          setTimeout(updateButtonOpacity, 350); // Update opacity setelah step berubah
+        }
+      }
+    });
+    
+    // Prevent default form submission
+    const form = document.getElementById('wf');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        submitWarrantyForm();
+      });
+    }
+  
+    // Dropdown kode telepon kustom
+    const phoneCodeInput = document.getElementById('wf_cc_digits');
+    const phoneCodeHidden = document.getElementById('phone_code_value');
+    const phoneCodeWrapper = document.querySelector('.phone-code-wrapper');
+    const phoneCodeToggle = document.querySelector('.phone-code-toggle');
+    const phoneCodeDropdown = document.querySelector('.phone-code-dropdown');
+    let phoneCodeOptions = document.querySelectorAll('.phone-code-option');
+    
+    if (phoneCodeInput && phoneCodeWrapper && phoneCodeDropdown && phoneCodeToggle) {
+        function getPhoneCodeMetaList() {
+          var list = [];
+          phoneCodeOptions.forEach(function(opt) {
+            var value = opt.getAttribute('data-value') || '';
+            var digits = value.replace(/^\+/, '');
+            if (digits) list.push({ value: value, digits: digits });
+          });
+          list.sort(function(a, b) { return b.digits.length - a.digits.length; });
+          return list;
+        }
+
+        function restorePhoneCodeFromHidden() {
+          var fb = (phoneCodeHidden.value || '+62').replace(/^\+/, '');
+          phoneCodeInput.value = fb;
+        }
+
+        // Pulihkan angka setelah autofill (nama negara, "+62 ...", atau nomor lengkap di field kode)
+        function normalizePhoneCodeField() {
+          var v = phoneCodeInput.value.trim();
+          if (!v) {
+            phoneCodeHidden.value = '+62';
+            return;
+          }
+          var meta = getPhoneCodeMetaList();
+          var compact = v.replace(/\D/g, '');
+          var hasLetters = /[a-zA-Z]/.test(v);
+          var noPlus = v.replace(/^\++/, '').trim();
+
+          var j, row, nextCh;
+          for (j = 0; j < meta.length; j++) {
+            row = meta[j];
+            if (noPlus.startsWith(row.digits)) {
+              nextCh = noPlus.charAt(row.digits.length);
+              if (!nextCh || /\D/.test(nextCh)) {
+                phoneCodeInput.value = row.digits;
+                phoneCodeHidden.value = row.value;
+                return;
+              }
+            }
+          }
+
+          if (hasLetters) {
+            var lower = v.toLowerCase();
+            var k, opt, label, value, m, inside, parts, a, alias;
+            for (k = 0; k < phoneCodeOptions.length; k++) {
+              opt = phoneCodeOptions[k];
+              label = opt.getAttribute('data-label') || '';
+              value = opt.getAttribute('data-value') || '';
+              m = label.match(/\(([^)]+)\)/);
+              if (!m) continue;
+              inside = m[1];
+              parts = inside.split('/');
+              for (a = 0; a < parts.length; a++) {
+                alias = parts[a].trim().toLowerCase();
+                if (alias.length < 3) continue;
+                if (lower.indexOf(alias) !== -1) {
+                  phoneCodeInput.value = value.replace(/^\+/, '');
+                  phoneCodeHidden.value = value;
+                  return;
+                }
+              }
+            }
+          }
+
+          if (!hasLetters && compact.length > 0) {
+            if (compact.length <= 4) {
+              phoneCodeInput.value = compact;
+              phoneCodeHidden.value = '+' + compact;
+              return;
+            }
+            var i, mrow;
+            for (i = 0; i < meta.length; i++) {
+              mrow = meta[i];
+              if (compact.startsWith(mrow.digits) && compact.length > mrow.digits.length) {
+                phoneCodeInput.value = mrow.digits;
+                phoneCodeHidden.value = mrow.value;
+                var rest = compact.slice(mrow.digits.length);
+                var phoneEl = document.getElementById('phone');
+                if (phoneEl && !phoneEl.value.trim()) {
+                  phoneEl.value = rest;
+                }
+                return;
+              }
+            }
+          }
+
+          if (compact.length >= 1 && compact.length <= 4) {
+            var n, crow;
+            for (n = 0; n < meta.length; n++) {
+              crow = meta[n];
+              if (compact === crow.digits) {
+                phoneCodeInput.value = crow.digits;
+                phoneCodeHidden.value = crow.value;
+                return;
+              }
+            }
+          }
+
+          restorePhoneCodeFromHidden();
+        }
+
+        function unlockPhoneCodeInput() {
+          phoneCodeInput.removeAttribute('readonly');
+        }
+
+        phoneCodeWrapper.addEventListener('pointerdown', unlockPhoneCodeInput, { capture: true });
+
+        // Fungsi filter - bisa mencari berdasarkan angka atau nama negara
+        function filterOptions(searchText) {
+          let hasVisible = false;
+          phoneCodeOptions.forEach(function(option) {
+            const text = option.textContent.toLowerCase();
+            const search = searchText.toLowerCase().trim();
+            
+            // Cek apakah pencarian cocok dengan:
+            // 1. Kode negara (angka dengan/tanpa +)
+            // 2. Nama negara (dalam kurung)
+            // 3. Teks lengkap (kode + nama negara)
+            
+            const countryCode = text.match(/\+?\d+/)?.[0] || '';
+            const countryName = text.match(/\(([^)]+)\)/)?.[1] || '';
+            const fullText = text;
+            
+            const searchWithoutPlus = search.replace('+', '');
+            const countryCodeWithoutPlus = countryCode.replace('+', '');
+            
+            // Cocok jika:
+            // - Pencarian kosong (tampilkan semua)
+            // - Pencarian cocok dengan kode negara (dengan/tanpa +)
+            // - Pencarian cocok dengan nama negara
+            // - Pencarian cocok dengan teks lengkap
+            if (search === '' || 
+                countryCodeWithoutPlus.includes(searchWithoutPlus) ||
+                countryName.includes(search) ||
+                fullText.includes(search)) {
+              option.style.display = 'block';
+              hasVisible = true;
+            } else {
+              option.style.display = 'none';
+            }
+          });
+          return hasVisible;
+        }
+        
+        // Klik tombol toggle - fokus ke input
+        phoneCodeToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          e.preventDefault();
+          
+          // Jika dropdown sudah aktif, blur dan tutup
+          if (phoneCodeWrapper.classList.contains('active')) {
+            phoneCodeInput.blur();
+            phoneCodeWrapper.classList.remove('active');
+          } else {
+            // Fokus ke input dan tampilkan dropdown
+            phoneCodeInput.focus();
+            phoneCodeWrapper.classList.add('active');
+            filterOptions(phoneCodeInput.value);
+          }
+        });
+        
+        // Tampilkan dropdown saat input focus
+        phoneCodeInput.addEventListener('focus', function(e) {
+          unlockPhoneCodeInput();
+          phoneCodeWrapper.classList.add('active');
+          filterOptions(phoneCodeInput.value);
+          setTimeout(normalizePhoneCodeField, 50);
+          setTimeout(normalizePhoneCodeField, 300);
+        });
+        
+        phoneCodeInput.addEventListener('click', function(e) {
+          e.stopPropagation();
+          unlockPhoneCodeInput();
+          phoneCodeWrapper.classList.add('active');
+          filterOptions(phoneCodeInput.value);
+        });
+
+        phoneCodeInput.addEventListener('change', function() {
+          normalizePhoneCodeField();
+          filterOptions(phoneCodeInput.value);
+        });
+        
+        // Filter saat user mengetik
+        phoneCodeInput.addEventListener('input', function(e) {
+          if (!phoneCodeInput.value.trim()) {
+            phoneCodeHidden.value = '+62';
+          } else {
+            normalizePhoneCodeField();
+          }
+          phoneCodeWrapper.classList.add('active');
+          filterOptions(phoneCodeInput.value);
+        });
+        
+        // Tutup dropdown saat klik di luar
+        document.addEventListener('click', function(e) {
+          if (!phoneCodeWrapper.contains(e.target)) {
+            phoneCodeWrapper.classList.remove('active');
+          }
+        });
+        
+        // Tangani klik opsi
+        phoneCodeOptions.forEach(function(option) {
+          option.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const value = this.getAttribute('data-value');
+            const label = this.getAttribute('data-label');
+            
+            // Hanya simpan angka tanpa + di input (contoh: "62" bukan "+62")
+            const numberOnly = value.replace('+', '');
+            phoneCodeInput.value = numberOnly;
+            phoneCodeHidden.value = value; // Hidden field tetap dengan +
+            phoneCodeWrapper.classList.remove('active');
+          });
+        });
+        
+        // Set nilai default jika kosong saat form submit
+        const form = document.getElementById('wf');
+        if (form) {
+          form.addEventListener('submit', function(e) {
+            normalizePhoneCodeField();
+            // Jika input kosong, set default +62
+            if (!phoneCodeInput.value || phoneCodeInput.value.trim() === '') {
+              phoneCodeInput.value = '62';
+              phoneCodeHidden.value = '+62';
+            } else {
+              // Jika ada nilai, pastikan field tersembunyi juga diperbarui dengan +
+              const inputValue = phoneCodeInput.value.trim();
+              if (!inputValue.startsWith('+')) {
+                phoneCodeHidden.value = '+' + inputValue;
+              } else {
+                phoneCodeHidden.value = inputValue;
+              }
+            }
+          });
+        }
+
+        setTimeout(normalizePhoneCodeField, 800);
+        setTimeout(normalizePhoneCodeField, 2000);
+    }
+  
+    // Fungsi dropzone
+    {% comment %} const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('invoice');
+    const dropzoneText = dropzone.querySelector('.dropzone-text');
+    const dropzoneFilename = dropzone.querySelector('.dropzone-filename'); {% endcomment %}
+  
+    {% comment %} if (dropzone && fileInput) {
+      // Klik untuk mengunggah
+      dropzone.addEventListener('click', () => {
+        fileInput.click();
+      });
+  
+      // File dipilih
+      fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          // Validasi ukuran file maksimal 2MB
+          const maxSize = 2 * 1024 * 1024; // 2MB
+          if (file.size > maxSize) {
+            showPopup('simple', 'error-file-too-large', null, [
+              {
+                text: getPopupButtonText('error-file-too-large', 'ok'),
+                onclick: function() {
+                  hidePopup();
+                  // Reset file input
+                  fileInput.value = '';
+                  dropzoneText.style.display = 'block';
+                  dropzoneFilename.style.display = 'none';
+                  dropzone.classList.remove('has-file');
+                }
+              }
+            ]);
+            return;
+          }
+          
+          dropzoneText.style.display = 'none';
+          dropzoneFilename.textContent = file.name;
+          dropzoneFilename.style.display = 'block';
+          dropzone.classList.add('has-file');
+        }
+      });
+  
+      // Seret dan lepas
+      dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzone.classList.add('dragover');
+      });
+  
+      dropzone.addEventListener('dragleave', () => {
+        dropzone.classList.remove('dragover');
+      });
+  
+      dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('dragover');
+        
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+          const file = files[0];
+          // Cek apakah file adalah gambar atau PDF
+          if (file.type.startsWith('image/') || file.type === 'application/pdf') {
+            // max limit 2MB
+            const maxSize = 2 * 1024 * 1024; // 2MB
+            if (file.size > maxSize) {
+                showPopup('simple', 'error-file-too-large', null, [
+                  {
+                    text: getPopupButtonText('error-file-too-large', 'ok'),
+                    onclick: function() {
+                      hidePopup();
+                      dropzone.classList.remove('dragover');
+                    }
+                  }
+                ]);
+                return;
+            }
+            fileInput.files = files;
+            dropzoneText.style.display = 'none';
+            dropzoneFilename.textContent = file.name;
+            dropzoneFilename.style.display = 'block';
+            dropzone.classList.add('has-file');
+          } else {
+            alert('Please upload an image or PDF file');
+          }
+        }
+      });
+    } {% endcomment %}
+  
+    // Input nomor telepon - hanya angka
+    const phoneNumberInput = document.getElementById('phone');
+    const phoneInputWrapper = document.querySelector('.phone-input-wrapper');
+    
+    function updatePhoneWrapperBorder() {
+      if (phoneInputWrapper) {
+        const hasCode = phoneCodeInput && phoneCodeInput.value.trim() !== '';
+        const hasNumber = phoneNumberInput && phoneNumberInput.value.trim() !== '';
+        
+        if (hasCode || hasNumber) {
+          phoneInputWrapper.classList.add('has-value');
+        } else {
+          phoneInputWrapper.classList.remove('has-value');
+        }
+      }
+    }
+    
+    if (phoneNumberInput) {
+      phoneNumberInput.addEventListener('input', function(e) {
+        // Hanya izinkan angka
+        this.value = this.value.replace(/[^0-9]/g, '');
+        updatePhoneWrapperBorder();
+      });
+      
+      phoneNumberInput.addEventListener('keypress', function(e) {
+        // Cegah karakter non-numerik
+        const char = String.fromCharCode(e.which);
+        if (!/[0-9]/.test(char)) {
+          e.preventDefault();
+        }
+      });
+      
+      // Cegah paste non-numerik
+      phoneNumberInput.addEventListener('paste', function(e) {
+        e.preventDefault();
+        const paste = (e.clipboardData || window.clipboardData).getData('text');
+        const numbersOnly = paste.replace(/[^0-9]/g, '');
+        this.value = numbersOnly;
+        updatePhoneWrapperBorder();
+      });
+      
+      phoneNumberInput.addEventListener('blur', function() {
+        updatePhoneWrapperBorder();
+      });
+    }
+    
+    
+    // Perbarui border saat kode telepon berubah
+    if (phoneCodeInput) {
+      phoneCodeInput.addEventListener('input', updatePhoneWrapperBorder);
+      phoneCodeInput.addEventListener('blur', updatePhoneWrapperBorder);
+    }
+
+    // Expired date diisi otomatis = purchase date + 1 tahun
+    function updateExpiredDate() {
+      const purchaseDateInput = document.getElementById('purchase_date');
+      const expiredDateInput = document.getElementById('expired_date');
+      if (!purchaseDateInput || !expiredDateInput) return;
+
+      const purchaseDate = purchaseDateInput.value;
+      if (!purchaseDate) {
+        expiredDateInput.value = '';
+        return;
+      }
+
+      const date = new Date(purchaseDate + 'T00:00:00');
+      if (isNaN(date.getTime())) {
+        expiredDateInput.value = '';
+        return;
+      }
+
+      date.setFullYear(date.getFullYear() + 1);
+      const yyyy = date.getFullYear();
+      const mm = String(date.getMonth() + 1).padStart(2, '0');
+      const dd = String(date.getDate()).padStart(2, '0');
+      expiredDateInput.value = `${yyyy}-${mm}-${dd}`;
+    }
+
+    const purchaseDateInput = document.getElementById('purchase_date');
+    if (purchaseDateInput) {
+      purchaseDateInput.addEventListener('change', updateExpiredDate);
+      purchaseDateInput.addEventListener('input', updateExpiredDate);
+    }
+
+    // Store diisi dari distributor (readonly); tetap tergantung purchase method.
+    function updateStoreFieldState() {
+      const purchaseMethodSelect = document.getElementById('purchase_method');
+      const storeSelectInput = document.getElementById('store_select');
+      if (!purchaseMethodSelect || !storeSelectInput) return;
+
+      const purchaseMethod = purchaseMethodSelect.value;
+      if (purchaseMethod === 'Online') {
+        storeSelectInput.value = 'Online';
+        storeSelectInput.disabled = true;
+        storeSelectInput.removeAttribute('required');
+        hideError('store_select');
+      } else if (purchaseMethod === 'store') {
+        storeSelectInput.disabled = false;
+        storeSelectInput.setAttribute('required', 'required');
+        fillStoreFromDistributor();
+      } else {
+        storeSelectInput.value = '';
+        storeSelectInput.disabled = true;
+        storeSelectInput.removeAttribute('required');
+        hideError('store_select');
+      }
+    }
+    
+    // Handler untuk Purchase Method - disable/enable store field
+    const purchaseMethodSelect = document.getElementById('purchase_method');
+    if (purchaseMethodSelect) {
+      // Update state saat purchase method berubah
+      purchaseMethodSelect.addEventListener('change', function() {
+        updateStoreFieldState();
+        updateButtonOpacity();
+      });
+      
+      // Update state saat page load (untuk handle default state)
+      updateStoreFieldState();
+    }
+
+    // Saat no_id_distributor dipilih, isi store_select dengan store_name
+    const distributorSelect = document.getElementById('no_id_distributor');
+    if (distributorSelect) {
+      distributorSelect.addEventListener('change', function() {
+        fillStoreFromDistributor();
+        hideError('no_id_distributor');
+        hideError('store_select');
+        updateButtonOpacity();
+      });
+    }
+  
+    show(step);
+    
+    // Set fade-in untuk step pertama saat page load
+    const firstStep = document.querySelector('#wf .step[data-step="1"]');
+    if (firstStep) {
+      firstStep.style.display = 'block';
+      firstStep.offsetHeight;
+      firstStep.classList.add('fade-in');
+    }
+    
+    // Update button opacity setelah step pertama dimuat
+    setTimeout(updateButtonOpacity, 100);
+  });
+  </script>
+  

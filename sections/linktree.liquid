@@ -1,0 +1,89 @@
+<section class="linktree-section" style="padding: 10px">
+    {% if section.settings.background_image != blank %}
+      <style>
+        .linktree-background {
+          background: url('{{ section.settings.background_image | img_url: 'master' }}') no-repeat;
+          background-size: cover;
+          background-position: 50% 50%;
+        }
+      </style>
+      <div class="linktree-background"></div>
+    {% endif %}
+    <style>
+      .linktree-button {
+        padding: {{ section.settings.button_height }}px 15px;
+      }
+    </style>
+    <div class="linktree-content">
+      {% if section.settings.logo != blank %}
+        <div class="linktree-logo">
+          {% assign logo_width = section.settings.logo_width | append: 'x' %}
+          <img src="{{ section.settings.logo | img_url: logo_width }}" alt="{{ section.settings.logo }}" class="logo"/>
+        </div>
+      {% endif %}
+      <div class="linktree-container">
+        {% for block in section.blocks %}
+          <div class="linktree-item" style="padding-top: 15px;">
+            <a href="{% if block.settings.link_url != blank %}{{ block.settings.link_url }}{% else %}javascript:void(0);{% endif %}" target="_blank" class="linktree-button">
+              <span class="linktree-button-text">{{ block.settings.link_title | default: 'Your text here...' | escape }}</span>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% schema %}
+    {
+      "name": "Linktree",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Background image"
+        },
+        {
+          "type": "range",
+          "id": "logo_width",
+          "min": 100,
+          "max": 250,
+          "step": 5,
+          "unit": "px",
+          "label": "Logo width",
+          "default": 215
+        },
+        {
+          "type": "range",
+          "id": "button_height",
+          "min": 10,
+          "max": 50,
+          "step": 1,
+          "unit": "px",
+          "label": "Button height",
+          "default": 15
+        }
+      ],
+      "blocks": [
+        {
+          "type": "link",
+          "name": "Link",
+          "settings": [
+            {
+              "type": "text",
+              "id": "link_title",
+              "label": "Link title"
+            },
+            {
+              "type": "url",
+              "id": "link_url",
+              "label": "Link Url"
+            }
+          ]
+        }
+      ]
+    }
+  {% endschema %}

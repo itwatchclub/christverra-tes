@@ -1,0 +1,120 @@
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .duma-blog-page {
+    padding-bottom: 80px;
+  }
+  .duma-blog__title {
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: normal;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    color: #454545;
+  }
+  .duma-blog__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 60px 40px;
+  }
+  .duma-blog__image-link {
+    display: block;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .duma-blog__image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1.7 / 1;
+    object-fit: cover;
+  }
+  @media screen and (max-width: 749px) {
+    .duma-blog__grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+  .duma-blog__article-title {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: normal;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+    line-height: 1.65;
+    color: #454545;
+    font-family: 'Nunito Sans', sans-serif;
+  }
+  .duma-blog__article-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .duma-blog__excerpt {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0 0 16px;
+  }
+  .duma-blog__read-more {
+    font-size: 12px;
+    color: #1a1b18;
+    text-decoration: underline !important;
+    text-underline-offset: 3px;
+    display: inline-block;
+  }
+  .duma-blog__read-more:hover {
+    opacity: 0.7;
+  }
+</style>
+
+{%- paginate blog.articles by 9 -%}
+
+<div class="duma-blog-page page-width">
+  <h1 class="duma-blog__title">{{ blog.title | upcase }}</h1>
+
+  <div class="duma-blog__grid">
+    {%- for article in blog.articles -%}
+      <div class="duma-blog__item">
+        {%- if article.image -%}
+          <a href="{{ article.url }}" class="duma-blog__image-link">
+            <img
+              class="duma-blog__image"
+              src="{{ article.image | image_url: width: 800 }}"
+              srcset="{{ article.image | image_url: width: 400 }} 400w, {{ article.image | image_url: width: 800 }} 800w"
+              sizes="(min-width: 750px) 33vw, 100vw"
+              alt="{{ article.image.alt | escape }}"
+              loading="lazy"
+              width="{{ article.image.width }}"
+              height="{{ article.image.height }}"
+            >
+          </a>
+        {%- endif -%}
+        <h2 class="duma-blog__article-title">
+          <a href="{{ article.url }}">{{ article.title | upcase }}</a>
+        </h2>
+        {%- if article.excerpt != blank -%}
+          <p class="duma-blog__excerpt">{{ article.excerpt | strip_html | truncate: 200 }}</p>
+        {%- elsif article.content != blank -%}
+          <p class="duma-blog__excerpt">{{ article.content | strip_html | truncate: 200 }}</p>
+        {%- endif -%}
+        <a href="{{ article.url }}" class="duma-blog__read-more">Read more</a>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {%- if paginate.pages > 1 -%}
+    {%- render 'pagination', paginate: paginate -%}
+  {%- endif -%}
+</div>
+
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "t:sections.main-blog.name",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [],
+  "blocks": []
+}
+{% endschema %}

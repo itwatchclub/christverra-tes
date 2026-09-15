@@ -1,0 +1,128 @@
+{{ 'section-blog-template.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'lazysizes.min.js' | asset_url }}" defer="defer"></script>
+
+<div id="section-{{ section.id }}" class="Section" data-section-id="{{ section.id }}" data-section-type="article-list">
+    {%- if blog.articles_count == 0 -%}
+      <div class="EmptyState">
+        <div class="Container">
+          <h1 class="EmptyState__Title Heading u-h5">No articles found</h1>
+          <a href="{{ routes.root_url }}" class="EmptyState__Action Button Button--primary">Back to Home</a>
+        </div>
+      </div>
+    {%- else -%}
+      <div class="Blog">
+        <div class="Container">
+          <header class="PageHeader">
+            <div class="SectionHeader SectionHeader--center">
+              <h1 class="SectionHeader__Heading Heading u-h1">
+                {{- blog.title | upcase -}}
+  
+                {%- if section.settings.show_rss -%}
+                  <a href="{{ blog.url }}.atom" target="_blank" class="Blog__RssLink Link Link--secondary">{% render 'icon' with 'rss' %}</a>
+                {%- endif -%}
+              </h1>
+  
+              {%- if section.settings.show_tags and blog.all_tags.size > 0 -%}
+                <ul class="Blog__TagList HorizontalList HorizontalList--spacingExtraLoose">
+                  <li class="HorizontalList__Item">
+                    <a href="/blogs/{{ blog.handle }}" class="Heading Link Link--primary Text--subdued u-h8 {% if current_tags == blank %}is-active{% endif %}">{{ 'blog.general.all_tag' | t }}</a>
+                  </li>
+  
+                  {%- for tag in blog.all_tags -%}
+                    <li class="HorizontalList__Item">
+                      <a href="/blogs/{{ blog.handle }}/tagged/{{ tag | handle }}" class="Heading Link Link--primary Text--subdued u-h8 {% if current_tags contains tag %}is-active{% endif %}">{{ tag }}</a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </div>
+          </header>
+  
+          {%- assign articles_per_page = section.settings.articles_per_page | default: 50 -%}
+
+          {%- paginate blog.articles by articles_per_page -%}
+            {%- assign is_first_article_featured = false -%}
+
+            {%- if section.settings.show_featured_article and current_tags == blank and paginate.current_page == 1 and blog.articles.first.image -%}
+              {%- assign is_first_article_featured = true -%}
+            {%- endif -%}
+
+            <div class="ArticleListWrapper">
+              <div class="ArticleList {% if is_first_article_featured %}ArticleList--withFeatured{% endif %} Grid Grid--m">
+                {%- for article in blog.articles -%}
+                  {%- if is_first_article_featured and forloop.first -%}
+                    <div class="Grid__Cell BlogFeatured">
+                      <a href="{{ article.url }}" class="BlogFeatured__Link">
+                        <div class="BlogFeatured__Media ImageHero ImageHero--small" style="background-image: url({{ article.image | image_url: width: 1500 }})">
+                          <div class="BlogFeatured__Overlay"></div>
+                          <div class="ImageHero__TextContent BlogFeatured__Content">
+                            {%- if section.settings.show_category and article.tags != empty -%}
+                              <span class="SectionHeader__SubHeading Heading u-h6">{{ article.tags.first }}</span>
+                            {%- endif -%}
+
+                            <h2 class="SectionHeader__Heading Heading u-h1 BlogFeatured__Title">
+                              {{ article.title }}
+                            </h2>
+
+                            <span class="BlogFeatured__Button">Read more</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  {%- else -%}
+                    <div class="Grid__Cell 1/2--tablet 1/3--lap-and-up">
+                      {%- render 'article-item', article: article -%}
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </div>
+  
+            {%- render 'pagination', paginate: paginate -%}
+          {%- endpaginate -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {% schema %}
+  {
+    "name": "Blog page",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_rss",
+        "label": "Show RSS",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_tags",
+        "label": "Show filters",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_featured_article",
+        "label": "Show featured article",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_category",
+        "label": "Show article category",
+        "info": "The first article's tag is used as the main category.",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "articles_per_page",
+        "min": 6,
+        "max": 50,
+        "step": 1,
+        "default": 50,
+        "label": "Articles per page"
+      }
+    ]
+  }
+  {% endschema %}

@@ -1,0 +1,91 @@
+{{ 'section-collection-custom-anim.css' | asset_url | stylesheet_tag }}
+
+<div class="collection-anim">
+  {% for block in section.blocks %}
+    {%- assign collection = collections[block.settings.collection] -%}
+    {% assign image_collection = block.settings.img %}
+    <a
+      href="{{ collection.url }}"
+      class="collection-anim__container"
+      style="background-image: url('{{ image_collection | img_url: '1920x' }}');"
+    >
+      <div class="collection-anim__tulisan">
+        <h3 class="collection-anim__subheading collection-anim__heading collection-anim__button border-button-color-{{ section.id }} collection-anim__button--primary button-color-{{ section.id }}">
+          {{ collection.title | upcase }}
+        </h3>
+      </div>
+    </a>
+  {% endfor %}
+</div>
+
+<style>
+  .button-color-{{ section.id }} {
+    color: {{ section.settings.button_color }} !important;
+  }
+  .button-color-{{ section.id }}:hover {
+    color: {{ section.settings.button_color_hover }} !important;
+  }
+  .button-color-{{ section.id }}::before {
+    background-color: {{ section.settings.button_background }};
+  }
+  .border-button-color-{{ section.id }} {
+    border-color: {{ section.settings.border_color }} !important;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Collection animation",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button text",
+      "default": "#363636"
+    },
+    {
+      "type": "color",
+      "id": "button_color_hover",
+      "label": "Button text when hover",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border button color",
+      "default": "#363636"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Collection",
+      "name": "Collection animation"
+    }
+  ]
+}
+{% endschema %}

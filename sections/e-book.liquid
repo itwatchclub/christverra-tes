@@ -1,0 +1,85 @@
+<style>
+    .floating-image-download-pdf{
+      position:fixed;
+      right:20px;
+      bottom:100px;
+      cursor:pointer;
+      background: white;
+      padding: 5px 25px;
+      font-size: 14px;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+      border-radius: 6px;
+      font-weight: 500;
+      padding: 5px 15px;
+      display: flex;
+      align-items: center;
+      transition: transform 0.25s ease;
+    }
+    .floating-image-download-pdf img{
+        width: 15px;
+        height: auto;
+        margin-right: 8px;
+    }
+    .floating-image-download-pdf:hover{
+        transform: scale(1.1);
+    }
+    .pdf-desktop {
+        padding: 40px;
+        padding-bottom: 0;
+    }
+    .pdf-mobile img,
+    .pdf-desktop img {
+      width: 40%;
+      height: auto;
+      display: block;
+      margin: auto;
+    }
+    
+  
+    /* Mobile aktif */
+    @media (max-width: 768px) {
+        .pdf-mobile img,
+        .pdf-desktop img {
+          width: 100%;
+        }
+    }
+  </style>
+  
+  {% comment %} <div class="floating-image-download-pdf">
+    <img src="https://cdn.shopify.com/s/files/1/0249/6341/6160/files/download.png?v=1763956001" alt="download" width="100" height="100" />
+    Download Catalog
+  </div> {% endcomment %}
+  
+  <!-- DESKTOP: page-0001 sampai page-0064 -->
+<section class="pdf-desktop-section">
+  <div class="pdf-desktop">
+    {% for i in (1..64) %}
+      {% assign padded = 10000 | plus: i %}
+      {% assign page_num = padded | append: '' | slice: 1, 4 %}
+      <img
+        src="https://cdn.shopify.com/s/files/1/0715/3713/1706/files/Garansi_CV_Edited_for_Web_page-{{ page_num }}.jpg?v=1773291717"
+        alt="Page {{ i }}"
+        loading="{% if forloop.index <= 3 %}eager{% else %}lazy{% endif %}"
+        width="100%"
+        height="auto"
+      >
+    {% endfor %}
+  </div>
+</section>
+  
+  <script>
+  (function() {
+    function setEbookFooterMargin() {
+      var hasEbookSection = document.querySelector('.pdf-desktop-section');
+      var footer = document.getElementById('section-footer');
+      if (hasEbookSection && footer) {
+        footer.style.marginTop = '0';
+      }
+    }
+    if (document.readyState === 'complete') {
+      setEbookFooterMargin();
+    } else {
+      window.addEventListener('load', setEbookFooterMargin);
+    }
+  })();
+  </script>

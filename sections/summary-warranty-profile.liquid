@@ -1,0 +1,88 @@
+{%- comment -%}
+  Local CSS preview: set ke false sebelum live / commit production.
+{%- endcomment -%}
+{% assign warranty_profile_dev_mode = false %}
+{% assign warranty_profile_dev_email = 'alrio@bolehdicoba.com' %}
+
+{% if warranty_profile_dev_mode %}
+  {% assign user_email = warranty_profile_dev_email %}
+{% elsif customer %}
+  {% assign user_email = customer.email %}
+{% endif %}
+
+{% if section.settings.submit_warranty_form_url != blank %}
+  {% assign warranty_form_href = section.settings.submit_warranty_form_url %}
+{% else %}
+  {% assign warranty_form_href = '/pages/warranty-register' %}
+{% endif %}
+
+{% if warranty_profile_dev_mode or customer %}
+    <div class="summary-warranty-profile-wrapper">
+        {% if warranty_profile_dev_mode %}
+          <p class="summary-warranty-profile__dev-note">Dev mode: data dicocokkan untuk {{ warranty_profile_dev_email }}</p>
+        {% endif %}
+
+        {% assign found = false %}
+        {% assign user_email_downcase = user_email | downcase %}
+        {% capture warranty_cards_markup %}
+          {% for item in metaobjects.warannty.values reversed %}
+            {% assign item_email = item.email.value | downcase %}
+            {% if item_email == user_email_downcase %}
+              {% assign found = true %}
+              <div class="warranty-panel__card">
+                  {% assign w_first = item.first_name.value | default: item.firstname.value %}
+                  {% assign w_last = item.last_name.value | default: item.lastname.value %}
+                  {% assign w_full_name = w_first | append: ' ' | append: w_last | strip %}
+                  <div class="warranty-panel__row"><span class="warranty-panel__label">Name:</span> <span class="warranty-panel__value">{% if w_full_name != blank %}{{ w_full_name }}{% else %}—{% endif %}</span></div>
+                  <div class="warranty-panel__row"><span class="warranty-panel__label">Email:</span> <span class="warranty-panel__value">{{ item.email.value | default: '—' }}</span></div>
+                  <div class="warranty-panel__row"><span class="warranty-panel__label">Phone:</span> <span class="warranty-panel__value">{{ item.phone.value | default: '—' }}</span></div>
+                  <div class="warranty-panel__row"><span class="warranty-panel__label">Purchase Date:</span> <span class="warranty-panel__value">{% if item.purchasedate.value != blank %}{{ item.purchasedate.value }}{% elsif item.purchase_date.value != blank %}{{ item.purchase_date.value }}{% else %}—{% endif %}</span></div>
+                  <div class="warranty-panel__row"><span class="warranty-panel__label">Purchase Method:</span> <span class="warranty-panel__value">{{ item.purchasemethod.value | default: item.purchase_method.value | default: '—' }}</span></div>
+                  <div class="warranty-panel__row"><span class="warranty-panel__label">Country Purchased:</span> <span class="warranty-panel__value">{{ item.countrypurchased.value | default: item.country_purchased.value | default: '—' }}</span></div>
+                  <div class="warranty-panel__row"><span class="warranty-panel__label">No ID Distributor:</span> <span class="warranty-panel__value">{{ item.no_id_distributor.value | default: '—' }}</span></div>
+                  <div class="warranty-panel__row"><span class="warranty-panel__label">No Card Waranty:</span> <span class="warranty-panel__value">{{ item.no_card_waranty.value | default: '—' }}</span></div>
+                  <div class="warranty-panel__row"><span class="warranty-panel__label">Store:</span> <span class="warranty-panel__value">{{ item.store.value | default: '—' }}</span></div>
+                  <div class="warranty-panel__row"><span class="warranty-panel__label">Serial Number:</span> <span class="warranty-panel__value">{{ item.serial_number.value | default: '—' }}</span></div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endcapture %}
+
+        {% if found %}
+          <article class="warranty-panel">
+              <header class="warranty-panel__header">
+                  <div class="warranty-panel__heading">
+                      <h2 class="warranty-panel__title">Warranty</h2>
+                      <p class="warranty-panel__subtitle">
+                          <span class="warranty-panel__subtitle-lead">Warranty entries for</span>
+                          <span class="warranty-panel__subtitle-email">{{ user_email }}</span>
+                      </p>
+                  </div>
+                  <a class="warranty-panel__cta" href="{{ warranty_form_href }}">Submit Warranty Form</a>
+              </header>
+              {{ warranty_cards_markup }}
+          </article>
+        {% else %}
+            <p class="summary-warranty-profile__empty">No warranty data found</p>
+        {% endif %}
+    </div>
+{% else %}
+    <p class="summary-warranty-profile__login-msg">Please login to view your warranty profile</p>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Summary warranty profile",
+  "tag": "section",
+  "class": "section-summary-warranty-profile",
+  "settings": [
+    {
+      "type": "url",
+      "id": "submit_warranty_form_url",
+      "label": "Submit Warranty Form button link",
+      "info": "Kosongkan untuk memakai /pages/activate-warranty"
+    }
+  ],
+  "presets": [{ "name": "Summary warranty profile" }]
+}
+{% endschema %}

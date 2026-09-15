@@ -1,0 +1,229 @@
+<section class="summary-warranty-wrapper">
+    <div class="summary-warranty-container">
+        <div class="summary-warranty-box">
+            <h2>Summary Warranty</h2>
+            <div id="warranty-summary-content">
+                <p class="loading-message">Loading warranty information...</p>
+            </div>
+            
+            <!-- Template HTML untuk Summary Data (Hidden) -->
+            <div id="warranty-summary-template" style="display: none;">
+                <div class="warranty-summary-details">
+                    <!-- Personal Information -->
+                    <div class="summary-section">
+                        <h3 data-label="personal-title">Personal Information</h3>
+                        <div class="summary-item">
+                            <div class="summary-label" data-label="name-label">Name:</div>
+                            <div class="summary-value" data-field="name"></div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label" data-label="email-label">Email:</div>
+                            <div class="summary-value" data-field="email"></div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label" data-label="phone-label">Phone:</div>
+                            <div class="summary-value" data-field="phone"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Purchase Information -->
+                    <div class="summary-section">
+                        <h3 data-label="purchase-title">Purchase Information</h3>
+                        <div class="summary-item">
+                            <div class="summary-label" data-label="purchase-date-label">Purchase Date:</div>
+                            <div class="summary-value" data-field="purchase_date"></div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label" data-label="purchase-method-label">Purchase Method:</div>
+                            <div class="summary-value" data-field="purchase_method"></div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label" data-label="country-purchase-label">Country of Purchase:</div>
+                            <div class="summary-value" data-field="country_purchase"></div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label" data-label="no-id-distributor-label">No ID Distributor:</div>
+                            <div class="summary-value" data-field="no_id_distributor"></div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label" data-label="no-card-waranty-label">No Card Waranty:</div>
+                            <div class="summary-value" data-field="no_card_waranty"></div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label" data-label="store-label">Store:</div>
+                            <div class="summary-value" data-field="store"></div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label" data-label="serial-number-label">Serial Number:</div>
+                            <div class="summary-value" data-field="serial_number"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Labels untuk Summary (Hidden) -->
+            <div id="warranty-summary-labels" style="display: none;">
+                <div data-label="personal-title">Personal Information</div>
+                <div data-label="name-label">Name:</div>
+                <div data-label="email-label">Email:</div>
+                <div data-label="phone-label">Phone:</div>
+                
+                <div data-label="purchase-title">Purchase Information</div>
+                <div data-label="purchase-date-label">Purchase Date:</div>
+                <div data-label="purchase-method-label">Purchase Method:</div>
+                <div data-label="country-purchase-label">Country of Purchase:</div>
+                <div data-label="no-id-distributor-label">No ID Distributor:</div>
+                <div data-label="no-card-waranty-label">No Card Waranty:</div>
+                <div data-label="store-label">Store:</div>
+                <div data-label="serial-number-label">Serial Number:</div>
+                
+                <div data-label="no-data-message">No warranty data found. Please fill out the warranty form first.</div>
+                <div data-label="error-message">Error loading warranty data. Please try again.</div>
+            </div>
+            <div class="warranty-back-to-home-container">
+                <a href="{{ routes.root_url }}" class="warranty-back-to-home">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const summaryContent = document.getElementById('warranty-summary-content');
+    const template = document.getElementById('warranty-summary-template');
+    const labelsContainer = document.getElementById('warranty-summary-labels');
+    
+    // Function untuk get label dari HTML
+    function getLabel(labelKey) {
+        if (!labelsContainer) return '';
+        const labelEl = labelsContainer.querySelector('[data-label="' + labelKey + '"]');
+        return labelEl ? labelEl.textContent : '';
+    }
+    
+    // Function untuk set label ke semua element dengan data-label
+    function setLabels() {
+        const labelElements = document.querySelectorAll('[data-label]');
+        labelElements.forEach(el => {
+            const labelKey = el.getAttribute('data-label');
+            const labelText = getLabel(labelKey);
+            if (labelText) {
+                el.textContent = labelText;
+            }
+        });
+    }
+    
+    // Function untuk display data
+    function displayWarrantyData(formData) {
+        if (!template) {
+            summaryContent.innerHTML = '<p class="error-message">' + getLabel('error-message') + '</p>';
+            return;
+        }
+        
+        // Clone template
+        const clonedTemplate = template.cloneNode(true);
+        clonedTemplate.style.display = 'block';
+        clonedTemplate.removeAttribute('id');
+        
+        // Set labels
+        setLabels();
+        
+        // Isi data ke field-field yang sesuai
+        const nameField = clonedTemplate.querySelector('[data-field="name"]');
+        if (nameField) {
+            nameField.textContent = ((formData.first_name || '') + ' ' + (formData.last_name || '')).trim();
+        }
+        
+        const emailField = clonedTemplate.querySelector('[data-field="email"]');
+        if (emailField) {
+            emailField.textContent = formData.email || '';
+        }
+        
+        const phoneField = clonedTemplate.querySelector('[data-field="phone"]');
+        if (phoneField) {
+            // Jika phone_code ada, gabungkan, jika tidak langsung pakai phone
+            const phoneDisplay = formData.phone_code ? 
+                (formData.phone_code + ' ' + (formData.phone_number || formData.phone || '')) : 
+                (formData.phone || formData.phone_number || '');
+            phoneField.textContent = phoneDisplay;
+        }
+        
+        const purchaseDateField = clonedTemplate.querySelector('[data-field="purchase_date"]');
+        if (purchaseDateField) {
+            purchaseDateField.textContent = formData.purchase_date || '';
+        }
+        
+        const purchaseMethodField = clonedTemplate.querySelector('[data-field="purchase_method"]');
+        if (purchaseMethodField) {
+            purchaseMethodField.textContent = formData.purchase_method || '';
+        }
+        
+        const countryPurchaseField = clonedTemplate.querySelector('[data-field="country_purchase"]');
+        if (countryPurchaseField) {
+            countryPurchaseField.textContent = formData.country_purchase || '';
+        }
+
+        const noIdDistributorField = clonedTemplate.querySelector('[data-field="no_id_distributor"]');
+        if (noIdDistributorField) {
+            noIdDistributorField.textContent = formData.no_id_distributor || '';
+        }
+
+        const noCardWarantyField = clonedTemplate.querySelector('[data-field="no_card_waranty"]');
+        if (noCardWarantyField) {
+            noCardWarantyField.textContent = formData.no_card_waranty || '';
+        }
+        
+        const storeField = clonedTemplate.querySelector('[data-field="store"]');
+        if (storeField) {
+            storeField.textContent = formData.store || '';
+        }
+        
+        const serialNumberField = clonedTemplate.querySelector('[data-field="serial_number"]');
+        if (serialNumberField) {
+            serialNumberField.textContent = formData.serial_number || '';
+        }
+        
+        // Set labels setelah clone
+        const clonedLabels = clonedTemplate.querySelectorAll('[data-label]');
+        clonedLabels.forEach(el => {
+            const labelKey = el.getAttribute('data-label');
+            const labelText = getLabel(labelKey);
+            if (labelText) {
+                el.textContent = labelText;
+            }
+        });
+        
+        // Masukkan ke summary content
+        summaryContent.innerHTML = '';
+        summaryContent.appendChild(clonedTemplate);
+    }
+    
+    // Ambil data dari URL query parameter (dari API response)
+    try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const dataEncoded = urlParams.get('data');
+        
+        if (!dataEncoded) {
+            summaryContent.innerHTML = '<p class="error-message">' + getLabel('no-data-message') + '</p>';
+            return;
+        }
+        
+        // Decode data dari base64
+        const dataJson = decodeURIComponent(atob(dataEncoded));
+        const formData = JSON.parse(dataJson);
+        
+        console.log('Data from API response:', formData);
+        displayWarrantyData(formData);
+        
+    } catch (error) {
+        console.error('Error parsing warranty data from URL:', error);
+        summaryContent.innerHTML = '<p class="error-message">' + getLabel('error-message') + '</p>';
+    }
+});
+</script>
+
+{% schema %}
+{
+    "name": "Summary Warranty",
+    "settings": []
+}
+{% endschema %} 
