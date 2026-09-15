@@ -1,0 +1,236 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "colors_accent_1": "#1A1B18",
+    "colors_accent_2": "#878787",
+    "colors_text": "#1a1b18",
+    "colors_outline_button_labels": "#FFFFFF",
+    "colors_background_2": "#ec1616",
+    "type_header_font": "nunito_sans_n4",
+    "type_body_font": "nunito_sans_n4",
+    "sale_badge_color_scheme": "accent-1",
+    "sold_out_badge_color_scheme": "background-1",
+    "accent_icons": "accent-1",
+    "share_facebook": true,
+    "social_facebook_link": "",
+    "social_instagram_link": "https://www.instagram.com/wigglewiggle.id",
+    "social_tiktok_link": "https://www.tiktok.com/@wigglewiggle.id",
+    "social_youtube_link": "",
+    "return_shipping": "<p>Shipping Options<br/>Regular Shipping<br/>Shipping is available through courier services only JNE Regular.</p><p>Shipping Policy<br/>We only process shipments until Friday for all confirmed orders placed before 12.00 PM. Any orders made after that time will be processed on the next working day of the following week.</p><p>Terms and Condition of Return<br/>Complaint Submission Timeline<br/>Complaints must be submitted before you click “Order Received” or “Pesanan Diterima” and must be made within 2 x 24 hours from the time the order is delivered to the recipient’s address, as indicated on the shipping receipt.</p><p>Return Eligibility<br/>Returns are permitted only if the product received by the buyer is defect or if there was a shipping error from the seller. Additionally, the return request must be accompanied by an unboxing video. </p><p>Unboxing Video Requirement<br/>Both complaint submission must include an unboxing video without any pauses to ensure proper documentations.</p>",
+    "sections": {
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "settings": {
+          "cart_type": "drawer"
+        }
+      },
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "announcement-bar-0": {
+            "type": "announcement",
+            "settings": {
+              "text": "Shop New Drops & Best-Selling Restock | Christ Verra Special Edition",
+              "button_text": "",
+              "link": "shopify://collections"
+            }
+          }
+        },
+        "block_order": [
+          "announcement-bar-0"
+        ],
+        "settings": {
+          "enable_bar": true,
+          "home_page_only": false,
+          "background": "#ece9e0",
+          "text_color": "#543425"
+        }
+      },
+      "header": {
+        "type": "header",
+        "blocks": {
+          "mega_menu_r94LEP": {
+            "type": "mega_menu",
+            "settings": {
+              "navigation_mega_menu": "shop",
+              "push_1_heading": "",
+              "push_1_subheading": "",
+              "push_1_url": "shopify://collections/most-wanted",
+              "push_2_heading": "",
+              "push_2_subheading": "",
+              "push_2_url": "shopify://collections/poeme"
+            }
+          }
+        },
+        "block_order": [
+          "mega_menu_r94LEP"
+        ],
+        "settings": {
+          "enable_sticky_header": true,
+          "logo": "shopify://shop_images/Logo_CV_FIX-cropped.png",
+          "logo_transparent": "shopify://shop_images/Logo_CV_FIX_Putih-cropped.png",
+          "logo_width": 165,
+          "mobile_logo_max_width": 50,
+          "logo_position": "top-center",
+          "show_currency_selector": false,
+          "usd_exchange_rate": 16000,
+          "show_locale_selector": false,
+          "menu": "main-menu",
+          "navigation_style": "inline",
+          "show_icons": false,
+          "show_line_separator": false,
+          "enable_transparent_header": true,
+          "enable_transparent_header_collection": false,
+          "show_transparent_header_border": false,
+          "transparent_text_color": "#ffffff"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "links_hnKYwe": {
+            "type": "links",
+            "settings": {
+              "menu": "footer"
+            }
+          },
+          "links_y8aFXf": {
+            "type": "links",
+            "settings": {
+              "menu": "shop-info"
+            }
+          },
+          "links_TDnaYb": {
+            "type": "links",
+            "settings": {
+              "menu": "about"
+            }
+          },
+          "links_FcWHRn": {
+            "type": "links",
+            "settings": {
+              "menu": "service-center"
+            }
+          },
+          "newsletter_AYPbzz": {
+            "type": "newsletter",
+            "settings": {
+              "title": "Newsletter",
+              "content": "<p>Subscribe to receive updates, access to exclusive deals, and more.</p>"
+            }
+          }
+        },
+        "block_order": [
+          "links_hnKYwe",
+          "links_y8aFXf",
+          "links_TDnaYb",
+          "links_FcWHRn",
+          "newsletter_AYPbzz"
+        ],
+        "settings": {
+          "show_payment_methods": false,
+          "show_currency_selector": false,
+          "show_locale_selector": false
+        }
+      },
+      "choose-warranty": {
+        "type": "choose-warranty",
+        "settings": {
+          "show_manual_book": true,
+          "manual_book_text": "Manual Book",
+          "manual_book_url": "shopify://pages/e-book",
+          "show_registered": false,
+          "registered_text": "Register",
+          "registered_url": "shopify://pages/warranty-register"
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "1232542678405107163": {
+        "type": "shopify://apps/instafeed/blocks/head-block/c447db20-095d-4a10-9725-b5977662c9d5",
+        "disabled": false,
+        "settings": {}
+      },
+      "1759773598402494664": {
+        "type": "shopify://apps/rt-social-chat-live-chat/blocks/app-embed/9baee9b7-6929-47af-9935-05bcdc376396",
+        "disabled": false,
+        "settings": {}
+      },
+      "7870687481494312845": {
+        "type": "shopify://apps/wishlist-hero/blocks/app-embed/a9a5079b-59e8-47cb-b659-ecf1c60b9b72",
+        "disabled": false,
+        "settings": {
+          "customThemeName": "~",
+          "additionalWLButtonCssClasses": "",
+          "additionalWLCartBubbleCssClasses": "",
+          "extraHTMLToAppend": "",
+          "disableAutomaticButtonAddition": false
+        }
+      },
+      "10486658301671024706": {
+        "type": "shopify://apps/wishlist-hero/blocks/collection-embed/a9a5079b-59e8-47cb-b659-ecf1c60b9b72",
+        "disabled": false,
+        "settings": {
+          "customThemeName": "~",
+          "wlIconPlacementInCard": "auto",
+          "iconHorizontalOffset": 0,
+          "iconVerticalOffset": 0,
+          "iconBackgroundSize": 40,
+          "iconFontSize": 0,
+          "enableCustomColors": false,
+          "wishlistIconColor": "",
+          "wishlistIconBgColor": "",
+          "wishlistIconBgColorAlpha": 100,
+          "addedWishlistIconColor": "",
+          "addedWishlistIconBgColor": "",
+          "addedWishlistIconBgColorAlpha": 100,
+          "wlCollectionCardSelectorClass": "",
+          "wlIconPlacementInCardSelector": "",
+          "wlIconPlacementInCardMode": "I",
+          "wlProductHandleExtractor": "",
+          "enableSortMutation": false,
+          "searchAndFilterApp": "none"
+        }
+      },
+      "1366455014531238847": {
+        "type": "shopify://apps/wishlist-hero/blocks/customize-style-block/a9a5079b-59e8-47cb-b659-ecf1c60b9b72",
+        "disabled": false,
+        "settings": {
+          "Btn_color": "",
+          "WishlistButtonTextColor": "",
+          "Ico_color": "",
+          "HeaderFontSize": 30,
+          "HeaderColor": "",
+          "ProductNameFontSize": 18,
+          "PriceFontSize": 16,
+          "PriceColor": ""
+        }
+      },
+      "15516442047899035060": {
+        "type": "shopify://apps/livemeup-live-shopping/blocks/live-widget/82ccf4ed-67f8-4725-9167-e54475d4748e",
+        "disabled": true,
+        "settings": {
+          "horizontal_position": "left",
+          "horizontal_distance": 10,
+          "vertical_distance": 10,
+          "show_desktop": true,
+          "show_mobile": true,
+          "thumbnail_desktop_width": 200,
+          "thumbnail_mobile_width": 150,
+          "thumbnail_corner_radius": 10,
+          "border_color": "",
+          "border_thickness": 1
+        }
+      }
+    }
+  }
+}
